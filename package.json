@@ -19,6 +19,7 @@
     "@payloadcms/next": "3.33.0",
     "@payloadcms/payload-cloud": "3.33.0",
     "@payloadcms/richtext-lexical": "3.33.0",
+    "@radix-ui/react-select": "^2.2.2",
     "@tailwindcss/postcss": "^4.1.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

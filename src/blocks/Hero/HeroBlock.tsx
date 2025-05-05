@@ -1,9 +1,13 @@
 import Image from 'next/image'
+import { ImageMedia } from '@/components/Media/Image/image-media'
 
 interface HeroBlockProps {
   title?: string
   description?: string
-  backgroundImage?: string
+  backgroundImage?: {
+    url: string
+    alt?: string
+  }
 }
 
 export function HeroBlock(props: HeroBlockProps) {
@@ -19,6 +23,17 @@ export function HeroBlock(props: HeroBlockProps) {
       <div className={'flex flex-col justify-center w-1/2 pl-8'}>
         <h1 className={'text-6xl '}>{title}</h1>
         <p className={'text-[14px]'}> {description}</p>
+      </div>
+      <div className="flex items-center justify-center w-1/2 p-4">
+        {backgroundImage?.url && (
+          <ImageMedia
+            src={backgroundImage.url}
+            alt={backgroundImage.alt}
+            width={400}
+            height={300}
+            imgClassName="rounded-lg object-contain"
+          />
+        )}
       </div>
     </div>
   )
