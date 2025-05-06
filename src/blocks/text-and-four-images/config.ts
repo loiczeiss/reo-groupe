@@ -1,7 +1,7 @@
 import { Block } from 'payload'
 
 export const TextAndFourImages: Block = {
-  slug: 'text-and-four-images',
+slug: 'textAndFourImages',
   labels: {
     singular: 'Text and Four Images',
     plural: 'Text and Four Images',

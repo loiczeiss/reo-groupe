@@ -198,7 +198,82 @@ export interface Page {
             };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'text-and-four-images';
+            blockType: 'textAndFourImages';
+          }
+        | {
+            headingGroup?: {
+              heading?: string | null;
+              headingSpan?: string | null;
+            };
+            description: string;
+            images?:
+              | {
+                  image: number | Media;
+                  alt?: string | null;
+                  services?: string | null;
+                  servicesDescription?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            button: {
+              label: string;
+              url: string;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'threeByThreeContent';
+          }
+        | {
+            headingGroup?: {
+              heading?: string | null;
+              headingSpan?: string | null;
+              headingDescription?: string | null;
+            };
+            subheadingGroup1?: {
+              subheading?: string | null;
+              subheadingDescription?: string | null;
+              subheadingLogo?: (number | null) | Media;
+            };
+            subheadingGroup2?: {
+              subheading?: string | null;
+              subheadingDescription?: string | null;
+              subheadingLogo?: (number | null) | Media;
+            };
+            subheadingGroup3?: {
+              subheading?: string | null;
+              subheadingDescription?: string | null;
+              subheadingLogo?: (number | null) | Media;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'whyUs';
+          }
+        | {
+            headingGroup?: {
+              heading?: {
+                heading0?: string | null;
+                headingSpan1?: string | null;
+                headingSpan2?: string | null;
+                headingSpan3?: string | null;
+              };
+              headingDescription?: string | null;
+            };
+            images?:
+              | {
+                  image: number | Media;
+                  alt?: string | null;
+                  completeExpertName?: string | null;
+                  expertDescription?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            'CTA button'?: {
+              label?: string | null;
+              url?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contentCarousel';
           }
       )[]
     | null;
@@ -335,7 +410,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        'text-and-four-images'?:
+        textAndFourImages?:
           | T
           | {
               heading?: T;
@@ -351,6 +426,102 @@ export interface PagesSelect<T extends boolean = true> {
                     image2?: T;
                     image3?: T;
                     image4?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        threeByThreeContent?:
+          | T
+          | {
+              headingGroup?:
+                | T
+                | {
+                    heading?: T;
+                    headingSpan?: T;
+                  };
+              description?: T;
+              images?:
+                | T
+                | {
+                    image?: T;
+                    alt?: T;
+                    services?: T;
+                    servicesDescription?: T;
+                    id?: T;
+                  };
+              button?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        whyUs?:
+          | T
+          | {
+              headingGroup?:
+                | T
+                | {
+                    heading?: T;
+                    headingSpan?: T;
+                    headingDescription?: T;
+                  };
+              subheadingGroup1?:
+                | T
+                | {
+                    subheading?: T;
+                    subheadingDescription?: T;
+                    subheadingLogo?: T;
+                  };
+              subheadingGroup2?:
+                | T
+                | {
+                    subheading?: T;
+                    subheadingDescription?: T;
+                    subheadingLogo?: T;
+                  };
+              subheadingGroup3?:
+                | T
+                | {
+                    subheading?: T;
+                    subheadingDescription?: T;
+                    subheadingLogo?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        contentCarousel?:
+          | T
+          | {
+              headingGroup?:
+                | T
+                | {
+                    heading?:
+                      | T
+                      | {
+                          heading0?: T;
+                          headingSpan1?: T;
+                          headingSpan2?: T;
+                          headingSpan3?: T;
+                        };
+                    headingDescription?: T;
+                  };
+              images?:
+                | T
+                | {
+                    image?: T;
+                    alt?: T;
+                    completeExpertName?: T;
+                    expertDescription?: T;
+                    id?: T;
+                  };
+              'CTA button'?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
                   };
               id?: T;
               blockName?: T;

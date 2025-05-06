@@ -3,6 +3,10 @@ import React, { Fragment } from 'react'
 import type { Page } from '@/payload-types'
 import { HeroBlock } from '@/blocks/Hero/Hero-block'
 import { TextBlock } from '@/blocks/Text/Text-block'
+import { TextAndFourImagesBlock } from '@/blocks/text-and-four-images'
+
+import { ThreeByThreeContentBlock } from '@/blocks/three-by-three-content'
+import { WhyUsBlock } from '@/blocks/why-us'
 
 
 
@@ -10,6 +14,9 @@ import { TextBlock } from '@/blocks/Text/Text-block'
 const blockComponents = {
   hero: HeroBlock,
   text: TextBlock, // if you have this block component
+  textAndFourImages: TextAndFourImagesBlock,
+  threeByThreeContent: ThreeByThreeContentBlock,
+  whyUs: WhyUsBlock
 }
 
 export const RenderBlocks: React.FC<{
