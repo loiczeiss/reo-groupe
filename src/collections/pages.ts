@@ -1,6 +1,7 @@
 import { Block, CollectionConfig } from 'payload'
 import { Hero } from '@/blocks/Hero/Hero'
 import { TextContent } from '@/blocks/Text/text'
+import { TextAndFourImages } from '@/blocks/text-and-four-images/config'
 
 
 
@@ -32,7 +33,7 @@ const Pages: CollectionConfig = {
       name: 'layout',
       label: 'Layout',
       type: 'blocks',
-      blocks: [Hero, TextContent],
+      blocks: [Hero, TextContent, TextAndFourImages],
     }
 
   ],

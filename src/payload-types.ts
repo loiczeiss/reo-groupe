@@ -165,6 +165,14 @@ export interface Page {
             title?: string | null;
             description?: string | null;
             backgroundImage?: (number | null) | Media;
+            images?: {
+              image1?: (number | null) | Media;
+              image2?: (number | null) | Media;
+              image3?: (number | null) | Media;
+              image4?: (number | null) | Media;
+              image5?: (number | null) | Media;
+              image6?: (number | null) | Media;
+            };
             id?: string | null;
             blockName?: string | null;
             blockType: 'hero';
@@ -174,6 +182,23 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'text';
+          }
+        | {
+            heading?: string | null;
+            description?: string | null;
+            subheading1?: string | null;
+            subcontent1?: string | null;
+            subheading2?: string | null;
+            subcontent2?: string | null;
+            images?: {
+              image1?: (number | null) | Media;
+              image2?: (number | null) | Media;
+              image3?: (number | null) | Media;
+              image4?: (number | null) | Media;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'text-and-four-images';
           }
       )[]
     | null;
@@ -290,6 +315,16 @@ export interface PagesSelect<T extends boolean = true> {
               title?: T;
               description?: T;
               backgroundImage?: T;
+              images?:
+                | T
+                | {
+                    image1?: T;
+                    image2?: T;
+                    image3?: T;
+                    image4?: T;
+                    image5?: T;
+                    image6?: T;
+                  };
               id?: T;
               blockName?: T;
             };
@@ -297,6 +332,26 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               content?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'text-and-four-images'?:
+          | T
+          | {
+              heading?: T;
+              description?: T;
+              subheading1?: T;
+              subcontent1?: T;
+              subheading2?: T;
+              subcontent2?: T;
+              images?:
+                | T
+                | {
+                    image1?: T;
+                    image2?: T;
+                    image3?: T;
+                    image4?: T;
+                  };
               id?: T;
               blockName?: T;
             };

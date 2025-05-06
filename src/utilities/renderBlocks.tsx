@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
 
 import type { Page } from '@/payload-types'
-import { HeroBlock } from '@/blocks/Hero/HeroBlock'
-import { TextBlock } from '@/blocks/Text/TextBlock'
+import { HeroBlock } from '@/blocks/Hero/Hero-block'
+import { TextBlock } from '@/blocks/Text/Text-block'
 
 
 
