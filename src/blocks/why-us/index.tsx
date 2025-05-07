@@ -10,13 +10,13 @@ interface WhyUsBlockProps {
 export function WhyUsBlock(props: WhyUsBlockProps) {
   const { headingGroup, subheadingGroup1, subheadingGroup2, subheadingGroup3 } = props
   return (
-    <article className={'w-full flex flex-col md:flex-row px-12 py-10 md:px-0 md:py-0 bg-[#F5F3F3]'}>
+    <article className={'w-full flex flex-col md:flex-row px-12 py-10 md:px-0 md:py-7 bg-[#F5F3F3]'}>
       <div className={'flex flex-col justify-start md:justify-center md:w-1/2  md:px-8 md:pr-20'}>
         <h1 className={'text-[#232548] text-[20px] md:text-5xl font-semibold leading-tight'}>{headingGroup.heading}</h1>
         <span className={'text-[#668E2E] text-[20px] md:text-5xl font-semibold leading-tight'}>{headingGroup.headingSpan}</span>
         <p className={'text-[7px] md:text-sm pt-2 md:pt-4 leading-tight pr-4 md:pr-0'}>{headingGroup.headingDescription}</p>
       </div>
-      <div className={'flex flex-col justify-between md:w-1/2 py-4 md:py-0 md:p-8 space-y-4'}>
+      <div className={'flex flex-col justify-between md:w-1/2 py-8 md:py-0 md:p-8 space-y-4'}>
         <div className={'bg-white px-[11.276px] py-[7.517px] md:py-4 md:px-6 rounded-lg'}>
           <div className={'flex justify-between items-center pb-1 md:pb-4'}>
             <h1 className={'text-[11px] md:text-2xl text-[#232548] font-semibold'}>

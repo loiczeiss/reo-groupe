@@ -5,6 +5,7 @@ import { TextAndFourImages } from '@/blocks/text-and-four-images/config'
 import { ThreeByThreeContent } from '@/blocks/three-by-three-content/config'
 import { WhyUs } from '@/blocks/why-us/config'
 import { ContentCarousel } from '@/blocks/content-carousel/config'
+import { CardAndImage } from '@/blocks/card-and-image/config'
 
 
 
@@ -36,7 +37,7 @@ const Pages: CollectionConfig = {
       name: 'layout',
       label: 'Layout',
       type: 'blocks',
-      blocks: [Hero, TextContent, TextAndFourImages, ThreeByThreeContent, WhyUs, ContentCarousel],
+      blocks: [Hero, TextContent, TextAndFourImages, ThreeByThreeContent, WhyUs, ContentCarousel, CardAndImage],
     }
 
   ],

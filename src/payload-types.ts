@@ -286,6 +286,23 @@ export interface Page {
             blockName?: string | null;
             blockType: 'contentCarousel';
           }
+        | {
+            title?: string | null;
+            cardGroupArray?:
+              | {
+                  cardGroup?: {
+                    fullName?: string | null;
+                    profession?: string | null;
+                    thoughts?: string | null;
+                    picture?: (number | null) | Media;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'CardAndImage';
+          }
       )[]
     | null;
   updatedAt: string;
@@ -550,6 +567,26 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     url?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        CardAndImage?:
+          | T
+          | {
+              title?: T;
+              cardGroupArray?:
+                | T
+                | {
+                    cardGroup?:
+                      | T
+                      | {
+                          fullName?: T;
+                          profession?: T;
+                          thoughts?: T;
+                          picture?: T;
+                        };
+                    id?: T;
                   };
               id?: T;
               blockName?: T;
