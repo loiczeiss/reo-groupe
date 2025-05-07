@@ -1,4 +1,4 @@
-import { Block } from 'payload';
+import { Block } from 'payload'
 
 export const Hero: Block = {
   slug: 'hero',
@@ -63,5 +63,30 @@ export const Hero: Block = {
         },
       ],
     },
+    {
+      name: 'buttonGroup',
+      label: 'button group',
+      type: 'group',
+      fields: [
+        {
+          name: 'aboutButton',
+          label: 'about button',
+          type: 'group',
+          fields: [
+            { name: 'label', label: 'label', type: 'text' },
+            { name: 'url', label: 'url', type: 'text' },
+          ],
+        },
+        {
+          name: 'priceButton',
+          label: 'priceButton',
+          type: 'group',
+          fields: [
+            { name: 'label', label: 'label', type: 'text' },
+            { name: 'url', label: 'url', type: 'text' },
+          ],
+        },
+      ],
+    },
   ],
-};
+}

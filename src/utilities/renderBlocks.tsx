@@ -7,23 +7,21 @@ import { TextAndFourImagesBlock } from '@/blocks/text-and-four-images'
 
 import { ThreeByThreeContentBlock } from '@/blocks/three-by-three-content'
 import { WhyUsBlock } from '@/blocks/why-us'
-
-
-
+import { ContentCarouselBlock } from '@/blocks/content-carousel'
 
 const blockComponents = {
   hero: HeroBlock,
   text: TextBlock, // if you have this block component
   textAndFourImages: TextAndFourImagesBlock,
   threeByThreeContent: ThreeByThreeContentBlock,
-  whyUs: WhyUsBlock
+  whyUs: WhyUsBlock,
+  contentCarousel: ContentCarouselBlock,
 }
 
 export const RenderBlocks: React.FC<{
   blocks: Page['layout']
 }> = (props) => {
   const { blocks } = props
-
 
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0
 
@@ -39,8 +37,7 @@ export const RenderBlocks: React.FC<{
             if (Block) {
               return (
                 <div key={index}>
-
-                  <Block {...block}  />
+                  <Block {...block} />
                 </div>
               )
             }

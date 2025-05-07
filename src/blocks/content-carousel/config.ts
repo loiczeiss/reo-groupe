@@ -13,9 +13,7 @@ export const ContentCarousel: Block = {
           label: 'heading',
           type: 'group',
           fields: [
-            { name: 'heading0' +
-                '', label: 'heading0' +
-                '', type: 'text' },
+            { name: 'heading0' , label: 'heading0', type: 'text' },
             {
               name: 'headingSpan1',
               label: 'headingSpan1',
@@ -58,7 +56,7 @@ export const ContentCarousel: Block = {
       ],
     },
     {
-      name: 'CTA button',
+      name: 'CTAButton',
       label: 'CTA button',
       type: 'group',
       fields: [

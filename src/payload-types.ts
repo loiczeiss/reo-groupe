@@ -173,6 +173,16 @@ export interface Page {
               image5?: (number | null) | Media;
               image6?: (number | null) | Media;
             };
+            buttonGroup?: {
+              aboutButton?: {
+                label?: string | null;
+                url?: string | null;
+              };
+              priceButton?: {
+                label?: string | null;
+                url?: string | null;
+              };
+            };
             id?: string | null;
             blockName?: string | null;
             blockType: 'hero';
@@ -267,7 +277,7 @@ export interface Page {
                   id?: string | null;
                 }[]
               | null;
-            'CTA button'?: {
+            CTAButton?: {
               label?: string | null;
               url?: string | null;
             };
@@ -400,6 +410,22 @@ export interface PagesSelect<T extends boolean = true> {
                     image5?: T;
                     image6?: T;
                   };
+              buttonGroup?:
+                | T
+                | {
+                    aboutButton?:
+                      | T
+                      | {
+                          label?: T;
+                          url?: T;
+                        };
+                    priceButton?:
+                      | T
+                      | {
+                          label?: T;
+                          url?: T;
+                        };
+                  };
               id?: T;
               blockName?: T;
             };
@@ -517,7 +543,7 @@ export interface PagesSelect<T extends boolean = true> {
                     expertDescription?: T;
                     id?: T;
                   };
-              'CTA button'?:
+              CTAButton?:
                 | T
                 | {
                     label?: T;

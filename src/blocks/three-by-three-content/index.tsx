@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { Media } from '@/payload-types'
 import { useState } from 'react'
 import { CircleArrowOutUpRight, MoveUpRight } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+
 import StyledButton from '@/components/Styled-button/Styled-button'
 
 interface Props {
