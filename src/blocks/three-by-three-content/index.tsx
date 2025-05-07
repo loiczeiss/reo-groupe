@@ -32,12 +32,12 @@ export function ThreeByThreeContentBlock({ headingGroup, description, images, bu
   } | null>(null)
   console.log(headingGroup)
   return (
-    <div className="flex flex-col items-center text-center space-y-2 md:space-y-6 px-3 py-3 md:px-8  md:py-12">
-      <h2 className="text-[24px] md:text-4xl font-bold">
-        {headingGroup?.heading}{' '}
-        <span className={'text-[#668E2E]'}>{headingGroup?.headingSpan}</span>
-      </h2>
-     {description && <p className="text-[6px] md:text-sm max-w-xl leading-none md:leading-tight px-14">{description}</p>}
+    <div className="flex flex-col items-center text-center space-y-4 md:space-y-6 px-12 py-3 md:px-8  md:py-12 text-[#232548]">
+     <div className={'flex flex-col space-y-1'}> <h2 className="text-[24px] md:text-4xl font-bold leading-tight">
+       {headingGroup?.heading}{' '}
+       <span className={'text-[#668E2E]'}>{headingGroup?.headingSpan}</span>
+     </h2>
+       {description && <p className="text-[6px] md:text-sm max-w-xl leading-none md:leading-tight px-4">{description}</p>}</div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-5xl">
         {images.map((img, i) => (
@@ -45,7 +45,7 @@ export function ThreeByThreeContentBlock({ headingGroup, description, images, bu
             <DialogTrigger asChild>
               <div
                 onClick={() => setSelectedImage(img)}
-                className="relative w-full h-[20vh] md:h-[300px] overflow-hidden rounded-lg focus:outline-none group hover:cursor-pointer"
+                className="relative w-full h-[30vh] md:h-[300px] overflow-hidden rounded-lg focus:outline-none group hover:cursor-pointer"
               >
                 <Image
                   src={img.image.url as string}
