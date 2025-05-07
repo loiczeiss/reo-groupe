@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { Media } from '@/payload-types'
 import { useState } from 'react'
-import { CircleArrowOutUpRight, MoveUpRight } from 'lucide-react'
+import { CircleArrowOutUpRight } from 'lucide-react'
 
 import StyledButton from '@/components/Styled-button/Styled-button'
 
@@ -32,20 +32,20 @@ export function ThreeByThreeContentBlock({ headingGroup, description, images, bu
   } | null>(null)
   console.log(headingGroup)
   return (
-    <div className="flex flex-col items-center text-center space-y-6 px-8 py-12">
-      <h2 className="text-4xl font-bold">
+    <div className="flex flex-col items-center text-center space-y-2 md:space-y-6 px-3 py-3 md:px-8  md:py-12">
+      <h2 className="text-[24px] md:text-4xl font-bold">
         {headingGroup?.heading}{' '}
         <span className={'text-[#668E2E]'}>{headingGroup?.headingSpan}</span>
       </h2>
-      {description && <p className="text-sm max-w-xl">{description}</p>}
+     {description && <p className="text-[6px] md:text-sm max-w-xl leading-none md:leading-tight px-14">{description}</p>}
 
-      <div className="grid grid-cols-3 gap-4 w-full max-w-5xl">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-5xl">
         {images.map((img, i) => (
           <Dialog key={i}>
             <DialogTrigger asChild>
               <div
                 onClick={() => setSelectedImage(img)}
-                className="relative w-full h-[300px] overflow-hidden rounded-lg focus:outline-none group hover:cursor-pointer"
+                className="relative w-full h-[20vh] md:h-[300px] overflow-hidden rounded-lg focus:outline-none group hover:cursor-pointer"
               >
                 <Image
                   src={img.image.url as string}
@@ -60,22 +60,22 @@ export function ThreeByThreeContentBlock({ headingGroup, description, images, bu
                 </div>
               </div>
             </DialogTrigger>
-            <DialogContent className="p-0 bg-white r border-none max-w-3xl max-h-[90vh]">
+            <DialogContent className="p-0 bg-white  border-none max-w-[80vw] md:max-w-xl max-h-[90vh]">
               {selectedImage && (
-                <div className={'flex flex-col items-center w-full p-8 h-7/8vh space-y-4'}>
-                  <div className={'relative h-[40vh] w-2/3 rounded-lg'}>
+                <div className={'flex flex-col items-center md:w-full p-8 h-7/8vh space-y-4'}>
+                  <div className={'relative h-[20vh] md:h-[40vh] w-2/3 rounded-lg'}>
                     <Image
                       src={selectedImage?.image.url as string}
                       alt={selectedImage.image.alt || ''}
                       fill
-                      className=" h-auto object-cover rounded-xl"
+                      className="  object-cover rounded-xl"
                     />
                   </div>
                   <div className={'flex flex-col items-center space-y-2'}>
-                    <h1 className={'text-xl font-semibold text-[#232548]'}>
+                    <h1 className={'text-md md:text-xl font-semibold text-[#232548]'}>
                       {selectedImage.services}
                     </h1>
-                    <p className={'text-xs'}>{selectedImage.servicesDescription}</p>
+                    <p className={'text-[6px] md:text-xs leading-none'}>{selectedImage.servicesDescription}</p>
                   </div>
                   <StyledButton button={button} />
                 </div>

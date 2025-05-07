@@ -206,6 +206,7 @@ export interface Page {
               image3?: (number | null) | Media;
               image4?: (number | null) | Media;
             };
+            bgImage?: (number | null) | Media;
             id?: string | null;
             blockName?: string | null;
             blockType: 'textAndFourImages';
@@ -453,6 +454,7 @@ export interface PagesSelect<T extends boolean = true> {
                     image3?: T;
                     image4?: T;
                   };
+              bgImage?: T;
               id?: T;
               blockName?: T;
             };

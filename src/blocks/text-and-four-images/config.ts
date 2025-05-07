@@ -78,5 +78,6 @@ slug: 'textAndFourImages',
         },
       ],
     },
+    {name:"bgImage", label: "bg image", type:'upload', relationTo: 'media'}
   ],
 }

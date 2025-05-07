@@ -13,14 +13,16 @@ interface TextAndFourImagesProps {
     image3?: Media
     image4?: Media
   }
+  bgImage: Media
 }
 
 export function TextAndFourImagesBlock(props: TextAndFourImagesProps) {
-  const { heading, description, subheading1, subcontent1, subheading2, subcontent2, images } = props
+  const { heading, description, subheading1, subcontent1, subheading2, subcontent2, images, bgImage } = props
   return (
-    <div className={'w-full md:h-screen flex px-12 py-16'}>
+    <div className={'w-full md:h-screen flex px-12 py-16 bg-[46%_64%] md:bg-[47%_83%]'} style={{backgroundImage: `url(${bgImage?.url})`,backgroundSize: '20%'
+   ,backgroundRepeat: 'no-repeat',}}>
       <div className={'w-1/2 flex flex-col items-center space-y-2 md:space-y-6'}>
-        <div className={'flex flex-col space-y-1 md:space-y-4 mt-0 md:mt-4'}>
+        <div className={'flex flex-col space-y-1 md:space-y-4 mt-0 md:mt-8'}>
           <h1 className={'text-sm md:text-5xl font-semibold leading-none md:leading-tight'}>{heading}</h1>
           <p className={'text-[#575757] text-[5px] md:text-sm pr-4 md:pr-20 leading-none md:leading-tight'}>{description}</p>
         </div>
