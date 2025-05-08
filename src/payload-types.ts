@@ -349,6 +349,43 @@ export interface Page {
             blockName?: string | null;
             blockType: 'certificationSection';
           }
+        | {
+            nameInput?: {
+              label?: string | null;
+              placeholder?: string | null;
+            };
+            mailInput?: {
+              label?: string | null;
+              placeholder?: string | null;
+            };
+            serviceInput?: {
+              label?: string | null;
+              placeholder?: string | null;
+            };
+            houseTypeInput?: {
+              label?: string | null;
+              placeholder?: string | null;
+            };
+            dateInput?: {
+              label?: string | null;
+            };
+            otherInput?: {
+              label?: string | null;
+              placeholder?: string | null;
+            };
+            detailsInput?: {
+              label?: string | null;
+              placeholder?: string | null;
+            };
+            checkboxLabel?: string | null;
+            buttonGroup?: {
+              buttonLabel?: string | null;
+              buttonUrl?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'bookingForm';
+          }
       )[]
     | null;
   updatedAt: string;
@@ -684,6 +721,60 @@ export interface PagesSelect<T extends boolean = true> {
                     textContent?: T;
                     textSubContent?: T;
                     id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        bookingForm?:
+          | T
+          | {
+              nameInput?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              mailInput?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              serviceInput?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              houseTypeInput?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              dateInput?:
+                | T
+                | {
+                    label?: T;
+                  };
+              otherInput?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              detailsInput?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              checkboxLabel?: T;
+              buttonGroup?:
+                | T
+                | {
+                    buttonLabel?: T;
+                    buttonUrl?: T;
                   };
               id?: T;
               blockName?: T;

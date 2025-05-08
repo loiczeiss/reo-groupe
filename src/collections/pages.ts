@@ -9,15 +9,13 @@ import { CardAndImage } from '@/blocks/card-and-image/config'
 import { RealisationsCarousel } from '@/blocks/realisations-carousel/config'
 import { FaqComponent } from '@/blocks/FAQ-component/config'
 import { CertificationSection } from '@/blocks/certification-section/config'
-
-
-
+import { BookingForm } from '@/blocks/booking-form/config'
 
 const Pages: CollectionConfig = {
   slug: 'pages',
-  labels:{
+  labels: {
     singular: 'Page',
-    plural: 'Pages'
+    plural: 'Pages',
   },
   access: {
     read: () => true,
@@ -40,12 +38,21 @@ const Pages: CollectionConfig = {
       name: 'layout',
       label: 'Layout',
       type: 'blocks',
-      blocks: [Hero, TextContent, TextAndFourImages, ThreeByThreeContent, WhyUs,
-        ContentCarousel, CardAndImage, RealisationsCarousel, FaqComponent, CertificationSection ],
-    }
-
+      blocks: [
+        Hero,
+        TextContent,
+        TextAndFourImages,
+        ThreeByThreeContent,
+        WhyUs,
+        ContentCarousel,
+        CardAndImage,
+        RealisationsCarousel,
+        FaqComponent,
+        CertificationSection,
+        BookingForm,
+      ],
+    },
   ],
-
 }
 
 export { Pages }
