@@ -9,6 +9,7 @@ import { ThreeByThreeContentBlock } from '@/blocks/three-by-three-content'
 import { WhyUsBlock } from '@/blocks/why-us'
 import { ContentCarouselBlock } from '@/blocks/content-carousel'
 import { CardAndImageBlock } from '@/blocks/card-and-image'
+import RealisationsCarouselBlock from '@/blocks/realisations-carousel'
 
 const blockComponents = {
   hero: HeroBlock,
@@ -17,7 +18,8 @@ const blockComponents = {
   threeByThreeContent: ThreeByThreeContentBlock,
   whyUs: WhyUsBlock,
   contentCarousel: ContentCarouselBlock,
-  CardAndImage: CardAndImageBlock
+  CardAndImage: CardAndImageBlock,
+  realisationsCarousel: RealisationsCarouselBlock
 }
 
 export const RenderBlocks: React.FC<{

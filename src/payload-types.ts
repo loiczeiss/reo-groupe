@@ -304,6 +304,23 @@ export interface Page {
             blockName?: string | null;
             blockType: 'CardAndImage';
           }
+        | {
+            title?: {
+              titleSpan1?: string | null;
+              titleSpan2?: string | null;
+            };
+            description?: string | null;
+            subDescription?: string | null;
+            images?:
+              | {
+                  image?: (number | null) | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'realisationsCarousel';
+          }
       )[]
     | null;
   updatedAt: string;
@@ -588,6 +605,26 @@ export interface PagesSelect<T extends boolean = true> {
                           thoughts?: T;
                           picture?: T;
                         };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        realisationsCarousel?:
+          | T
+          | {
+              title?:
+                | T
+                | {
+                    titleSpan1?: T;
+                    titleSpan2?: T;
+                  };
+              description?: T;
+              subDescription?: T;
+              images?:
+                | T
+                | {
+                    image?: T;
                     id?: T;
                   };
               id?: T;
