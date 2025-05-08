@@ -335,6 +335,20 @@ export interface Page {
             blockName?: string | null;
             blockType: 'faqComponent';
           }
+        | {
+            title?: string | null;
+            logo?: (number | null) | Media;
+            certificationArray?:
+              | {
+                  textContent?: string | null;
+                  textSubContent?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'certificationSection';
+          }
       )[]
     | null;
   updatedAt: string;
@@ -654,6 +668,21 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     question?: T;
                     answer?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        certificationSection?:
+          | T
+          | {
+              title?: T;
+              logo?: T;
+              certificationArray?:
+                | T
+                | {
+                    textContent?: T;
+                    textSubContent?: T;
                     id?: T;
                   };
               id?: T;

@@ -8,6 +8,7 @@ import { ContentCarousel } from '@/blocks/content-carousel/config'
 import { CardAndImage } from '@/blocks/card-and-image/config'
 import { RealisationsCarousel } from '@/blocks/realisations-carousel/config'
 import { FaqComponent } from '@/blocks/FAQ-component/config'
+import { CertificationSection } from '@/blocks/certification-section/config'
 
 
 
@@ -40,7 +41,7 @@ const Pages: CollectionConfig = {
       label: 'Layout',
       type: 'blocks',
       blocks: [Hero, TextContent, TextAndFourImages, ThreeByThreeContent, WhyUs,
-        ContentCarousel, CardAndImage, RealisationsCarousel, FaqComponent],
+        ContentCarousel, CardAndImage, RealisationsCarousel, FaqComponent, CertificationSection ],
     }
 
   ],

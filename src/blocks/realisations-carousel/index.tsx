@@ -17,7 +17,7 @@ interface RealisationsCarouselBlockProps {
   }[]
 }
 
-export default function RealisationsCarouselBlock(props: RealisationsCarouselBlockProps) {
+export function RealisationsCarouselBlock(props: RealisationsCarouselBlockProps) {
   const { title, images, description, subDescription } = props
   const [activeIndex, setActiveIndex] = useState(2)
 

@@ -9,8 +9,10 @@ import { ThreeByThreeContentBlock } from '@/blocks/three-by-three-content'
 import { WhyUsBlock } from '@/blocks/why-us'
 import { ContentCarouselBlock } from '@/blocks/content-carousel'
 import { CardAndImageBlock } from '@/blocks/card-and-image'
-import RealisationsCarouselBlock from '@/blocks/realisations-carousel'
-import FaqComponentBlock from '@/blocks/FAQ-component'
+import { RealisationsCarouselBlock } from '@/blocks/realisations-carousel'
+import { FaqComponentBlock } from '@/blocks/FAQ-component'
+import { CertificationSectionBlock } from '@/blocks/certification-section'
+
 
 const blockComponents = {
   hero: HeroBlock,
@@ -21,7 +23,8 @@ const blockComponents = {
   contentCarousel: ContentCarouselBlock,
   CardAndImage: CardAndImageBlock,
   realisationsCarousel: RealisationsCarouselBlock,
-  faqComponent: FaqComponentBlock
+  faqComponent: FaqComponentBlock,
+  certificationSection: CertificationSectionBlock
 }
 
 export const RenderBlocks: React.FC<{
