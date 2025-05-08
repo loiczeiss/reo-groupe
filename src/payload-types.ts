@@ -288,6 +288,7 @@ export interface Page {
           }
         | {
             title?: string | null;
+            bgImage?: (number | null) | Media;
             cardGroupArray?:
               | {
                   cardGroup?: {
@@ -575,6 +576,7 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               title?: T;
+              bgImage?: T;
               cardGroupArray?:
                 | T
                 | {

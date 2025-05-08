@@ -4,6 +4,7 @@ export const CardAndImage: Block = {
   slug: 'CardAndImage',
   fields: [
     { name: 'title', label: 'title', type: 'text' },
+    {name: "bgImage", label: "bg image", type:"upload", relationTo:'media'},
     {
       name: 'cardGroupArray',
       label: 'card group array',

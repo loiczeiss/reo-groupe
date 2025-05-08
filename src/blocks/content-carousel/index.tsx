@@ -64,7 +64,7 @@ export function ContentCarouselBlock(props: ContentCarouselBlockProps) {
         }
       >
         <h1
-          className={'text-sm leading-none md:leading-tight md:text-5xl font-semibold text-center'}
+          className={'text-sm max-sm:leading-none md:text-5xl font-semibold text-center'}
         >
           {headingGroup.heading.heading0}
           <span className={' text-[#232548] '}>{headingGroup.heading.headingSpan1}</span>
@@ -72,7 +72,7 @@ export function ContentCarouselBlock(props: ContentCarouselBlockProps) {
           {headingGroup.heading.headingSpan2}
           <span className={' text-[#232548] '}>{headingGroup.heading.headingSpan3}</span>
         </h1>
-        <p className={'text-[4px] leading-none md:text-sm text-[#232548] text-center md:px-24'}>
+        <p className={'text-[4px] max-sm:leading-none max-sm:px-12 md:text-sm text-[#232548] text-center md:px-36'}>
           {headingGroup.headingDescription}
         </p>
       </div>
@@ -103,12 +103,12 @@ export function ContentCarouselBlock(props: ContentCarouselBlockProps) {
         <CarouselNext className="right-2 top-1/2 -translate-y-1/2" />
       </Carousel>
 
-      <div className="flex flex-col items-center mt-6 text-center text-[#232548] space-y-2 md:space-y-4 ">
+      <div className="flex flex-col items-center mt-2 text-center text-[#232548] space-y-2 md:space-y-4 ">
         <div className={'space-y-1 md:space-y-2'}>
-          <h2 className={'text-[9px] md:text-2xl leading-none md:leading-tight'}>{images[currentIndex]?.completeExpertName}</h2>
-          <p className={'text-[5px] text-sm'}>{images[currentIndex]?.expertDescription}</p>
+          <h2 className={'text-[9px] md:text-2xl max-sm:leading-none'}>{images[currentIndex]?.completeExpertName}</h2>
+          <p className={'text-[5px] max-sm:leading-tight md:text-sm'}>{images[currentIndex]?.expertDescription}</p>
         </div>
-        <StyledButton className={'text-[6px] h-3 p-2'} button={CTAButton} icon={false} />
+        <StyledButton className={'max-sm:text-[6px] max-sm:h-3 max-sm:p-2 text-[#232548]'} iconClassName={'max-sm:text-[#668E2E]'} divIconClassName={'hidden'} button={CTAButton} />
       </div>
     </div>
   )

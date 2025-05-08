@@ -11,7 +11,8 @@ interface StyledButtonProps {
   divColor?: string
   className?: string // ✅ allow passing custom className
   iconClassName?: string,
-  icon?: boolean
+  divIconClassName?: string,
+
 }
 
 export default function StyledButton(props: StyledButtonProps) {
@@ -19,11 +20,12 @@ export default function StyledButton(props: StyledButtonProps) {
     button,
     bgColor = '#668E2E',
     divColor = '#000',
+    divIconClassName,
     className, // ✅ destructure
     iconClassName,
-    icon
-  } = props
 
+  } = props
+  console.log(divIconClassName)
   return (
     <Button
       className={cn(
@@ -33,7 +35,7 @@ export default function StyledButton(props: StyledButtonProps) {
       style={{ backgroundColor: bgColor }}
     >
       <p className={'m-0 md:mx-2'}>{button.label}</p>
-      <div className="rounded-4xl ml-2 p-1" style={{ backgroundColor: divColor, display: icon? "block" : "none" }}>
+      <div className={cn("rounded-4xl ml-2 p-1", divIconClassName)} >
         <MoveUpRight className={cn("w-2 h-2 md:w-6 md:h-6 ", iconClassName)} />
 
       </div>
