@@ -7,6 +7,7 @@ import { WhyUs } from '@/blocks/why-us/config'
 import { ContentCarousel } from '@/blocks/content-carousel/config'
 import { CardAndImage } from '@/blocks/card-and-image/config'
 import { RealisationsCarousel } from '@/blocks/realisations-carousel/config'
+import { FaqComponent } from '@/blocks/FAQ-component/config'
 
 
 
@@ -38,7 +39,8 @@ const Pages: CollectionConfig = {
       name: 'layout',
       label: 'Layout',
       type: 'blocks',
-      blocks: [Hero, TextContent, TextAndFourImages, ThreeByThreeContent, WhyUs, ContentCarousel, CardAndImage, RealisationsCarousel],
+      blocks: [Hero, TextContent, TextAndFourImages, ThreeByThreeContent, WhyUs,
+        ContentCarousel, CardAndImage, RealisationsCarousel, FaqComponent],
     }
 
   ],

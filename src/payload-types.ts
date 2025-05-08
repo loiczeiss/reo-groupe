@@ -321,6 +321,20 @@ export interface Page {
             blockName?: string | null;
             blockType: 'realisationsCarousel';
           }
+        | {
+            title?: string | null;
+            description?: string | null;
+            questionsArray?:
+              | {
+                  question?: string | null;
+                  answer?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faqComponent';
+          }
       )[]
     | null;
   updatedAt: string;
@@ -625,6 +639,21 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        faqComponent?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              questionsArray?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
                     id?: T;
                   };
               id?: T;
