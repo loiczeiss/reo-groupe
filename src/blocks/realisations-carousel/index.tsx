@@ -97,7 +97,7 @@ export function RealisationsCarouselBlock(props: RealisationsCarouselBlockProps)
         </div>
 
         {/* Navigation controls */}
-        <div className="flex items-center justify-center gap-[1%]">
+        <div className="flex items-center justify-center gap-[1%] -translate-y-8">
           <button
             onClick={handlePrev}
             className="p-[0.5%] text-green-600 hover:text-green-700 transition-colors"

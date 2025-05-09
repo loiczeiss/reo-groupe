@@ -10,7 +10,7 @@ export const WhyUs: Block = {
       fields: [
         { name: 'heading', label: 'heading', type: 'text' },
         {name: 'headingSpan', label: 'heading span', type: 'text' },
-        { name: 'headingDescription', label: 'heading`s description', type: 'text' },
+        { name: 'headingDescription', label: 'heading`s description', type: 'textarea' },
       ],
     },
     {
@@ -22,7 +22,7 @@ export const WhyUs: Block = {
         {
           name: 'subheadingDescription',
           label: 'subheadingDescription',
-          type: 'text',
+          type: 'textarea',
         },
         { name: 'subheadingLogo', label: 'subheading logo', type: 'upload', relationTo: 'media' },
       ],
@@ -35,7 +35,7 @@ export const WhyUs: Block = {
         {
           name: 'subheadingDescription',
           label: 'Subheading Description',
-          type: 'text',
+          type: 'textarea',
         },
         {
           name: 'subheadingLogo',
@@ -54,7 +54,7 @@ export const WhyUs: Block = {
         {
           name: 'subheadingDescription',
           label: 'Subheading Description',
-          type: 'text',
+          type: 'textarea',
         },
         {
           name: 'subheadingLogo',

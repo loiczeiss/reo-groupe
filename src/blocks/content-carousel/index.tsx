@@ -59,23 +59,28 @@ export function ContentCarouselBlock(props: ContentCarouselBlockProps) {
   return (
     <div className="w-full  flex flex-col items-center py-8">
       <div
-        className={
-          'flex flex-col items-center justify-center text-[#668E2E] w-2/3 space-y-1 md:space-y-4 pb-8'
-        }
+        className="flex flex-col items-center justify-center text-[#668E2E] w-2/3 space-y-1 md:space-y-4 pb-8 px-8 text-center"
       >
         <h1
-          className={'text-sm max-sm:leading-none md:text-5xl font-semibold text-center'}
+          className="text-[24px] max-sm:leading-snug md:text-5xl font-semibold break-words whitespace-pre-wrap w-full max-w-full overflow-hidden"
         >
           {headingGroup.heading.heading0}
-          <span className={' text-[#232548] '}>{headingGroup.heading.headingSpan1}</span>
+          <span className="text-[#232548]"> {headingGroup.heading.headingSpan1}</span>
           <br />
           {headingGroup.heading.headingSpan2}
-          <span className={' text-[#232548] '}>{headingGroup.heading.headingSpan3}</span>
+          <span className="text-[#232548]"> {headingGroup.heading.headingSpan3}</span>
         </h1>
-        <p className={'text-[4px] max-sm:leading-none max-sm:px-12 md:text-sm text-[#232548] text-center md:px-36'}>
+
+        <div
+          className="text-[11px] max-sm:leading-normal max-sm:px-6 max-sm:pt-4 md:text-sm text-[#232548] text-center md:px-36
+               max-h-[8rem] overflow-y-auto break-words whitespace-pre-wrap w-full"
+        >
           {headingGroup.headingDescription}
-        </p>
+        </div>
       </div>
+
+
+
 
       <Carousel opts={{ align: 'center', loop: true }} setApi={setApi} className="w-full relative">
         <CarouselContent className={'overflow-visible'}>
@@ -105,10 +110,10 @@ export function ContentCarouselBlock(props: ContentCarouselBlockProps) {
 
       <div className="flex flex-col items-center mt-2 text-center text-[#232548] space-y-2 md:space-y-4 ">
         <div className={'space-y-1 md:space-y-2'}>
-          <h2 className={'text-[9px] md:text-2xl max-sm:leading-none'}>{images[currentIndex]?.completeExpertName}</h2>
-          <p className={'text-[5px] max-sm:leading-tight md:text-sm'}>{images[currentIndex]?.expertDescription}</p>
+          <h2 className={'text-[16px] md:text-2xl max-sm:leading-none'}>{images[currentIndex]?.completeExpertName}</h2>
+          <p className={'text-[12px] max-sm:leading-tight md:text-sm'}>{images[currentIndex]?.expertDescription}</p>
         </div>
-        <StyledButton className={'max-sm:text-[6px] max-sm:h-3 max-sm:p-2 text-[#232548]'} iconClassName={'max-sm:text-[#668E2E]'} divIconClassName={'hidden'} button={CTAButton} />
+        <StyledButton className={'max-sm:text-[9px] max-sm:h-4 max-sm:p-2 text-[#232548]'} iconClassName={'max-sm:text-[#668E2E]'} divIconClassName={'hidden'} button={CTAButton} />
       </div>
     </div>
   )

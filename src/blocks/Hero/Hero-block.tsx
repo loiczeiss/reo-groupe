@@ -38,28 +38,35 @@ export function HeroBlock(props: HeroBlockProps) {
         backgroundPosition: 'center',
       }}
     >
-      <div className="flex flex-col justify-center  w-1/2 pl-2 md:pl-8 z-10 text-white space-y-1 md:space-y-4">
-        <h1 className="text-[20px] md:text-5xl leading-tight">{title}</h1>
-        <p className="text-[6px] md:text-xs md:pr-24 leading-none md:leading-tight py-1 lg:py-0">
-          {description}
-        </p>
-        <div className={'flex space-x-2 w-2/3'}>
+      {/* LEFT SIDE - TEXT */}
+      <div className="flex flex-col justify-center w-1/2 pl-2 md:pl-8 z-10 text-white space-y-1 md:space-y-4 overflow-hidden">
+        <h1
+          className="text-[20px] md:text-5xl leading-tight break-words line-clamp-3 md:line-clamp-4"
+          title={title}
+        >
+          {title}
+        </h1>
+        <div className="max-h-[6rem] md:max-h-[8rem] overflow-y-auto pr-1 md:pr-4 text-[9px] md:text-xs leading-tight py-1 lg:py-0 break-words">
+          <p>{description}</p>
+        </div>
+        <div className="flex space-x-2 w-2/3 shrink-0">
           <StyledButton
             button={buttonGroup.aboutButton}
-            className={' h-4 md:h-full text-[6px] text-[#668E2E] md:text-sm px-1 '}
-            bgColor={'#232548'}
-            divColor={'#668E2E'}
-            iconClassName={'text-[#232548] w-[6px] h-[6px]'}
+            className="h-5 md:h-auto text-[8px] text-[#668E2E] md:text-sm px-1"
+            bgColor="#232548"
+            divColor="#668E2E"
+            iconClassName="text-[#232548]"
           />
           <StyledButton
             button={buttonGroup.priceButton}
-            className={' h-4 text-[6px] md:h-full md:text-sm text-[#668E2E] px-1'}
-            bgColor={'#fff'}
-            divColor={'#fff'}
+            className="h-5 md:h-auto text-[8px] md:text-sm text-[#668E2E] px-1"
+            bgColor="#fff"
+            divColor="#fff"
           />
         </div>
       </div>
 
+      {/* RIGHT SIDE - IMAGES */}
       <div className="w-1/2 flex overflow-hidden">
         <div className="h-full w-2/3 flex flex-col space-y-2 md:space-y-4 overflow-hidden">
           <div className="w-full h-[424px] rounded-[12px] overflow-hidden -mt-20 relative">
@@ -88,7 +95,7 @@ export function HeroBlock(props: HeroBlockProps) {
                 src={images.image1.url}
                 alt={images.image1.alt}
                 fill
-                className="w-full h-full object-cover "
+                className="w-full h-full object-cover"
               />
             )}
           </div>
@@ -101,7 +108,7 @@ export function HeroBlock(props: HeroBlockProps) {
                 src={images.image3.url}
                 alt={images.image3.alt}
                 fill
-                className="w-full h-full object-cover "
+                className="w-full h-full object-cover"
               />
             )}
           </div>

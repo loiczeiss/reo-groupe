@@ -4,14 +4,8 @@ import { useState } from 'react'
 import { Calendar } from '@/components/ui/calendar'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
-import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
+import {  ArrowRight } from 'lucide-react'
+
 import { format } from 'date-fns'
 import { fr } from 'date-fns/locale'
 
@@ -76,7 +70,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
             id="name"
             type="text"
             placeholder={nameInput.placeholder}
-            className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white placeholder-white placeholder-opacity-80 focus:outline-none"
+            className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white placeholder-white/50 placeholder-opacity-80 focus:outline-none"
           />
         </div>
 
@@ -89,7 +83,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
             id="email"
             type="email"
             placeholder={mailInput.placeholder}
-            className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white placeholder-white placeholder-opacity-80 focus:outline-none"
+            className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white placeholder-white/50 placeholder-opacity-80 focus:outline-none"
           />
         </div>
 
@@ -98,16 +92,12 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
           <label htmlFor="service-type" className="block text-sm font-medium">
             {serviceInput.label}
           </label>
-          <Select>
-            <SelectTrigger className="w-full px-4 py-6 rounded bg-[#6B8E23] bg-opacity-80 text-white border-none focus:ring-0">
-              <SelectValue placeholder={serviceInput.placeholder} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="consultation">Consultation</SelectItem>
-              <SelectItem value="installation">Installation</SelectItem>
-              <SelectItem value="maintenance">Maintenance</SelectItem>
-            </SelectContent>
-          </Select>
+          <input
+            id="service-type"
+            type="text"
+            placeholder={serviceInput.placeholder}
+            className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white placeholder-white/50 placeholder-opacity-80 focus:outline-none"
+          />
         </div>
 
         {/* Property Type */}
@@ -115,15 +105,12 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
           <label htmlFor="property-type" className="block text-sm font-medium">
             {houseTypeInput.label}
           </label>
-          <Select>
-            <SelectTrigger className="w-full px-4 py-6 rounded bg-[#6B8E23] bg-opacity-80 text-white border-none focus:ring-0">
-              <SelectValue placeholder={houseTypeInput.placeholder} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="residential">Résidentielle</SelectItem>
-              <SelectItem value="commercial">Commerciale</SelectItem>
-            </SelectContent>
-          </Select>
+          <input
+            id="property-type"
+            type="text"
+            placeholder={houseTypeInput.placeholder}
+            className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white placeholder-white/50 placeholder-opacity-80 focus:outline-none"
+          />
         </div>
 
         {/* Date Estimation */}
@@ -140,48 +127,38 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
           />
 
           {/* Calendar */}
-          <div className="mt-2 bg-[#6B8E23] rounded p-4 text-white">
-            <div className="flex items-center justify-between mb-4">
-              <button className="p-1 rounded-full bg-white/20">
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-              <div className="font-medium">Mai 2025</div>
-              <button className="p-1 rounded-full bg-white/20">
-                <ChevronRight className="h-5 w-5" />
-              </button>
-            </div>
 
-            <div className="grid grid-cols-7 gap-1 text-center text-sm mb-2">
-              <div>Dim</div>
-              <div>Lun</div>
-              <div>Mar</div>
-              <div>Mer</div>
-              <div>Jeu</div>
-              <div>Ven</div>
-              <div>Sam</div>
-            </div>
-
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={setDate}
-              className="border-none bg-transparent p-0"
-              classNames={{
-                day_selected: '',
-                day: 'h-9 w-9 p-0 font-normal aria-selected:opacity-100',
-                head_cell: 'text-white',
-                cell: 'text-white p-0',
-                row: 'flex w-full mt-2',
-                table: 'w-full border-collapse',
-                months: 'hidden',
-                caption: 'hidden',
-                nav: 'hidden',
-              }}
-
-              fromDate={new Date(2025, 4, 1)}
-              toDate={new Date(2025, 4, 31)}
-            />
-          </div>
+          <Calendar
+            mode="single"
+            selected={date}
+            onSelect={setDate}
+            fromDate={new Date()}
+            locale={fr}
+            classNames={{
+              root: "w-full bg-[#6B8E23] text-white",
+              months: "w-full flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
+              month: "w-full space-y-4",
+              caption: "flex justify-center pt-1 relative items-center w-full",
+              caption_label: "text-sm font-medium",
+              nav: "space-x-1 flex items-center",
+              nav_button: "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100",
+              nav_button_previous: "absolute left-1",
+              nav_button_next: "absolute right-1",
+              table: "w-full border-collapse space-y-1",
+              head_row: "flex w-full",
+              head_cell: "w-full rounded-md font-normal text-[0.8rem] text-white", // Changed to white
+              row: "flex w-full mt-2",
+              cell: "w-full h-9 text-center rounded-md text-sm relative [&:has([aria-selected])]:bg-[#232548] first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+              day: "h-9 w-full p-0 font-normal aria-selected:opacity-100 hover:bg-[#232548] rounded-md bg-transparent",
+              day_selected:
+                "bg-[#232548] text-white hover:bg-[#232548] hover:text-white focus:bg-[#232548] rounded-md focus:text-white",
+              day_today: "text-accent-foreground font-bold underline",
+              day_outside: "text-white opacity-50",
+              day_disabled: "text-white opacity-50",
+              day_range_middle: "aria-selected:bg-[#232548] aria-selected:text-white",
+              day_hidden: "invisible",
+            }}
+          />
         </div>
 
         {/* Other Request */}
@@ -193,7 +170,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
             id="other-request"
             type="text"
             placeholder={otherInput.placeholder}
-            className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white placeholder-white placeholder-opacity-80 focus:outline-none"
+            className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white placeholder-white/50 placeholder-opacity-80 focus:outline-none"
           />
         </div>
       </div>
@@ -207,7 +184,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
           id="project-details"
           placeholder={detailsInput.placeholder}
           rows={6}
-          className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white placeholder-white placeholder-opacity-80 focus:outline-none resize-none"
+          className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white placeholder-white/50 placeholder-opacity-80 focus:outline-none resize-none"
         />
       </div>
 

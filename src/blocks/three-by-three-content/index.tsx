@@ -37,7 +37,7 @@ export function ThreeByThreeContentBlock({ headingGroup, description, images, bu
        {headingGroup?.heading}{' '}
        <span className={'text-[#668E2E]'}>{headingGroup?.headingSpan}</span>
      </h2>
-       {description && <p className="text-[6px] md:text-sm max-w-xl leading-none md:leading-tight px-4">{description}</p>}</div>
+       {description && <p className="text-[12px] md:text-sm max-w-xl leading-none md:leading-tight px-4">{description}</p>}</div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-5xl">
         {images.map((img, i) => (
@@ -75,9 +75,9 @@ export function ThreeByThreeContentBlock({ headingGroup, description, images, bu
                     <h1 className={'text-md md:text-xl font-semibold text-[#232548]'}>
                       {selectedImage.services}
                     </h1>
-                    <p className={'text-[6px] md:text-xs leading-none'}>{selectedImage.servicesDescription}</p>
+                    <p className={'text-[11px] md:text-xs leading-none'}>{selectedImage.servicesDescription}</p>
                   </div>
-                  <StyledButton button={button} />
+                  <StyledButton className={'max-sm:h-5 max-sm:text-[11px] max-sm:p-1'}  button={button} />
                 </div>
               )}
             </DialogContent>

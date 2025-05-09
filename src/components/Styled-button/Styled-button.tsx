@@ -34,8 +34,8 @@ export default function StyledButton(props: StyledButtonProps) {
       )}
       style={{ backgroundColor: bgColor }}
     >
-      <p className={'m-0 md:mx-2'}>{button.label}</p>
-      <div className={cn("rounded-4xl ml-2 p-1", divIconClassName)} >
+      <p className={'m-0 md:mx-2 max-sm:leading-tight'}>{button.label}</p>
+      <div className={cn("rounded-4xl ml-2 p-1", divIconClassName)} style={{backgroundColor: divColor}}>
         <MoveUpRight className={cn("w-2 h-2 md:w-6 md:h-6 ", iconClassName)} />
 
       </div>
