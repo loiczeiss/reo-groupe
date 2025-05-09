@@ -379,8 +379,8 @@ export interface Page {
             };
             checkboxLabel?: string | null;
             buttonGroup?: {
-              buttonLabel?: string | null;
-              buttonUrl?: string | null;
+              label?: string | null;
+              url?: string | null;
             };
             id?: string | null;
             blockName?: string | null;
@@ -773,8 +773,8 @@ export interface PagesSelect<T extends boolean = true> {
               buttonGroup?:
                 | T
                 | {
-                    buttonLabel?: T;
-                    buttonUrl?: T;
+                    label?: T;
+                    url?: T;
                   };
               id?: T;
               blockName?: T;

@@ -69,8 +69,8 @@ export const BookingForm: Block = {
       label: 'button group',
       type: 'group',
       fields: [
-        { name: 'buttonLabel', label: 'button label', type: 'text' },
-        { name: 'buttonUrl', label: 'button url', type: 'text' },
+        { name: 'label', label: 'button label', type: 'text' },
+        { name: 'url', label: 'button url', type: 'text' },
       ],
     },
   ],

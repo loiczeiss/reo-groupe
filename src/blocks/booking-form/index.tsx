@@ -4,10 +4,11 @@ import { useState } from 'react'
 import { Calendar } from '@/components/ui/calendar'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
-import {  ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 import { format } from 'date-fns'
 import { fr } from 'date-fns/locale'
+import StyledButton from '@/components/Styled-button/Styled-button'
 
 interface BookingFormBlockProps {
   nameInput: {
@@ -39,8 +40,8 @@ interface BookingFormBlockProps {
   }
   checkboxLabel: string
   buttonGroup: {
-    buttonLabel: string
-    buttonUrl: string
+   label: string
+    url: string
   }
 }
 
@@ -62,7 +63,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
     <div className="max-w-4xl mx-auto p-6 bg-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Name */}
-        <div className="space-y-2">
+        <div className="max-sm:order-1 space-y-2">
           <label htmlFor="name" className="block text-sm font-medium">
             {nameInput.label}
           </label>
@@ -75,7 +76,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
         </div>
 
         {/* Email */}
-        <div className="space-y-2">
+        <div className="space-y-2 max-sm:order-2">
           <label htmlFor="email" className="block text-sm font-medium">
             {mailInput.label}
           </label>
@@ -88,7 +89,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
         </div>
 
         {/* Service Type */}
-        <div className="space-y-2">
+        <div className="space-y-2 max-sm:order-3">
           <label htmlFor="service-type" className="block text-sm font-medium">
             {serviceInput.label}
           </label>
@@ -101,7 +102,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
         </div>
 
         {/* Property Type */}
-        <div className="space-y-2">
+        <div className="space-y-2 max-sm:order-4">
           <label htmlFor="property-type" className="block text-sm font-medium">
             {houseTypeInput.label}
           </label>
@@ -114,7 +115,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
         </div>
 
         {/* Date Estimation */}
-        <div className="space-y-2">
+        <div className=" max-sm:order-5 space-y-2">
           <label htmlFor="date" className="block text-sm font-medium">
             {dateInput.label}
           </label>
@@ -127,42 +128,10 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
           />
 
           {/* Calendar */}
-
-          <Calendar
-            mode="single"
-            selected={date}
-            onSelect={setDate}
-            fromDate={new Date()}
-            locale={fr}
-            classNames={{
-              root: "w-full bg-[#6B8E23] text-white",
-              months: "w-full flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
-              month: "w-full space-y-4",
-              caption: "flex justify-center pt-1 relative items-center w-full",
-              caption_label: "text-sm font-medium",
-              nav: "space-x-1 flex items-center",
-              nav_button: "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100",
-              nav_button_previous: "absolute left-1",
-              nav_button_next: "absolute right-1",
-              table: "w-full border-collapse space-y-1",
-              head_row: "flex w-full",
-              head_cell: "w-full rounded-md font-normal text-[0.8rem] text-white", // Changed to white
-              row: "flex w-full mt-2",
-              cell: "w-full h-9 text-center rounded-md text-sm relative [&:has([aria-selected])]:bg-[#232548] first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
-              day: "h-9 w-full p-0 font-normal aria-selected:opacity-100 hover:bg-[#232548] rounded-md bg-transparent",
-              day_selected:
-                "bg-[#232548] text-white hover:bg-[#232548] hover:text-white focus:bg-[#232548] rounded-md focus:text-white",
-              day_today: "text-accent-foreground font-bold underline",
-              day_outside: "text-white opacity-50",
-              day_disabled: "text-white opacity-50",
-              day_range_middle: "aria-selected:bg-[#232548] aria-selected:text-white",
-              day_hidden: "invisible",
-            }}
-          />
         </div>
 
         {/* Other Request */}
-        <div className="space-y-2">
+        <div className=" max-sm:order-7 space-y-2">
           <label htmlFor="other-request" className="block text-sm font-medium">
             {otherInput.label}
           </label>
@@ -173,38 +142,69 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
             className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white placeholder-white/50 placeholder-opacity-80 focus:outline-none"
           />
         </div>
+        <Calendar
+          className={'max-sm:order-6'}
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          fromDate={new Date()}
+          locale={fr}
+          classNames={{
+            root: 'w-full bg-[#6B8E23] text-white rounded-md',
+            months: 'w-full flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0',
+            month: 'w-full space-y-4',
+            caption: 'flex justify-center pt-1 relative items-center w-full',
+            caption_label: 'text-sm font-medium',
+            nav: 'space-x-1 flex items-center',
+            nav_button: 'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100',
+            nav_button_previous: 'absolute left-1',
+            nav_button_next: 'absolute right-1',
+            table: 'w-full border-collapse space-y-1',
+            head_row: 'flex w-full',
+            head_cell: 'w-full rounded-md font-normal text-[0.8rem] text-white', // Changed to white
+            row: 'flex w-full mt-2',
+            cell: 'w-full h-9 text-center rounded-md text-sm relative [&:has([aria-selected])]:bg-[#232548] first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20',
+            day: 'h-9 w-full p-0 font-normal aria-selected:opacity-100 hover:bg-[#232548] rounded-md bg-transparent',
+            day_selected:
+              'bg-[#232548] text-white hover:bg-[#232548] hover:text-white focus:bg-[#232548] rounded-md focus:text-white',
+            day_today: 'text-accent-foreground font-bold underline',
+            day_outside: 'text-white opacity-50',
+            day_disabled: 'text-white opacity-50',
+            day_range_middle: 'aria-selected:bg-[#232548] aria-selected:text-white',
+            day_hidden: 'invisible',
+          }}
+        />
+        <div className="space-y-2 max-sm:order-9">
+          <label htmlFor="project-details" className="block text-sm font-medium">
+            {detailsInput.label}
+          </label>
+          <textarea
+            id="project-details"
+            placeholder={detailsInput.placeholder}
+            rows={6}
+            className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white placeholder-white/50 placeholder-opacity-80 focus:outline-none resize-none"
+          /> <div className="mt-6 flex items-start space-x-3">
+          <Checkbox
+            id="terms"
+            className="mt-1 border-[#6B8E23] data-[state=checked]:bg-[#6B8E23] data-[state=checked]:text-white"
+          />
+          <label htmlFor="terms" className="text-sm">
+            {checkboxLabel}
+          </label>
+        </div>
+        </div>
       </div>
 
       {/* Project Details */}
-      <div className="mt-6 space-y-2">
-        <label htmlFor="project-details" className="block text-sm font-medium">
-          {detailsInput.label}
-        </label>
-        <textarea
-          id="project-details"
-          placeholder={detailsInput.placeholder}
-          rows={6}
-          className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white placeholder-white/50 placeholder-opacity-80 focus:outline-none resize-none"
-        />
-      </div>
 
       {/* Terms Checkbox */}
-      <div className="mt-6 flex items-start space-x-3">
-        <Checkbox
-          id="terms"
-          className="mt-1 border-[#6B8E23] data-[state=checked]:bg-[#6B8E23] data-[state=checked]:text-white"
-        />
-        <label htmlFor="terms" className="text-sm">
-          {checkboxLabel}
-        </label>
-      </div>
+
 
       {/* Submit Button */}
       <div className="mt-6 flex justify-center">
-        <Button className="bg-[#1E3A8A] hover:bg-[#1E3A8A]/90 text-white px-6 py-2 rounded-full">
-          <span>{buttonGroup.buttonLabel}</span>
-          <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
+        <StyledButton button={buttonGroup} bgColor={'#232548'} divColor={'#668E2E'}/>
+
+
       </div>
     </div>
   )
