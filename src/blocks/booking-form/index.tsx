@@ -50,7 +50,7 @@ interface BookingFormBlockProps {
   }
 }
 
-export default function BookingFormBlock(props: BookingFormBlockProps) {
+export function BookingFormBlock(props: BookingFormBlockProps) {
   const {
     nameInput,
     mailInput,
@@ -62,7 +62,7 @@ export default function BookingFormBlock(props: BookingFormBlockProps) {
     checkboxLabel,
     buttonGroup,
   } = props
-  const [date, setDate] = useState<Date | undefined>(new Date(2025, 4, 25))
+  const [date, setDate] = useState<Date | undefined>(new Date())
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white">
@@ -177,24 +177,7 @@ export default function BookingFormBlock(props: BookingFormBlockProps) {
                 caption: 'hidden',
                 nav: 'hidden',
               }}
-              components={{
-                Day: ({ day, selected }) => {
-                  const isSelected =
-                    selected &&
-                    day.getDate() === selected.getDate() &&
-                    day.getMonth() === selected.getMonth() &&
-                    day.getFullYear() === selected.getFullYear()
 
-                  return (
-                    <div
-                      className={`h-9 w-9 p-0 font-normal flex items-center justify-center
-                      ${isSelected ? 'bg-[#5D3FD3] text-white rounded-full' : ''}`}
-                    >
-                      {day.getDate()}
-                    </div>
-                  )
-                },
-              }}
               fromDate={new Date(2025, 4, 1)}
               toDate={new Date(2025, 4, 31)}
             />
