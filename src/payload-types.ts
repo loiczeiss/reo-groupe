@@ -508,6 +508,20 @@ export interface Page {
             blockName?: string | null;
             blockType: 'contactSection';
           }
+        | {
+            testimonials?:
+              | {
+                  name?: string | null;
+                  rating?: number | null;
+                  review?: string | null;
+                  image?: (number | null) | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'testimonialCarousel';
+          }
       )[]
     | null;
   updatedAt: string;
@@ -1058,6 +1072,21 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     email?: T;
                     subheading?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        testimonialCarousel?:
+          | T
+          | {
+              testimonials?:
+                | T
+                | {
+                    name?: T;
+                    rating?: T;
+                    review?: T;
+                    image?: T;
+                    id?: T;
                   };
               id?: T;
               blockName?: T;

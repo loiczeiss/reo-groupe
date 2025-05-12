@@ -13,6 +13,7 @@ import { BookingForm } from '@/blocks/booking-form/config'
 import { QuoteForm } from '@/blocks/quote-form/config'
 import { contactForm } from '@/blocks/contact-form/config'
 import { ContactSection } from '@/blocks/contact-section/config'
+import { TestimonialCarousel } from '@/blocks/testimonial-carousel/config'
 
 const Pages: CollectionConfig = {
   slug: 'pages',
@@ -56,6 +57,7 @@ const Pages: CollectionConfig = {
         QuoteForm,
         contactForm,
         ContactSection,
+        TestimonialCarousel
       ],
     },
   ],
