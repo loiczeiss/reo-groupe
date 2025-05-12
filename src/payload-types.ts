@@ -494,6 +494,20 @@ export interface Page {
             blockName?: string | null;
             blockType: 'contactForm';
           }
+        | {
+            title?: string | null;
+            telephone?: {
+              number?: string | null;
+              subheading?: string | null;
+            };
+            mail?: {
+              email?: string | null;
+              subheading?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contactSection';
+          }
       )[]
     | null;
   updatedAt: string;
@@ -1026,6 +1040,25 @@ export interface PagesSelect<T extends boolean = true> {
                   };
               copyrightNotice?: T;
               image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        contactSection?:
+          | T
+          | {
+              title?: T;
+              telephone?:
+                | T
+                | {
+                    number?: T;
+                    subheading?: T;
+                  };
+              mail?:
+                | T
+                | {
+                    email?: T;
+                    subheading?: T;
+                  };
               id?: T;
               blockName?: T;
             };
