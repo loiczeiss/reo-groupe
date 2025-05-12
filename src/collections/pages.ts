@@ -10,6 +10,7 @@ import { RealisationsCarousel } from '@/blocks/realisations-carousel/config'
 import { FaqComponent } from '@/blocks/FAQ-component/config'
 import { CertificationSection } from '@/blocks/certification-section/config'
 import { BookingForm } from '@/blocks/booking-form/config'
+import { QuoteForm } from '@/blocks/quote-form/config'
 
 const Pages: CollectionConfig = {
   slug: 'pages',
@@ -50,6 +51,7 @@ const Pages: CollectionConfig = {
         FaqComponent,
         CertificationSection,
         BookingForm,
+        QuoteForm
       ],
     },
   ],

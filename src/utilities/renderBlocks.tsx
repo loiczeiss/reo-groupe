@@ -13,6 +13,7 @@ import { RealisationsCarouselBlock } from '@/blocks/realisations-carousel'
 import { FaqComponentBlock } from '@/blocks/FAQ-component'
 import { CertificationSectionBlock } from '@/blocks/certification-section'
 import { BookingFormBlock } from '@/blocks/booking-form'
+import { QuoteFormBlock } from '@/blocks/quote-form'
 
 
 const blockComponents = {
@@ -26,7 +27,8 @@ const blockComponents = {
   realisationsCarousel: RealisationsCarouselBlock,
   faqComponent: FaqComponentBlock,
   certificationSection: CertificationSectionBlock,
-  bookingForm: BookingFormBlock
+  bookingForm: BookingFormBlock,
+  quoteForm: QuoteFormBlock,
 }
 
 export const RenderBlocks: React.FC<{
