@@ -440,6 +440,60 @@ export interface Page {
             blockName?: string | null;
             blockType: 'quoteForm';
           }
+        | {
+            title?: string | null;
+            description?: string | null;
+            firstName?: {
+              label?: string | null;
+              placeholder?: string | null;
+            };
+            lastName?: {
+              label?: string | null;
+              placeholder?: string | null;
+            };
+            select?:
+              | {
+                  label?: string | null;
+                  placeholder?: string | null;
+                  selections?:
+                    | {
+                        selection?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            mail?: {
+              label?: string | null;
+              placeholder?: string | null;
+            };
+            descriptionInput?: {
+              label?: string | null;
+              placeholder?: string | null;
+            };
+            button?: {
+              label?: string | null;
+              url?: string | null;
+            };
+            consentText?: {
+              prefix?: string | null;
+              termsLabel?: {
+                texte?: string | null;
+                url?: string | null;
+              };
+              andSeparator?: string | null;
+              privacyLabel?: {
+                texte?: string | null;
+                url?: string | null;
+              };
+            };
+            copyrightNotice?: string | null;
+            image?: (number | null) | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contactForm';
+          }
       )[]
     | null;
   updatedAt: string;
@@ -834,6 +888,77 @@ export interface PagesSelect<T extends boolean = true> {
               blockName?: T;
             };
         quoteForm?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              firstName?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              lastName?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              select?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                    selections?:
+                      | T
+                      | {
+                          selection?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              mail?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              descriptionInput?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              button?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              consentText?:
+                | T
+                | {
+                    prefix?: T;
+                    termsLabel?:
+                      | T
+                      | {
+                          texte?: T;
+                          url?: T;
+                        };
+                    andSeparator?: T;
+                    privacyLabel?:
+                      | T
+                      | {
+                          texte?: T;
+                          url?: T;
+                        };
+                  };
+              copyrightNotice?: T;
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        contactForm?:
           | T
           | {
               title?: T;

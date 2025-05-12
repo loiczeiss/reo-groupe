@@ -11,6 +11,7 @@ import { FaqComponent } from '@/blocks/FAQ-component/config'
 import { CertificationSection } from '@/blocks/certification-section/config'
 import { BookingForm } from '@/blocks/booking-form/config'
 import { QuoteForm } from '@/blocks/quote-form/config'
+import { contactForm } from '@/blocks/contact-form/config'
 
 const Pages: CollectionConfig = {
   slug: 'pages',
@@ -51,7 +52,7 @@ const Pages: CollectionConfig = {
         FaqComponent,
         CertificationSection,
         BookingForm,
-        QuoteForm
+        QuoteForm, contactForm
       ],
     },
   ],
