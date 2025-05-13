@@ -1,6 +1,9 @@
+"use client"
+
 import { MoveUpRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { cn } from '@/utilities/ui' // make sure this utility exists
+import { cn } from '@/utilities/ui'
+import { redirect } from 'next/navigation' // make sure this utility exists
 
 interface StyledButtonProps {
   button: {
@@ -31,6 +34,7 @@ export default function StyledButton(props: StyledButtonProps) {
         className, // ✅ merge external className
       )}
       style={{ backgroundColor: bgColor }}
+      onClick={()=>redirect(button.url)}
     >
       <p className={'m-0 md:mx-2 max-sm:leading-tight'}>{button.label}</p>
       <div

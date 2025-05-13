@@ -30,7 +30,7 @@ export function ThreeByThreeContentBlock({ headingGroup, description, images, bu
     services: string
     servicesDescription: string
   } | null>(null)
-  console.log(headingGroup)
+
   return (
     <div className="flex flex-col items-center text-center space-y-4 md:space-y-6 px-12 py-3 md:px-8  md:py-12 text-[#232548]">
      <div className={'flex flex-col space-y-1'}> <h2 className="text-[24px] md:text-4xl font-bold leading-tight">

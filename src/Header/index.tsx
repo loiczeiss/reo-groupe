@@ -37,7 +37,7 @@ export function Header(props: HeaderProps){
     return width
   }
 
-  console.log("here", props.nav)
+
   const width = useWindowWidth()
   if (width === null) return null
   return(<div className={'w-screen'}>{ width > 620 ?

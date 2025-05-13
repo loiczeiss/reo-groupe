@@ -10,7 +10,7 @@ import {Users} from "@/collections/users";
 import {Media} from "@/collections/media";
 import { Pages } from '@/collections/pages'
 import { Header } from '@/Header/config'
-
+import { Footer } from '@/Footer/config'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -23,7 +23,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Pages],
-  globals:[Header],
+  globals:[Header, Footer],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

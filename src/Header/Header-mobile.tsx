@@ -8,11 +8,13 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import Image from 'next/image'
 
 import { HeaderProps } from '@/Header/index'
+import { SvgFromUrl } from '@/Header/SvgFromUrl'
+import StyledButton from '@/components/Styled-button/Styled-button'
 
 export function HeaderMobile(props: HeaderProps) {
   const [open, setOpen] = React.useState(false)
-  const { nav, logo } = props
-  console.log(nav)
+  const { nav, logo, button } = props
+
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
@@ -74,22 +76,26 @@ export function HeaderMobile(props: HeaderProps) {
                 <a
                   href={item.navItemUrl}
                   className={cn(
-                    'flex items-center gap-3 rounded-md py-3 text-sm font-medium transition-colors',
+                    'flex items-center gap-4 rounded-md py-3 text-sm font-medium transition-colors',
                     'hover:bg-[#8BAD5F] hover:text-white',
                   )}
                 >
                   {item.navItemLogo && (
-                    <div
-                      className={cn(
-                        'flex h-6 w-6 items-center justify-center text-[#232548]',
-                        'group-hover:text-white',
+                    <div className="flex h-6 w-6 items-center justify-center relative pl-4">
+                      {item?.navItemLogo?.url?.endsWith('.svg') ? (
+                        <SvgFromUrl
+                          url={item.navItemLogo.url as string}
+                          alt={item.navItemLogo.alt}
+                          className="w-6 h-6 text-[#8BAD5F] group-hover:text-[#95FF00]"
+                        />
+                      ) : (
+                        <Image
+                          src={item.navItemLogo.url as string}
+                          alt={item.navItemLogo.alt}
+                          fill
+                          className="object-cover"
+                        />
                       )}
-                    >
-                      <Image
-                        src={item.navItemLogo.url as string}
-                        alt={item.navItemLogo.alt}
-                        className="object-cover"
-                      />
                     </div>
                   )}
                   <span>{item.navItemName}</span>
@@ -98,7 +104,8 @@ export function HeaderMobile(props: HeaderProps) {
             ))}
           </nav>
 
-          <div className="mt-auto p-6 flex justify-center">
+          <div className="mt-auto p-6 flex flex-col items-center justify-between space-y-4">
+            <StyledButton button={button} className={'px-2'} divIconClassName={"hidden"} />
             <div className="flex flex-col items-center">
               <Image
                 src={logo.url as string}

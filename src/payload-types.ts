@@ -88,9 +88,11 @@ export interface Config {
   };
   globals: {
     header: Header;
+    footer: Footer;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
   };
   locale: null;
   user: User & {
@@ -1155,6 +1157,58 @@ export interface Header {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: number;
+  heading?: string | null;
+  mailInput?: {
+    inputPlaceholder?: string | null;
+    buttonLabel?: string | null;
+  };
+  images?:
+    | {
+        image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  bgImage?: (number | null) | Media;
+  subheading?: string | null;
+  button?:
+    | {
+        label?: string | null;
+        url?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  socials?:
+    | {
+        logo?: (number | null) | Media;
+        url?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  copyrightText?: string | null;
+  confidentiality?: {
+    confidentialityText?: string | null;
+    confidentialityURL?: string | null;
+  };
+  legalNotice?: {
+    legalNoticeText?: string | null;
+    legalNoticeURL?: string | null;
+  };
+  navArray?:
+    | {
+        navText?: string | null;
+        navUrl?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -1172,6 +1226,64 @@ export interface HeaderSelect<T extends boolean = true> {
     | {
         label?: T;
         url?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  heading?: T;
+  mailInput?:
+    | T
+    | {
+        inputPlaceholder?: T;
+        buttonLabel?: T;
+      };
+  images?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  bgImage?: T;
+  subheading?: T;
+  button?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+        id?: T;
+      };
+  socials?:
+    | T
+    | {
+        logo?: T;
+        url?: T;
+        id?: T;
+      };
+  copyrightText?: T;
+  confidentiality?:
+    | T
+    | {
+        confidentialityText?: T;
+        confidentialityURL?: T;
+      };
+  legalNotice?:
+    | T
+    | {
+        legalNoticeText?: T;
+        legalNoticeURL?: T;
+      };
+  navArray?:
+    | T
+    | {
+        navText?: T;
+        navUrl?: T;
+        id?: T;
       };
   updatedAt?: T;
   createdAt?: T;
