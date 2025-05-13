@@ -9,6 +9,7 @@ import sharp from 'sharp'
 import {Users} from "@/collections/users";
 import {Media} from "@/collections/media";
 import { Pages } from '@/collections/pages'
+import { Header } from '@/Header/config'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -22,6 +23,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Pages],
+  globals:[Header],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

@@ -1,3 +1,5 @@
+"use client"
+
 import Image from 'next/image'
 import { Media } from '@/payload-types'
 import StyledButton from '@/components/Styled-button/Styled-button'
