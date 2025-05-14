@@ -6,18 +6,19 @@ import type { Media, Page,  Config } from '@/payload-types'
 import { getServerSideURL } from './getURL'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 
-const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
+export const getImageURL = (
+  image?: Media | Config['db']['defaultIDType'] | null
+): string => {
   const serverUrl = getServerSideURL()
+  // Default OG image
+  let path = '/website-template-OG.webp'
 
-  let url = serverUrl + '/website-template-OG.webp'
-
-  if (image && typeof image === 'object' && 'url' in image) {
-    const ogUrl = image.sizes?.og?.url
-
-    url = ogUrl ? serverUrl + ogUrl : serverUrl + image.url
+  if (image && typeof image === 'object' && image.url) {
+    // Prefer thumbnailURL if provided, else full URL
+    path = image.thumbnailURL || image.url
   }
 
-  return url
+  return serverUrl + path
 }
 
 export const generateMeta = async (args: {
