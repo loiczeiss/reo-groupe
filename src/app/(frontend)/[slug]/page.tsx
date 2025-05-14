@@ -37,8 +37,6 @@ type Props = {
 export default async function HomePage({ params }: Props) {
   const slug = params?.slug || 'home'
 
-  const headersList = getHeaders() // still async, but just reads headers; no need for `await` in newer Next.js
-
   const page = await queryPageBySlug(slug)
 
   if (!page) return <div>Page not found</div>

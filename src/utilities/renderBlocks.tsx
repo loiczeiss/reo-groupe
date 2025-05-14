@@ -4,7 +4,6 @@ import type { Page } from '@/payload-types'
 import { HeroBlock } from '@/blocks/Hero/Hero-block'
 import { TextBlock } from '@/blocks/Text/Text-block'
 import { TextAndFourImagesBlock } from '@/blocks/text-and-four-images'
-
 import { ThreeByThreeContentBlock } from '@/blocks/three-by-three-content'
 import { WhyUsBlock } from '@/blocks/why-us'
 import { ContentCarouselBlock } from '@/blocks/content-carousel'
@@ -57,7 +56,7 @@ export const RenderBlocks: React.FC<{
             if (Block) {
               return (
                 <div key={index}>
-                  <Block {...block} />
+                  <Block {...(block as any)} />
                 </div>
               )
             }

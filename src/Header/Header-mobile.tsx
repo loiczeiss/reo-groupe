@@ -1,7 +1,6 @@
 'use client'
 
 import * as React from 'react'
-import { Home, Info, Tag, User, X } from 'lucide-react'
 import { cn } from '@/utilities/ui'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
