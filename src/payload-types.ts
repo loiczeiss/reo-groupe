@@ -164,6 +164,7 @@ export interface Media {
 export interface Page {
   id: number;
   name: string;
+  title: string;
   slug: string;
   layout?:
     | (
@@ -364,14 +365,19 @@ export interface Page {
               label?: string | null;
               placeholder?: string | null;
             };
-            serviceInput?: {
-              label?: string | null;
-              placeholder?: string | null;
-            };
-            houseTypeInput?: {
-              label?: string | null;
-              placeholder?: string | null;
-            };
+            select?:
+              | {
+                  label?: string | null;
+                  placeholder?: string | null;
+                  selections?:
+                    | {
+                        selection?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
             dateInput?: {
               label?: string | null;
             };
@@ -383,7 +389,11 @@ export interface Page {
               label?: string | null;
               placeholder?: string | null;
             };
-            checkboxLabel?: string | null;
+            checkboxGroup?: {
+              checkboxText?: string | null;
+              conditions?: string | null;
+              conditionsURL?: string | null;
+            };
             buttonGroup?: {
               label?: string | null;
               url?: string | null;
@@ -495,7 +505,7 @@ export interface Page {
               };
             };
             copyrightNotice?: string | null;
-            image?: (number | null) | Media;
+            image: number | Media;
             id?: string | null;
             blockName?: string | null;
             blockType: 'contactForm';
@@ -649,6 +659,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface PagesSelect<T extends boolean = true> {
   name?: T;
+  title?: T;
   slug?: T;
   layout?:
     | T
@@ -898,17 +909,18 @@ export interface PagesSelect<T extends boolean = true> {
                     label?: T;
                     placeholder?: T;
                   };
-              serviceInput?:
+              select?:
                 | T
                 | {
                     label?: T;
                     placeholder?: T;
-                  };
-              houseTypeInput?:
-                | T
-                | {
-                    label?: T;
-                    placeholder?: T;
+                    selections?:
+                      | T
+                      | {
+                          selection?: T;
+                          id?: T;
+                        };
+                    id?: T;
                   };
               dateInput?:
                 | T
@@ -927,7 +939,13 @@ export interface PagesSelect<T extends boolean = true> {
                     label?: T;
                     placeholder?: T;
                   };
-              checkboxLabel?: T;
+              checkboxGroup?:
+                | T
+                | {
+                    checkboxText?: T;
+                    conditions?: T;
+                    conditionsURL?: T;
+                  };
               buttonGroup?:
                 | T
                 | {

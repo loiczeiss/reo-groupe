@@ -15,7 +15,7 @@ interface FaqComponentBlockProps {
 }
 export  function FaqComponentBlock(props: FaqComponentBlockProps) {
   const { title, description, questionsArray } = props
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [openIndex, setOpenIndex] = useState<number | null>(0)
 
 
 

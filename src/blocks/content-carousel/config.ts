@@ -2,37 +2,42 @@ import { Block } from 'payload'
 
 export const ContentCarousel: Block = {
   slug: 'contentCarousel',
+  labels: { singular: "Carousselle d'experts", plural: "Carousselle d'experts" },
   fields: [
     {
       name: 'headingGroup',
-      label: 'headingGroup',
+      label: 'groupe de titre',
       type: 'group',
       fields: [
         {
           name: 'heading',
-          label: 'heading',
+          label: 'titre',
           type: 'group',
           fields: [
-            { name: 'heading0' , label: 'heading0', type: 'text' },
+            { name: 'heading0', label: 'titre 0', type: 'text' },
             {
               name: 'headingSpan1',
-              label: 'headingSpan1',
+              label: 'partie en surbrillance 1',
               type: 'text',
             },
-            { name: 'headingSpan2', label: 'headingSpan2', type: 'text' },
+            { name: 'headingSpan2', label: 'partie en surbrillance 2', type: 'text' },
             {
               name: 'headingSpan3',
-              label: 'headingSpan3',
+              label: 'partie en surbrillance 3',
               type: 'text',
             },
           ],
         },
-        { name: 'headingDescription', label: 'heading description', type: 'text' },
+        {
+          name: 'headingDescription',
+          label: 'description du titre',
+          type: 'text',
+        },
       ],
     },
     {
       name: 'images',
-      label: 'images of experts',
+      label: "images des experts",
       type: 'array',
       minRows: 2,
       maxRows: 5,
@@ -47,21 +52,25 @@ export const ContentCarousel: Block = {
           name: 'alt',
           type: 'text',
         },
-        { name: 'completeExpertName', label: 'complete expert name', type: 'text' },
+        {
+          name: 'completeExpertName',
+          label: "nom complet de l'expert",
+          type: 'text',
+        },
         {
           name: 'expertDescription',
-          label: 'expert description',
+          label: "description de l'expert",
           type: 'text',
         },
       ],
     },
     {
       name: 'CTAButton',
-      label: 'CTA button',
+      label: 'bouton d’appel à l’action',
       type: 'group',
       fields: [
         { name: 'label', label: 'label', type: 'text' },
-        { name: 'url', label: 'url', type: 'text' },
+        { name: 'url', label: 'URL', type: 'text' },
       ],
     },
   ],

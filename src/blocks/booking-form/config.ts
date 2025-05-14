@@ -2,75 +2,91 @@ import { Block } from 'payload'
 
 export const BookingForm: Block = {
   slug: 'bookingForm',
+  labels: {
+    singular: 'Formulaire de réservation',
+    plural: 'Formulaires de réservation',
+  },
   fields: [
     {
       name: 'nameInput',
-      label: 'Name Input',
+      label: 'Champ prénom/nom',
       type: 'group',
       fields: [
-        { name: 'label', label: 'label', type: 'text' },
-        { name: 'placeholder', label: 'placeholder', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text' },
+        { name: 'placeholder', label: 'Texte indicatif', type: 'text' },
       ],
     },
     {
       name: 'mailInput',
-      label: 'Mail Input',
+      label: 'Champ e-mail',
       type: 'group',
       fields: [
-        { name: 'label', label: 'label', type: 'text' },
-        { name: 'placeholder', label: 'placeholder', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text' },
+        { name: 'placeholder', label: 'Texte indicatif', type: 'text' },
       ],
     },
     {
-      name: 'serviceInput',
-      label: 'service Input',
-      type: 'group',
+      name: 'select',
+      label: 'Sélection multiple',
+      type: 'array',
+      minRows: 2,
       fields: [
-        { name: 'label', label: 'label', type: 'text' },
-        { name: 'placeholder', label: 'placeholder', type: 'text' },
-      ],
-    },
-    {
-      name: 'houseTypeInput',
-      label: 'House Type',
-      type: 'group',
-      fields: [
-        { name: 'label', label: 'label', type: 'text' },
-        { name: 'placeholder', label: 'placeholder', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text' },
+        { name: 'placeholder', label: 'Placeholder', type: 'text' },
+        {
+          name: 'selections',
+          label: 'Sélections',
+          type: 'array',
+          minRows: 2,
+          fields: [{ name: 'selection', label: 'Sélection', type: 'text' }],
+        },
       ],
     },
     {
       name: 'dateInput',
-      label: 'Date Input',
+      label: 'Date',
       type: 'group',
-      fields: [{ name: 'label', label: 'label', type: 'text' }],
+      fields: [{ name: 'label', label: 'Label', type: 'text' }],
     },
     {
       name: 'otherInput',
-      label: 'OtherInput',
+      label: 'Champ autre',
       type: 'group',
       fields: [
-        { name: 'label', label: 'label', type: 'text' },
-        { name: 'placeholder', label: 'placeholder', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text' },
+        { name: 'placeholder', label: 'Texte indicatif', type: 'text' },
       ],
     },
     {
       name: 'detailsInput',
-      label: 'Details Input',
+      label: 'Détails',
       type: 'group',
       fields: [
-        { name: 'label', label: 'label', type: 'text' },
-        { name: 'placeholder', label: 'placeholder', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text' },
+        { name: 'placeholder', label: 'Texte indicatif', type: 'text' },
       ],
     },
-    { name: 'checkboxLabel', label: 'Checkbox label', type: 'text' },
     {
-      name: 'buttonGroup',
-      label: 'button group',
+      name: 'checkboxGroup',
+      label: 'Groupe checkbox',
       type: 'group',
       fields: [
-        { name: 'label', label: 'button label', type: 'text' },
-        { name: 'url', label: 'button url', type: 'text' },
+        { name: 'checkboxText', label: 'texte de la checkbox', type: 'text' },
+        {
+          name: 'conditions',
+          label: 'conditions générales',
+          type: 'text',
+        },{name: "conditionsURL", label: 'conditionsURL', type: 'text' },
+      ],
+    },
+
+    {
+      name: 'buttonGroup',
+      label: 'Bouton de soumission',
+      type: 'group',
+      fields: [
+        { name: 'label', label: 'Texte du bouton', type: 'text' },
+        { name: 'url', label: 'URL du bouton', type: 'text' },
       ],
     },
   ],

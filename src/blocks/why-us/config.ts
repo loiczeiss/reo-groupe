@@ -2,44 +2,62 @@ import { Block } from 'payload'
 
 export const WhyUs: Block = {
   slug: 'whyUs',
+  labels: {
+    singular: 'Pourquoi nous',
+    plural: 'Pourquoi nous',
+  },
   fields: [
     {
       name: 'headingGroup',
-      label: 'headingGroup',
+      label: 'groupe de titre',
       type: 'group',
       fields: [
-        { name: 'heading', label: 'heading', type: 'text' },
-        {name: 'headingSpan', label: 'heading span', type: 'text' },
-        { name: 'headingDescription', label: 'heading`s description', type: 'textarea' },
+        { name: 'heading', label: 'titre', type: 'text' },
+        {
+          name: 'headingSpan',
+          label: 'partie en surbrillance du titre',
+          type: 'text',
+        },
+        {
+          name: 'headingDescription',
+          label: 'description du titre',
+          type: 'textarea',
+        },
       ],
     },
     {
       name: 'subheadingGroup1',
-      label: 'subheading group 1',
+      label: 'groupe de sous-titre 1',
       type: 'group',
       fields: [
-        { name: 'subheading', label: 'subheading', type: 'text' },
+        { name: 'subheading', label: 'sous-titre', type: 'text' },
         {
           name: 'subheadingDescription',
-          label: 'subheadingDescription',
-          type: 'textarea',
-        },
-        { name: 'subheadingLogo', label: 'subheading logo', type: 'upload', relationTo: 'media' },
-      ],
-    },{
-      name: 'subheadingGroup2',
-      label: 'Subheading Group 2',
-      type: 'group',
-      fields: [
-        { name: 'subheading', label: 'Subheading', type: 'text' },
-        {
-          name: 'subheadingDescription',
-          label: 'Subheading Description',
+          label: 'description du sous-titre',
           type: 'textarea',
         },
         {
           name: 'subheadingLogo',
-          label: 'Subheading Logo',
+          label: 'logo du sous-titre',
+          type: 'upload',
+          relationTo: 'media',
+        },
+      ],
+    },
+    {
+      name: 'subheadingGroup2',
+      label: 'groupe de sous-titre 2',
+      type: 'group',
+      fields: [
+        { name: 'subheading', label: 'sous-titre', type: 'text' },
+        {
+          name: 'subheadingDescription',
+          label: 'description du sous-titre',
+          type: 'textarea',
+        },
+        {
+          name: 'subheadingLogo',
+          label: 'logo du sous-titre',
           type: 'upload',
           relationTo: 'media',
         },
@@ -47,23 +65,22 @@ export const WhyUs: Block = {
     },
     {
       name: 'subheadingGroup3',
-      label: 'Subheading Group 3',
+      label: 'groupe de sous-titre 3',
       type: 'group',
       fields: [
-        { name: 'subheading', label: 'Subheading', type: 'text' },
+        { name: 'subheading', label: 'sous-titre', type: 'text' },
         {
           name: 'subheadingDescription',
-          label: 'Subheading Description',
+          label: 'description du sous-titre',
           type: 'textarea',
         },
         {
           name: 'subheadingLogo',
-          label: 'Subheading Logo',
+          label: 'logo du sous-titre',
           type: 'upload',
           relationTo: 'media',
         },
       ],
-    }
-
+    },
   ],
 }

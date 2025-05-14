@@ -2,27 +2,28 @@ import { Block } from 'payload'
 
 export const ThreeByThreeContent: Block = {
   slug: 'threeByThreeContent',
+  labels:{ singular:"contenu et images 3x3", plural:"contenu et images 3x3"},
   fields: [
     {
       name: 'headingGroup',
-      label: 'Heading Group',
+      label: 'groupe de titre',
       type: 'group',
       fields: [
         {
           name: 'heading',
-          label: 'heading',
+          label: 'titre',
           type: 'text',
         },
         {
           name: 'headingSpan',
-          label: 'heading span',
+          label: 'partie en surbrillance du titre',
           type: 'text',
         },
       ],
     },
     {
       name: 'description',
-      label: 'Description',
+      label: 'description',
       type: 'textarea',
       required: true,
     },
@@ -48,17 +49,21 @@ export const ThreeByThreeContent: Block = {
           label: 'services',
           type: 'text',
         },
-        { name: 'servicesDescription', label: 'Services Description', type: 'text' },
+        {
+          name: 'servicesDescription',
+          label: 'description des services',
+          type: 'text',
+        },
       ],
     },
     {
       name: 'button',
-      label: 'Button',
+      label: 'bouton',
       type: 'group',
       fields: [
         {
           name: 'label',
-          label: 'Label',
+          label: 'texte du bouton',
           type: 'text',
           required: true,
         },

@@ -6,7 +6,7 @@ import { getServerSideURL } from '@/utilities/getURL'
 import type { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
 
 const generateTitle: GenerateTitle< Page> = ({ doc }) => {
-  return doc?.name ? `${doc.name} | Payload Website Template` : 'Payload Website Template'
+  return doc?.name ? `${doc.name} | REO-GROUPE | Rénovation Résidentielle avec Garantie` : 'REO-GROUPE | Experts en Rénovation Résidentielle avec Garantie'
 }
 
 const generateURL: GenerateURL<Page> = ({ doc }) => {

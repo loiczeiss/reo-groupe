@@ -1,14 +1,21 @@
-import {Block} from 'payload'
+import { Block } from 'payload'
 
-
-export const FaqComponent: Block ={
+export const FaqComponent: Block = {
   slug: "faqComponent",
-  fields:[
-    {name: 'title', label: 'Title', type: 'text'},
-    {name: 'description', label: 'description', type: 'textarea'},
-    {name: 'questionsArray', label: 'questionsArray', type: 'array', minRows:1, maxRows:10, fields:[
-        {name: 'question', label: 'Question', type: 'textarea'},
-        {name: 'answer', label: 'Answer', type: 'textarea'}
-      ]},
+  labels: { singular: "Foire aux questions", plural: "Foire aux questions" },
+  fields: [
+    { name: 'title', label: 'Titre', type: 'text' },
+    { name: 'description', label: 'Description', type: 'textarea' },
+    {
+      name: 'questionsArray',
+      label: 'Liste des questions',
+      type: 'array',
+      minRows: 1,
+      maxRows: 10,
+      fields: [
+        { name: 'question', label: 'Question', type: 'textarea' },
+        { name: 'answer', label: 'Réponse', type: 'textarea' }
+      ]
+    },
   ]
 }

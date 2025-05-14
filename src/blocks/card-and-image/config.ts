@@ -2,27 +2,28 @@ import { Block } from 'payload'
 
 export const CardAndImage: Block = {
   slug: 'CardAndImage',
+  labels: { singular: "Carte et image (Avis client)", plural: "Carte et image (Avis client)" },
   fields: [
-    { name: 'title', label: 'title', type: 'text' },
-    {name: "bgImage", label: "bg image", type:"upload", relationTo:'media'},
+    { name: 'title', label: 'titre', type: 'text' },
+    { name: 'bgImage', label: 'image de fond', type: 'upload', relationTo: 'media' },
     {
       name: 'cardGroupArray',
-      label: 'card group array',
+      label: 'groupe de cartes (liste)',
       type: 'array',
       fields: [
         {
           name: 'cardGroup',
-          label: 'card group',
+          label: 'groupe de carte',
           type: 'group',
           fields: [
-            { name: 'fullName', label: 'full name', type: 'text' },
-            {name: "profession", label: 'profession', type: 'text' },
+            { name: 'fullName', label: 'nom complet', type: 'text' },
+            { name: 'profession', label: 'profession', type: 'text' },
             {
               name: 'thoughts',
-              label: 'thoughts',
-              type: 'text',
+              label: 'avis',
+              type: 'textarea',
             },
-            { name: 'picture', label: 'picture', type: 'upload', relationTo: 'media' },
+            { name: 'picture', label: 'photo', type: 'upload', relationTo: 'media' },
           ],
         },
       ],

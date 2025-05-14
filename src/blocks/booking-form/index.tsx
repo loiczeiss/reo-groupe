@@ -5,7 +5,13 @@ import { Calendar } from '@/components/ui/calendar'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { ArrowRight } from 'lucide-react'
-
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { format } from 'date-fns'
 import { fr } from 'date-fns/locale'
 import StyledButton from '@/components/Styled-button/Styled-button'
@@ -19,14 +25,14 @@ interface BookingFormBlockProps {
     label: string
     placeholder: string
   }
-  serviceInput: {
+  select: {
     label: string
     placeholder: string
-  }
-  houseTypeInput: {
-    label: string
-    placeholder: string
-  }
+    selections: {
+      id: string
+      selection: string
+    }[]
+  }[]
   dateInput: {
     label: string
   }
@@ -38,9 +44,13 @@ interface BookingFormBlockProps {
     label: string
     placeholder: string
   }
-  checkboxLabel: string
+  checkboxGroup: {
+    checkboxText: string
+    conditions: string
+    conditionsURL: string
+  }
   buttonGroup: {
-   label: string
+    label: string
     url: string
   }
 }
@@ -49,12 +59,11 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
   const {
     nameInput,
     mailInput,
-    serviceInput,
-    houseTypeInput,
+    select,
     dateInput,
     otherInput,
     detailsInput,
-    checkboxLabel,
+    checkboxGroup,
     buttonGroup,
   } = props
   const [date, setDate] = useState<Date | undefined>(new Date())
@@ -71,7 +80,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
             id="name"
             type="text"
             placeholder={nameInput.placeholder}
-            className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white placeholder-white/50 placeholder-opacity-80 focus:outline-none"
+            className="w-full px-4 py-3 rounded bg-[#668E2E] bg-opacity-80 text-white placeholder-white/50 placeholder-opacity-80 focus:outline-none"
           />
         </div>
 
@@ -84,34 +93,62 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
             id="email"
             type="email"
             placeholder={mailInput.placeholder}
-            className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white placeholder-white/50 placeholder-opacity-80 focus:outline-none"
+            className="w-full px-4 py-3 rounded bg-[#668E2E] bg-opacity-80 text-white placeholder-white/50 placeholder-opacity-80 focus:outline-none"
           />
         </div>
 
-        {/* Service Type */}
+        {/* Service Type - Replaced with Select */}
         <div className="space-y-2 max-sm:order-3">
           <label htmlFor="service-type" className="block text-sm font-medium">
-            {serviceInput.label}
+            {select[0].label}
           </label>
-          <input
-            id="service-type"
-            type="text"
-            placeholder={serviceInput.placeholder}
-            className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white placeholder-white/50 placeholder-opacity-80 focus:outline-none"
-          />
+          <Select>
+            <SelectTrigger
+              id="service-type"
+              className="bg-[#668E2E] border-none text-white h-6 sm:h-10 max-sm:text-[12px]
+               data-[placeholder]:text-white/50 focus:outline-none focus:ring-0"
+            >
+              <SelectValue placeholder={select[0].placeholder} />
+            </SelectTrigger>
+            <SelectContent className="bg-[#6b9a3e] border-[#7dac51] text-white">
+              {select[0].selections.map((item, i) => (
+                <SelectItem
+                  key={i}
+                  value={item.selection}
+                  className="focus:bg-[#7dac51] hover:bg-[#7dac51]"
+                >
+                  {item.selection}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
-        {/* Property Type */}
+        {/* Property Type - Replaced with Select */}
         <div className="space-y-2 max-sm:order-4">
           <label htmlFor="property-type" className="block text-sm font-medium">
-            {houseTypeInput.label}
+            {select[1].label}
           </label>
-          <input
-            id="property-type"
-            type="text"
-            placeholder={houseTypeInput.placeholder}
-            className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white placeholder-white/50 placeholder-opacity-80 focus:outline-none"
-          />
+          <Select>
+            <SelectTrigger
+              id="property-type"
+              className="bg-[#668E2E] border-none text-white h-6 sm:h-10 max-sm:text-[12px]
+               data-[placeholder]:text-white/50 focus:outline-none focus:ring-0"
+            >
+              <SelectValue placeholder={select[1].placeholder} />
+            </SelectTrigger>
+            <SelectContent className="bg-[#6b9a3e] border-[#7dac51] text-white">
+              {select[1].selections.map((item, i) => (
+                <SelectItem
+                  key={i}
+                  value={item.selection}
+                  className="focus:bg-[#7dac51] hover:bg-[#7dac51]"
+                >
+                  {item.selection}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Date Estimation */}
@@ -124,7 +161,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
             type="text"
             value={date ? format(date, 'dd MMMM yyyy', { locale: fr }) : ''}
             readOnly
-            className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white focus:outline-none"
+            className="w-full px-4 py-3 rounded bg-[#668E2E] bg-opacity-80 text-white/50 focus:outline-none"
           />
 
           {/* Calendar */}
@@ -139,7 +176,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
             id="other-request"
             type="text"
             placeholder={otherInput.placeholder}
-            className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white placeholder-white/50 placeholder-opacity-80 focus:outline-none"
+            className="w-full px-4 py-3 rounded bg-[#668E2E] bg-opacity-80 text-white placeholder-white/50 placeholder-opacity-80 focus:outline-none"
           />
         </div>
         <Calendar
@@ -150,7 +187,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
           fromDate={new Date()}
           locale={fr}
           classNames={{
-            root: 'w-full bg-[#6B8E23] text-white rounded-md',
+            root: 'w-full bg-[#668E2E] text-white rounded-md',
             months: 'w-full flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0',
             month: 'w-full space-y-4',
             caption: 'flex justify-center pt-1 relative items-center w-full',
@@ -182,29 +219,24 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
             id="project-details"
             placeholder={detailsInput.placeholder}
             rows={6}
-            className="w-full px-4 py-3 rounded bg-[#6B8E23] bg-opacity-80 text-white placeholder-white/50 placeholder-opacity-80 focus:outline-none resize-none"
-          /> <div className="mt-6 flex items-start space-x-3">
-          <Checkbox
-            id="terms"
-            className="mt-1 border-[#6B8E23] data-[state=checked]:bg-[#6B8E23] data-[state=checked]:text-white"
+            className="w-full px-4 py-3 rounded bg-[#668E2E] bg-opacity-80 text-white placeholder-white/50 placeholder-opacity-80 focus:outline-none resize-none"
           />
-          <label htmlFor="terms" className="text-sm">
-            {checkboxLabel}
-          </label>
-        </div>
+          <div className="mt-6 flex items-start space-x-3">
+            <Checkbox
+              id="terms"
+              className="mt-1 border-[#668E2E] data-[state=checked]:bg-[#668E2E] data-[state=checked]:text-white"
+            />
+            <label htmlFor="terms" className="text-sm">
+              {checkboxGroup.checkboxText}
+              <a href={checkboxGroup.conditionsURL} className={"hover:underline text-[#668E2E] "}>{checkboxGroup.conditions}</a>
+            </label>
+          </div>
         </div>
       </div>
 
-      {/* Project Details */}
-
-      {/* Terms Checkbox */}
-
-
       {/* Submit Button */}
       <div className="mt-6 flex justify-center">
-        <StyledButton button={buttonGroup} bgColor={'#232548'} divColor={'#668E2E'}/>
-
-
+        <StyledButton button={buttonGroup} bgColor={'#232548'} divColor={'#668E2E'} />
       </div>
     </div>
   )

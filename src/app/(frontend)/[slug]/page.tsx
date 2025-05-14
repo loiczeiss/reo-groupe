@@ -18,8 +18,8 @@ export async function generateStaticParams() {
     draft: false,
     limit: 1000,
     overrideAccess: false,
-    pagination: false,
-    select: { slug: true },
+
+
   })
 
   return pages.docs

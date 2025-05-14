@@ -42,6 +42,12 @@ const Pages: CollectionConfig = {
       required: true,
     },
     {
+      name: 'title',
+      label: 'titre',
+      type: 'text',
+      required: true,
+    },
+    {
       name: 'slug',
       label: 'Slug',
       type: 'text',

@@ -2,11 +2,11 @@ import { Block } from 'payload'
 
 export const Hero: Block = {
   slug: 'hero',
-  labels: { singular: 'Hero Block', plural: 'Hero Blocks' },
+  labels: { singular: 'Bloc Héros', plural: 'Blocs Héros' },
   fields: [
     {
       name: 'title',
-      label: 'Title',
+      label: 'Titre',
       type: 'text',
     },
     {
@@ -16,13 +16,13 @@ export const Hero: Block = {
     },
     {
       name: 'backgroundImage',
-      label: 'Background Image',
+      label: 'Image de fond',
       type: 'upload',
       relationTo: 'media',
     },
     {
       name: 'images',
-      label: 'Hero Images',
+      label: 'Images Héros',
       type: 'group',
       fields: [
         {
@@ -65,25 +65,25 @@ export const Hero: Block = {
     },
     {
       name: 'buttonGroup',
-      label: 'button group',
+      label: 'Groupe de boutons',
       type: 'group',
       fields: [
         {
           name: 'aboutButton',
-          label: 'about button',
+          label: 'Bouton à propos',
           type: 'group',
           fields: [
-            { name: 'label', label: 'label', type: 'text' },
-            { name: 'url', label: 'url', type: 'text' },
+            { name: 'label', label: 'Libellé', type: 'text' },
+            { name: 'url', label: 'URL', type: 'text' },
           ],
         },
         {
           name: 'priceButton',
-          label: 'priceButton',
+          label: 'Bouton tarif',
           type: 'group',
           fields: [
-            { name: 'label', label: 'label', type: 'text' },
-            { name: 'url', label: 'url', type: 'text' },
+            { name: 'label', label: 'Libellé', type: 'text' },
+            { name: 'url', label: 'URL', type: 'text' },
           ],
         },
       ],

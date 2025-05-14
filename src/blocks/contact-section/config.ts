@@ -1,23 +1,34 @@
-import {Block} from 'payload'
+import { Block } from 'payload'
 
 export const ContactSection: Block = {
   slug: 'contactSection',
+  labels: {
+    singular: 'Section Contact',
+    plural: 'Section Contacts',
+  },
   fields: [
-    { name: 'title', label: 'titre', type: 'text' },
+    {
+      name: 'title',
+      label: 'Titre de la section',
+      type: 'text',
+    },
     {
       name: 'telephone',
-      label: 'telephone',
+      label: 'Téléphone',
       type: 'group',
       fields: [
-
-        {name: "number", label: "numéro", type: 'text' },
-        {name: "subheading", label: "sous-titre", type: 'text' },
+        { name: 'number', label: 'Numéro de téléphone', type: 'text' },
+        { name: 'subheading', label: 'Sous-titre du téléphone', type: 'text' },
       ],
     },
-    {name: "mail", label: "email", type: 'group', fields:[
-
-        {name: "email", label: "email", type: 'text' },
-        {name: "subheading", label: "sous-titre", type: 'text' },
-      ] },
+    {
+      name: 'mail',
+      label: 'Email',
+      type: 'group',
+      fields: [
+        { name: 'email', label: 'Adresse email', type: 'text' },
+        { name: 'subheading', label: 'Sous-titre de l email', type: 'text' },
+      ],
+    },
   ],
 }

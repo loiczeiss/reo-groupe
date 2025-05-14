@@ -3,6 +3,7 @@ import { Block } from 'payload'
 
 export const TestimonialCarousel: Block = {
   slug: "testimonialCarousel",
+  labels:{singular: "carousselle de témoignages", plural: "carousselle de témoignages"},
   fields: [
     {name: "testimonials", label: "Témoignages", type: 'array', minRows: 2, fields: [
         {name:"name", label:"Nom", type:'text'},

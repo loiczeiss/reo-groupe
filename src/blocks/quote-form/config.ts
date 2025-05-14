@@ -2,75 +2,79 @@ import { Block } from 'payload'
 
 export const QuoteForm: Block = {
   slug: 'quoteForm',
+  labels: {
+    singular: 'Formulaire de devis',
+    plural: 'Formulaires de devis',
+  },
   fields: [
     { name: 'title', label: 'Titre', type: 'text' },
-    { name: 'description', label: 'description', type: 'textarea' },
+    { name: 'description', label: 'Description', type: 'textarea' },
+
     {
       name: 'firstName',
-      label: 'input Prénom',
+      label: 'Champ Prénom',
       type: 'group',
       fields: [
-        { name: 'label', label: 'label', type: 'text' },
-        { name: 'placeholder', label: 'placeholder', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text' },
+        { name: 'placeholder', label: 'Placeholder', type: 'text' },
       ],
     },
     {
       name: 'lastName',
-      label: 'input Nom de famille',
+      label: 'Champ Nom de famille',
       type: 'group',
       fields: [
-        { name: 'label', label: 'label', type: 'text' },
-        { name: 'placeholder', label: 'placeholder', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text' },
+        { name: 'placeholder', label: 'Placeholder', type: 'text' },
       ],
     },
     {
       name: 'select',
-      label: 'selection multiple',
+      label: 'Sélection multiple',
       type: 'array',
       minRows: 2,
-
       fields: [
-        { name: 'label', label: 'label', type: 'text' },
-        { name: 'placeholder', label: 'placeholder', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text' },
+        { name: 'placeholder', label: 'Placeholder', type: 'text' },
         {
           name: 'selections',
-          label: 'selections',
+          label: 'Options de sélection',
           type: 'array',
           minRows: 2,
-          fields: [{ name: 'selection', label: 'selection', type: 'text' }],
+          fields: [{ name: 'selection', label: 'Option', type: 'text' }],
         },
       ],
     },
     {
       name: 'mail',
-      label: 'input mail',
+      label: 'Champ Email',
       type: 'group',
       fields: [
-        { name: 'label', label: 'label', type: 'text' },
-        { name: 'placeholder', label: 'placeholder', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text' },
+        { name: 'placeholder', label: 'Placeholder', type: 'text' },
       ],
     },
     {
       name: 'descriptionInput',
-      label: 'input description',
+      label: 'Champ Description',
       type: 'group',
       fields: [
-        { name: 'label', label: 'label', type: 'text' },
-        { name: 'placeholder', label: 'placeholder', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text' },
+        { name: 'placeholder', label: 'Placeholder', type: 'text' },
       ],
     },
     {
       name: 'button',
-      label: "bouton d'envoi",
+      label: "Bouton d'envoi",
       type: 'group',
       fields: [
-        { name: 'label', label: 'label', type: 'text' },
-        { name: 'url', label: 'url', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text' },
+        { name: 'url', label: 'URL', type: 'text' },
       ],
     },
     {
       name: 'consentText',
-      label: 'texte consentement',
+      label: 'Texte de consentement',
       type: 'group',
       fields: [
         {
@@ -80,11 +84,11 @@ export const QuoteForm: Block = {
         },
         {
           name: 'termsLabel',
-          label: 'Texte pour les conditions d’utilisation',
+          label: 'Conditions d’utilisation',
           type: 'group',
           fields: [
-            { name: 'texte', label: 'Texte pour les conditions', type: 'text' },
-            { name: 'url', label: 'URL pour les conditions', type: 'text' },
+            { name: 'texte', label: 'Texte', type: 'text' },
+            { name: 'url', label: 'URL', type: 'text' },
           ],
         },
         {
@@ -94,20 +98,25 @@ export const QuoteForm: Block = {
         },
         {
           name: 'privacyLabel',
-          label: 'Texte pour la politique de confidentialité',
+          label: 'Politique de confidentialité',
           type: 'group',
           fields: [
-            { name: 'texte', label: 'Texte pour la politique de confidentialité', type: 'text' },
-            { name: 'url', label: 'URL pour la politique de confidentialité', type: 'text' },
+            { name: 'texte', label: 'Texte', type: 'text' },
+            { name: 'url', label: 'URL', type: 'text' },
           ],
         },
       ],
     },
     {
       name: 'copyrightNotice',
-      label: 'copyrightNotice',
+      label: 'Mention de droit d’auteur',
       type: 'text',
     },
-    {name: 'image', label: 'image', type: 'upload', relationTo: 'media' },
+    {
+      name: 'image',
+      label: 'Image décorative',
+      type: 'upload',
+      relationTo: 'media',
+    },
   ],
 }
