@@ -6,25 +6,26 @@ import { Metadata } from 'next'
 import config from '@payload-config'
 import '../styles.css'
 import { RenderBlocks } from '@/utilities/renderBlocks'
+import { generateMeta } from '@/utilities/generateMeta'
 
 
-// 👇 Generate static params for dynamic routes
-// export async function generateStaticParams() {
-//   const payload = await getPayload({ config })
-//
-//   const pages = await payload.find({
-//     collection: 'pages',
-//     draft: false,
-//     limit: 1000,
-//     overrideAccess: false,
-//     pagination: false,
-//     select: { slug: true },
-//   })
-//
-//   return pages.docs
-//     .filter((doc) => doc.slug !== 'home')
-//     .map(({ slug }) => ({ slug }))
-// }
+
+export async function generateStaticParams() {
+  const payload = await getPayload({ config })
+
+  const pages = await payload.find({
+    collection: 'pages',
+    draft: false,
+    limit: 1000,
+    overrideAccess: false,
+    pagination: false,
+    select: { slug: true },
+  })
+
+  return pages.docs
+    .filter((doc) => doc.slug !== 'home')
+    .map(({ slug }) => ({ slug }))
+}
 //
 // // 👇 Page component
 type Props = {
@@ -48,18 +49,16 @@ export default async function HomePage({ params }: Props) {
     </div>
   )
 }
-
-// 👇 Metadata generation
-// export async function generateMetadata({ params }: Props): Promise<Metadata> {
-//   const slug = params?.slug || 'home'
-//   const page = await queryPageBySlug(slug)
-//
-//   return {
-//     title: page?.name || 'Untitled Page',
-//     description: `Page for ${slug}`,
-//   }
-// }
-
+type Args = {
+  params: Promise<{
+    slug?: string
+  }>
+}
+export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
+  const { slug = 'home' } = await paramsPromise
+  const page = await queryPageBySlug(slug)
+  return generateMeta({ doc: page })
+}
 // 👇 Cached query for page by slug
 const queryPageBySlug = cache(async (slug: string): Promise<RequiredDataFromCollectionSlug<'pages'> | null> => {
   const payload = await getPayload({ config })

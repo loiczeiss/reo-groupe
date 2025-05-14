@@ -11,6 +11,7 @@ import {Media} from "@/collections/media";
 import { Pages } from '@/collections/pages'
 import { Header } from '@/Header/config'
 import { Footer } from '@/Footer/config'
+import { plugins } from './plugins'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -36,6 +37,7 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
+    ...plugins,
     payloadCloudPlugin(),
     // storage-adapter-placeholder
   ],

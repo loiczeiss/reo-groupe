@@ -17,7 +17,7 @@ import { QuoteFormBlock } from '@/blocks/quote-form'
 import { ContactFormBlock } from '@/blocks/contact-form'
 import { ContactSectionBlock } from '@/blocks/contact-section'
 import { TestimonialCarouselBlock } from '@/blocks/testimonial-carousel'
-
+import { MidHeroBlock } from '@/blocks/mid-hero'
 
 const blockComponents = {
   hero: HeroBlock,
@@ -35,6 +35,7 @@ const blockComponents = {
   contactForm: ContactFormBlock,
   contactSection: ContactSectionBlock,
   testimonialCarousel: TestimonialCarouselBlock,
+  midHero: MidHeroBlock,
 }
 
 export const RenderBlocks: React.FC<{

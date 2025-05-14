@@ -62,7 +62,7 @@ export function ContentCarouselBlock(props: ContentCarouselBlockProps) {
         className="flex flex-col items-center justify-center text-[#668E2E] w-2/3 space-y-1 md:space-y-4 pb-8 px-8 text-center"
       >
         <h1
-          className="text-[24px] max-sm:leading-snug md:text-5xl font-semibold break-words whitespace-pre-wrap w-full max-w-full overflow-hidden"
+          className="text-xl max-sm:leading-snug md:text-5xl font-semibold break-words whitespace-pre-wrap w-full max-w-full overflow-hidden"
         >
           {headingGroup.heading.heading0}
           <span className="text-[#232548]"> {headingGroup.heading.headingSpan1}</span>
@@ -72,7 +72,7 @@ export function ContentCarouselBlock(props: ContentCarouselBlockProps) {
         </h1>
 
         <div
-          className="text-[11px] max-sm:leading-normal max-sm:px-6 max-sm:pt-4 md:text-sm text-[#232548] text-center md:px-36
+          className="text-xs max-sm:leading-normal max-sm:px-6 max-sm:pt-4 md:text-sm text-[#232548] text-center md:px-36
                max-h-[8rem] overflow-y-auto break-words whitespace-pre-wrap w-full"
         >
           {headingGroup.headingDescription}

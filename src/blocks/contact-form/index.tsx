@@ -74,11 +74,11 @@ export function ContactFormBlock(props: ContactFormBlockProps) {
   } = props
 
   return (
-    <div className={'p-8'}>
+    <div className={'max-sm:px-8 max-sm:py-4 sm:p-8'}>
       <div className="bg-[#6b9a3e] text-white rounded-lg overflow-hidden   shadow-lg">
         <div className="grid md:grid-cols-2">
           <div className="p-8">
-            <h1 className="text-2xl font-bold mb-2 break-words">{title}</h1>
+            <h1 className="text-sm sm:text-2xl font-bold mb-2 break-words">{title}</h1>
             <p className=" max-sm:text-[12px] text-sm mb-6 opacity-90 leading-tight break-words">
               {description}
             </p>
@@ -86,33 +86,33 @@ export function ContactFormBlock(props: ContactFormBlockProps) {
             <form className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label htmlFor="firstname" className="block text-sm">
+                  <label htmlFor="firstname" className="block text-[12px] sm:text-sm max-sm:leading-tight">
                     {firstName.label}
                   </label>
                   <Input
                     id="firstname"
                     placeholder={firstName.placeholder}
-                    className="bg-[#7dac51] border-none placeholder:text-white/70 text-white h-10"
+                    className="bg-[#7dac51] border-none placeholder:text-white/70 text-white h-10 max-sm:text-[12px] max-sm:leading-tight max-sm:h-6"
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label htmlFor="lastname" className="block text-sm">
+                  <label htmlFor="lastname" className="block text-[12px] sm:text-sm max-sm:leading-tight">
                     {lastName.label}
                   </label>
                   <Input
                     id="lastname"
                     placeholder={lastName.placeholder}
-                    className="bg-[#7dac51] border-none placeholder:text-white/70 text-white h-10"
+                    className="bg-[#7dac51] border-none placeholder:text-white/70 text-white h-10 max-sm:text-[12px] max-sm:leading-tight max-sm:h-6"
                   />
                 </div>
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="type" className="block text-sm">
+                <label htmlFor="type" className="block text-[12px] sm:text-sm max-sm:leading-tight">
                   {select[0].label}
                 </label>
                 <Select>
-                  <SelectTrigger className="bg-[#7dac51] border-none text-white h-10">
+                  <SelectTrigger className="bg-[#7dac51] border-none text-white h-6 sm:h-10 max-sm:text-[12px]">
                     <SelectValue placeholder={select[0].placeholder} />
                   </SelectTrigger>
 
@@ -127,33 +127,33 @@ export function ContactFormBlock(props: ContactFormBlockProps) {
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="email" className="block text-sm">
+                <label htmlFor="email" className="block text-[12px] sm:text-sm max-sm:leading-tight">
                   {mail.label}
                 </label>
                 <Input
                   id="email"
                   type="email"
                   placeholder={mail.placeholder}
-                  className="bg-[#7dac51] border-none placeholder:text-white/70 text-white h-10"
+                  className="bg-[#7dac51] border-none placeholder:text-white/70 text-white h-10 max-sm:text-[12px] max-sm:leading-tight max-sm:h-6"
                 />
               </div>
 
 
 
               <div className="space-y-1.5">
-                <label htmlFor="description" className="block text-sm">
+                <label htmlFor="description" className="block text-[12px] sm:text-sm max-sm:leading-tight">
                   {descriptionInput.label}
                 </label>
                 <Textarea
                   id="description"
                   placeholder={descriptionInput.placeholder}
-                  className="bg-[#7dac51] border-none placeholder:text-white/70 text-white min-h-[120px] resize-none"
+                  className="bg-[#7dac51] border-none placeholder:text-white/70 text-white min-h-[120px] resize-none max-sm:text-[12px]"
                 />
               </div>
 
               <div className="flex justify-center mt-6">
                 <StyledButton
-                  className={'text-[12px] p-4 max-sm:h-5  text-[#7dac51]'}
+                  className={'text-[12px] sm:text-[12px] p-4 max-sm:h-5  text-[#7dac51]'}
                   button={button}
                   divIconClassName={'hidden'}
                   bgColor={'#232548'}
@@ -169,7 +169,7 @@ export function ContactFormBlock(props: ContactFormBlockProps) {
           </div>
         </div>
 
-        <div className="mt-2 text-xs text-center  md:w-1/2 space-y-2 md:space-y-4 p-8">
+        <div className="mt-2 text-[8px] max-sm:leading-tight sm:text-xs text-center  md:w-1/2 space-y-2 md:space-y-4 p-8">
           <p>
             {consentText.prefix}{' '}
             <a href="#" className="underline text-[#232548]">
@@ -180,7 +180,7 @@ export function ContactFormBlock(props: ContactFormBlockProps) {
               {consentText.privacyLabel.texte}
             </a>
           </p>
-          <p className="mt-1 text-[10px]">© {copyrightNotice}</p>
+          <p className="mt-1 text-[8px] sm:text-[10px]">© {copyrightNotice}</p>
         </div>
       </div>
     </div>

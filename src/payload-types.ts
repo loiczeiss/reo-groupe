@@ -528,8 +528,24 @@ export interface Page {
             blockName?: string | null;
             blockType: 'testimonialCarousel';
           }
+        | {
+            bgImage?: (number | null) | Media;
+            heading?: string | null;
+            description?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'midHero';
+          }
       )[]
     | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -1097,6 +1113,22 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        midHero?:
+          | T
+          | {
+              bgImage?: T;
+              heading?: T;
+              description?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
       };
   updatedAt?: T;
   createdAt?: T;

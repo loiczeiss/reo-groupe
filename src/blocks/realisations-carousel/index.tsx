@@ -36,14 +36,14 @@ export function RealisationsCarouselBlock(props: RealisationsCarouselBlockProps)
     <div className="bg-[#EDEDED] py-[4%]">
       <div className="max-w-[90%] w-[1100px] mx-auto text-center">
         <div className={'flex flex-col px-12 sm:px-16 space-y-2'}>
-          <h2 className="text-base sm:text-2xl lg:text-5xl font-bold mb-[2%]">
+          <h2 className="text-xl sm:text-2xl lg:text-5xl font-bold mb-[2%]">
             {title.titleSpan1} <span className="text-green-600">{title.titleSpan2}</span>
           </h2>
-          <p className="text-gray-700 mb-[4%] mx-auto text-[6px] sm:text-[8px] lg:text-base max-w-[90%] max-lg:leading-tight">
+          <p className="text-gray-700 mb-[4%] mx-auto text-xs lg:text-base max-w-[90%] max-lg:leading-tight">
             {description}
           </p>
 
-          <p className="text-gray-800 mb-[5%] font-medium text-[6px] sm:text-[8px] lg:text-base pb-4 max-sm:leading-tight ">
+          <p className="text-gray-800 mb-[5%] font-medium text-xs lg:text-base pb-4 max-sm:leading-tight ">
             {subDescription}
           </p>
         </div>

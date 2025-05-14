@@ -4,8 +4,6 @@ import '@/styles/globals.css'
 import { Inter } from 'next/font/google'
 import { Header } from '@/Header'
 import { getCachedGlobal } from '@/utilities/getGlobals'
-
-import { Media } from '@/payload-types'
 import { Footer } from '@/Footer'
 
 export const metadata = {
