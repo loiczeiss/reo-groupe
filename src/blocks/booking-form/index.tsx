@@ -17,7 +17,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { bookingFormSchema } from '@/blocks/booking-form/formSchema'
 import { z } from 'zod'
-import { Form } from '@/components/ui/form'
 
 interface BookingFormBlockProps {
   nameInput: {
@@ -69,21 +68,20 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
     detailsInput,
     checkboxGroup,
     buttonGroup,
-    requiredIndication
+    requiredIndication,
   } = props
   const [date, setDate] = useState<Date | undefined>(new Date())
   const form = useForm<z.infer<typeof bookingFormSchema>>({
     mode: 'onChange',
     resolver: zodResolver(bookingFormSchema),
     defaultValues: {
-      name: "",
-      email: "",
-      serviceType: "",
-      propertyType: "",
+      name: '',
+      email: '',
+      serviceType: '',
+      propertyType: '',
       date: new Date(),
-      otherRequest: "",
-      projectDetails: "",
-
+      otherRequest: '',
+      projectDetails: '',
     },
   })
 
@@ -91,17 +89,23 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
     console.log(values)
   }
 
-  console.log(form.watch("date"))
+  console.log(form.watch('date'))
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)} {...form} className="max-w-4xl mx-auto p-6 bg-white">
+    <form
+      onSubmit={form.handleSubmit(onSubmit)}
+      {...form}
+      className="max-w-4xl mx-auto p-6 bg-white"
+    >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Name */}
         <div className="max-sm:order-1 space-y-2">
-          <label htmlFor="name" className="block text-sm font-medium">{nameInput.label}</label>
+          <label htmlFor="name" className="block text-sm font-medium">
+            {nameInput.label}
+          </label>
           <input
             id="name"
             type="text"
-            {...form.register("name")}
+            {...form.register('name')}
             placeholder={nameInput.placeholder}
             className="w-full px-4 py-3 rounded bg-[#668E2E] bg-opacity-80 text-white placeholder-white/50 focus:outline-none"
           />
@@ -112,11 +116,13 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
 
         {/* Email */}
         <div className="space-y-2 max-sm:order-2">
-          <label htmlFor="email" className="block text-sm font-medium">{mailInput.label}</label>
+          <label htmlFor="email" className="block text-sm font-medium">
+            {mailInput.label}
+          </label>
           <input
             id="email"
             type="email"
-            {...form.register("email")}
+            {...form.register('email')}
             placeholder={mailInput.placeholder}
             className="w-full px-4 py-3 rounded bg-[#668E2E] bg-opacity-80 text-white placeholder-white/50 focus:outline-none"
           />
@@ -127,13 +133,18 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
 
         {/* Service Type */}
         <div className="space-y-2 max-sm:order-3">
-          <label htmlFor="service-type" className="block text-sm font-medium">{select[0].label}</label>
+          <label htmlFor="service-type" className="block text-sm font-medium">
+            {select[0].label}
+          </label>
           <Controller
             control={form.control}
             name="serviceType"
             render={({ field }) => (
               <Select value={field.value} onValueChange={field.onChange}>
-                <SelectTrigger id="service-type" className="bg-[#668E2E] border-none text-white h-6 sm:h-10 max-sm:text-[12px] focus:outline-none focus:ring-0 data-[placeholder]:text-white/50">
+                <SelectTrigger
+                  id="service-type"
+                  className="bg-[#668E2E] border-none text-white h-6 sm:h-10 max-sm:text-[12px] focus:outline-none focus:ring-0 data-[placeholder]:text-white/50"
+                >
                   <SelectValue placeholder={select[0].placeholder} />
                 </SelectTrigger>
                 <SelectContent className="bg-[#6b9a3e] border-[#7dac51] text-white">
@@ -157,13 +168,18 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
 
         {/* Property Type */}
         <div className="space-y-2 max-sm:order-4">
-          <label htmlFor="property-type" className="block text-sm font-medium">{select[1].label}</label>
+          <label htmlFor="property-type" className="block text-sm font-medium">
+            {select[1].label}
+          </label>
           <Controller
             control={form.control}
             name="propertyType"
             render={({ field }) => (
               <Select value={field.value} onValueChange={field.onChange}>
-                <SelectTrigger id="property-type" className="bg-[#668E2E] border-none text-white h-6 sm:h-10 max-sm:text-[12px] focus:outline-none focus:ring-0 data-[placeholder]:text-white/50">
+                <SelectTrigger
+                  id="property-type"
+                  className="bg-[#668E2E] border-none text-white h-6 sm:h-10 max-sm:text-[12px] focus:outline-none focus:ring-0 data-[placeholder]:text-white/50"
+                >
                   <SelectValue placeholder={select[1].placeholder} />
                 </SelectTrigger>
                 <SelectContent className="bg-[#6b9a3e] border-[#7dac51] text-white">
@@ -187,7 +203,9 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
 
         {/* Date */}
         <div className="max-sm:order-5 space-y-2">
-          <label htmlFor="date" className="block text-sm font-medium">{dateInput.label}</label>
+          <label htmlFor="date" className="block text-sm font-medium">
+            {dateInput.label}
+          </label>
           <input
             id="date"
             type="text"
@@ -203,11 +221,13 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
 
         {/* Other Request */}
         <div className="max-sm:order-7 space-y-2">
-          <label htmlFor="other-request" className="block text-sm font-medium">{otherInput.label}</label>
+          <label htmlFor="other-request" className="block text-sm font-medium">
+            {otherInput.label}
+          </label>
           <input
             id="other-request"
             type="text"
-            {...form.register("otherRequest")}
+            {...form.register('otherRequest')}
             placeholder={otherInput.placeholder}
             className="w-full px-4 py-3 rounded bg-[#668E2E] bg-opacity-80 text-white placeholder-white/50 focus:outline-none"
           />
@@ -223,7 +243,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
           selected={date}
           onSelect={(selectedDate) => {
             setDate(selectedDate)
-            form.setValue("date", selectedDate as Date)
+            form.setValue('date', selectedDate as Date)
           }}
           fromDate={new Date()}
           locale={fr}
@@ -254,10 +274,12 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
 
         {/* Project Details & Checkbox */}
         <div className="space-y-2 max-sm:order-9">
-          <label htmlFor="project-details" className="block text-sm font-medium">{detailsInput.label}</label>
+          <label htmlFor="project-details" className="block text-sm font-medium">
+            {detailsInput.label}
+          </label>
           <textarea
             id="project-details"
-            {...form.register("projectDetails")}
+            {...form.register('projectDetails')}
             placeholder={detailsInput.placeholder}
             rows={6}
             className="w-full px-4 py-3 rounded bg-[#668E2E] bg-opacity-80 text-white placeholder-white/50 focus:outline-none resize-none"
@@ -282,7 +304,9 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
             />
             <label htmlFor="terms" className="text-sm">
               {checkboxGroup.checkboxText}
-              <a href={checkboxGroup.conditionsURL} className={"hover:underline text-[#668E2E]"}>{checkboxGroup.conditions}</a>
+              <a href={checkboxGroup.conditionsURL} className={'hover:underline text-[#668E2E]'}>
+                {checkboxGroup.conditions}
+              </a>
             </label>
           </div>
           {form.formState.errors.termsAccepted && (
@@ -293,8 +317,15 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
       <p className={'text-[9px]'}>{requiredIndication}</p>
       {/* Submit Button */}
       <div className="mt-6 flex justify-center">
-        <StyledButton iconClassName={"max-sm:w-4 max-sm:h-4 md:h-5 md:w-5"} className={'px-2'} redirectBool={false} type="submit" button={buttonGroup} bgColor="#232548" divColor="#668E2E" />
-
+        <StyledButton
+          iconClassName={'max-sm:w-4 max-sm:h-4 md:h-5 md:w-5'}
+          className={'px-2'}
+          redirectBool={false}
+          type="submit"
+          button={buttonGroup}
+          bgColor="#232548"
+          divColor="#668E2E"
+        />
       </div>
     </form>
   )
