@@ -17,6 +17,8 @@ interface StyledButtonProps {
   className?: string // ✅ allow passing custom className
   iconClassName?: string
   divIconClassName?: string
+  type?: 'button' | 'submit'
+  redirectBool?: boolean
 }
 
 export default function StyledButton(props: StyledButtonProps) {
@@ -27,16 +29,19 @@ export default function StyledButton(props: StyledButtonProps) {
     divIconClassName,
     className, // ✅ destructure
     iconClassName,
+    type = 'button',
+    redirectBool = true,
   } = props
 
   return (
     <Button
+      type={type}
       className={cn(
         'flex rounded-4xl justify-center items-center space-x-4 px-[1.083px] pt-[3.25px] pb-[3.25px] pl-[4.333px] hover:cursor-pointer',
         className, // ✅ merge external className
       )}
       style={{ backgroundColor: bgColor }}
-      onClick={() => redirect(button?.url as string)}
+      onClick={() => redirectBool  && redirect(button?.url as string)}
     >
       <p className={'m-0 md:mx-2 max-sm:leading-tight'}>{button?.label}</p>
       <div

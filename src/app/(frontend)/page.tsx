@@ -1,15 +1,17 @@
-// app/(frontend)/page.tsx
 import { getPayload, RequiredDataFromCollectionSlug } from 'payload'
 import { Metadata } from 'next'
 import config from '@payload-config'
 import { RenderBlocks } from '@/utilities/renderBlocks'
 import { generateMeta } from '@/utilities/generateMeta'
-
+import { notFound, redirect } from 'next/navigation'
 
 export default async function RootHomePage() {
   const page = await queryPageBySlug('home')
+  if (process.env.IN_CONSTRUCTION_BOOLEAN === 'true') {
+    redirect('/construction')
+  }
 
-  if (!page) return <div>Page not found</div>
+  if (!page) return notFound()
 
   return (
     <div>
@@ -24,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const queryPageBySlug = async (
-  slug: string
+  slug: string,
 ): Promise<RequiredDataFromCollectionSlug<'pages'> | null> => {
   const payload = await getPayload({ config })
 

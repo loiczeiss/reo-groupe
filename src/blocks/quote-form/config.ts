@@ -69,7 +69,7 @@ export const QuoteForm: Block = {
       type: 'group',
       fields: [
         { name: 'label', label: 'Label', type: 'text' },
-        { name: 'url', label: 'URL', type: 'text' },
+
       ],
     },
     {
@@ -112,6 +112,7 @@ export const QuoteForm: Block = {
       label: 'Mention de droit d’auteur',
       type: 'text',
     },
+    { name: 'requiredIndication', label: 'texte indication de champs requis', type: 'text' },
     {
       name: 'image',
       label: 'Image décorative',

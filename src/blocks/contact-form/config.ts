@@ -71,6 +71,7 @@ export const contactForm: Block = {
         { name: 'url', label: 'URL', type: 'text' },
       ],
     },
+    {name:"requiredIndication", label: "texte indication de champs requis", type:"text"},
     {
       name: 'consentText',
       label: 'Texte de consentement',

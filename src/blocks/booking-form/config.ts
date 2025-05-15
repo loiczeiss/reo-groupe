@@ -79,14 +79,14 @@ export const BookingForm: Block = {
         },{name: "conditionsURL", label: 'conditionsURL', type: 'text' },
       ],
     },
-
+    {name:"requiredIndication", label: "texte indication de champs requis", type:"text"},
     {
       name: 'buttonGroup',
       label: 'Bouton de soumission',
       type: 'group',
       fields: [
         { name: 'label', label: 'Texte du bouton', type: 'text' },
-        { name: 'url', label: 'URL du bouton', type: 'text' },
+
       ],
     },
   ],

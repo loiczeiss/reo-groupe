@@ -1,5 +1,5 @@
 "use client"
-import '../styles/globals.css' // or wherever your tailwind styles are imported
+import '../../styles/globals.css' // or wherever your tailwind styles are imported
 import  img  from "public/logo.png"
 import Link from "next/link"
 import Image from "next/image"
@@ -31,7 +31,7 @@ export default function NotFound() {
         <div className="w-full max-w-md mx-auto bg-green-50 p-6 rounded-lg">
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/"
+              href="/public"
               className="flex items-center justify-center gap-2 px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
             >
               <Home size={18} />

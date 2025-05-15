@@ -33,10 +33,12 @@ export default async function HomePage({ params }: Props) {
   // Await the params
   const { slug } = await params
   if (slug === 'home') {
-    redirect('/')  // Redirect to root URL
+    redirect('/') // Redirect to root URL
   }
   const page = await queryPageBySlug(slug)
-
+  if (process.env.IN_CONSTRUCTION_BOOLEAN === 'true') {
+   redirect('/construction')
+  }
   if (!page) return notFound()
 
   return (

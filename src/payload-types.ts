@@ -388,9 +388,9 @@ export interface Page {
               conditions?: string | null;
               conditionsURL?: string | null;
             };
+            requiredIndication?: string | null;
             buttonGroup?: {
               label?: string | null;
-              url?: string | null;
             };
             id?: string | null;
             blockName?: string | null;
@@ -430,7 +430,6 @@ export interface Page {
             };
             button?: {
               label?: string | null;
-              url?: string | null;
             };
             consentText?: {
               prefix?: string | null;
@@ -445,6 +444,7 @@ export interface Page {
               };
             };
             copyrightNotice?: string | null;
+            requiredIndication?: string | null;
             image?: (number | null) | Media;
             id?: string | null;
             blockName?: string | null;
@@ -486,6 +486,7 @@ export interface Page {
               label?: string | null;
               url?: string | null;
             };
+            requiredIndication?: string | null;
             consentText?: {
               prefix?: string | null;
               termsLabel?: {
@@ -933,11 +934,11 @@ export interface PagesSelect<T extends boolean = true> {
                     conditions?: T;
                     conditionsURL?: T;
                   };
+              requiredIndication?: T;
               buttonGroup?:
                 | T
                 | {
                     label?: T;
-                    url?: T;
                   };
               id?: T;
               blockName?: T;
@@ -988,7 +989,6 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     label?: T;
-                    url?: T;
                   };
               consentText?:
                 | T
@@ -1009,6 +1009,7 @@ export interface PagesSelect<T extends boolean = true> {
                         };
                   };
               copyrightNotice?: T;
+              requiredIndication?: T;
               image?: T;
               id?: T;
               blockName?: T;
@@ -1061,6 +1062,7 @@ export interface PagesSelect<T extends boolean = true> {
                     label?: T;
                     url?: T;
                   };
+              requiredIndication?: T;
               consentText?:
                 | T
                 | {
