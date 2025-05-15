@@ -49,7 +49,7 @@ export default function NotFound() {
 
         <div className="pt-8">
           <p className="text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} RBD Groupe. Tous droits réservés.
+            &copy; {new Date().getFullYear()} REO Groupe. Tous droits réservés.
           </p>
         </div>
       </div>
