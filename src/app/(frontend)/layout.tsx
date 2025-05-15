@@ -2,9 +2,10 @@ import React from 'react'
 import './styles.css'
 import '@/styles/globals.css'
 import { Inter } from 'next/font/google'
-import { Header } from '@/Header'
+import { HeaderComponent } from '@/Header'
 import { getCachedGlobal } from '@/utilities/getGlobals'
-import { Footer } from '@/Footer'
+import { FooterComponent } from '@/Footer'
+import { Footer, Header } from '@/payload-types'
 
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
@@ -13,16 +14,17 @@ export const metadata = {
 const inter = Inter({ subsets: ['latin'] })
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
-  const headerData = await getCachedGlobal('header')()
-  const footerData = await getCachedGlobal('footer')()
-  const { logo, nav, button } = headerData
+  const headerData = await getCachedGlobal('header')() as Header
+  const footerData = await getCachedGlobal('footer')() as Footer
+
+
 
   return (
     <html lang="en">
       <body>
-        <Header logo={logo} nav={nav} button={button} />
+        <HeaderComponent headerData={headerData} />
         <main className={inter.className}>{children}</main>
-        <Footer
+        <FooterComponent
          footerData={footerData}
         />
       </body>

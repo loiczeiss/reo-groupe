@@ -2,7 +2,6 @@ import React, { Fragment } from 'react'
 
 import type { Page } from '@/payload-types'
 import { HeroBlock } from '@/blocks/Hero/Hero-block'
-import { TextBlock } from '@/blocks/Text/Text-block'
 import { TextAndFourImagesBlock } from '@/blocks/text-and-four-images'
 import { ThreeByThreeContentBlock } from '@/blocks/three-by-three-content'
 import { WhyUsBlock } from '@/blocks/why-us'
@@ -20,7 +19,6 @@ import { MidHeroBlock } from '@/blocks/mid-hero'
 
 const blockComponents = {
   hero: HeroBlock,
-  text: TextBlock, // if you have this block component
   textAndFourImages: TextAndFourImagesBlock,
   threeByThreeContent: ThreeByThreeContentBlock,
   whyUs: WhyUsBlock,
@@ -56,6 +54,7 @@ export const RenderBlocks: React.FC<{
             if (Block) {
               return (
                 <div key={index}>
+                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any*/}
                   <Block {...(block as any)} />
                 </div>
               )

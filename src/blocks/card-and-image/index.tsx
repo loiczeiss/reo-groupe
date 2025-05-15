@@ -29,10 +29,10 @@ interface CardAndImageBlockProps {
 
 export function CardAndImageBlock(props: CardAndImageBlockProps) {
   const { title, cardGroupArray, bgImage } = props
-  const [api, setApi] = useState<CarouselApi>()
+  const [_api, setApi] = useState<CarouselApi>()
 
   const [isLoaded, setIsLoaded] = useState(false)
-  const [imagesLoaded, setImagesLoaded] = useState<Record<number, boolean>>({})
+  const [_imagesLoaded, setImagesLoaded] = useState<Record<number, boolean>>({})
 
 
 
@@ -123,7 +123,7 @@ export function CardAndImageBlock(props: CardAndImageBlockProps) {
 
                     {/* Quote with multi-line ellipsis */}
                     <blockquote className="italic text-xs sm:text-sm md:text-base lg:text-lg max-h-[8rem] overflow-y-auto whitespace-pre-wrap break-words">
-                      "{item.cardGroup.thoughts || 'No thoughts provided'}"
+                      {`"${item.cardGroup.thoughts || 'No thoughts provided'}"`}
                     </blockquote>
                   </div>
 

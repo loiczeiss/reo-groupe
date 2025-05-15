@@ -1,13 +1,12 @@
-import { headers as getHeaders } from 'next/headers'
 import { getPayload, RequiredDataFromCollectionSlug } from 'payload'
 import React, { cache } from 'react'
-import { Metadata } from 'next'
+import { Metadata, ResolvingMetadata } from 'next'
 
 import config from '@payload-config'
 import '../styles.css'
 import { RenderBlocks } from '@/utilities/renderBlocks'
 import { generateMeta } from '@/utilities/generateMeta'
-
+import { notFound, redirect } from 'next/navigation'
 
 
 export async function generateStaticParams() {
@@ -18,59 +17,70 @@ export async function generateStaticParams() {
     draft: false,
     limit: 1000,
     overrideAccess: false,
-
-
   })
 
-  return pages.docs
-    .filter((doc) => doc.slug !== 'home')
-    .map(({ slug }) => ({ slug }))
+  return pages.docs.filter((doc) => doc.slug !== 'home').map(({ slug }) => ({ slug }))
 }
-//
-// // 👇 Page component
+
+// Updated Props type to reflect that params is now a Promise
 type Props = {
-  params: {
-    slug?: string
-  }
+  params: Promise<{
+    slug: string
+  }>
 }
 
 export default async function HomePage({ params }: Props) {
-  const slug = params?.slug || 'home'
-
+  // Await the params
+  const { slug } = await params
+  if (slug === 'home') {
+    redirect('/')  // Redirect to root URL
+  }
   const page = await queryPageBySlug(slug)
 
-  if (!page) return <div>Page not found</div>
+  if (!page) return notFound()
 
   return (
-    <div >
+    <div>
       <RenderBlocks blocks={page.layout} />
     </div>
   )
 }
+
+// Updated Args type to reflect that params is now a Promise
 type Args = {
   params: Promise<{
-    slug?: string
+    slug: string
   }>
 }
-export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
-  const { slug = 'home' } = await paramsPromise
-  const page = await queryPageBySlug(slug)
+
+export async function generateMetadata(
+  { params }: Args,
+  _parent: ResolvingMetadata,
+): Promise<Metadata> {
+  // Await the params
+  const { slug } = await params
+  const finalSlug = slug || 'home'
+
+  const page = await queryPageBySlug(finalSlug)
   return generateMeta({ doc: page })
 }
-// 👇 Cached query for page by slug
-const queryPageBySlug = cache(async (slug: string): Promise<RequiredDataFromCollectionSlug<'pages'> | null> => {
-  const payload = await getPayload({ config })
 
-  const result = await payload.find({
-    collection: 'pages',
-    limit: 1,
-    pagination: false,
-    where: {
-      slug: {
-        equals: slug,
+// Cached query for page by slug
+const queryPageBySlug = cache(
+  async (slug: string): Promise<RequiredDataFromCollectionSlug<'pages'> | null> => {
+    const payload = await getPayload({ config })
+
+    const result = await payload.find({
+      collection: 'pages',
+      limit: 1,
+      pagination: false,
+      where: {
+        slug: {
+          equals: slug,
+        },
       },
-    },
-  })
+    })
 
-  return result.docs?.[0] || null
-})
+    return result.docs?.[0] || null
+  },
+)

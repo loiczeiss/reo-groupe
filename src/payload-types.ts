@@ -195,12 +195,6 @@ export interface Page {
             blockType: 'hero';
           }
         | {
-            content?: string | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'text';
-          }
-        | {
             heading?: string | null;
             description?: string | null;
             subheading1?: string | null;
@@ -696,13 +690,6 @@ export interface PagesSelect<T extends boolean = true> {
                           url?: T;
                         };
                   };
-              id?: T;
-              blockName?: T;
-            };
-        text?:
-          | T
-          | {
-              content?: T;
               id?: T;
               blockName?: T;
             };

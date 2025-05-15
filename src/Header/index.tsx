@@ -1,25 +1,15 @@
 "use client"
 
-import { Media } from '@/payload-types'
+import { Header } from '@/payload-types'
 import { HeaderDesktop } from '@/Header/Header-desktop'
 import { useEffect, useState } from 'react'
 import { HeaderMobile } from '@/Header/Header-mobile'
 
 export interface HeaderProps {
-  logo: Media
-  nav:{
-    id: string
-    navItemName: string,
-    navItemUrl: string,
-    navItemLogo: Media
-  }[],
-  button: {
-    label: string
-  url: string
-}
+headerData: Header
 }
 
-export function Header(props: HeaderProps){
+export function HeaderComponent(props: HeaderProps){
   function useWindowWidth() {
     const [width, setWidth] = useState<number | null>(null)
 

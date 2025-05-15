@@ -8,7 +8,6 @@ import {
 import { QuoteForm } from '@/blocks/quote-form/config'
 import { contactForm } from '@/blocks/contact-form/config'
 import { Hero } from '@/blocks/Hero/Hero'
-import { TextContent } from '@/blocks/Text/text'
 import { TextAndFourImages } from '@/blocks/text-and-four-images/config'
 import { ThreeByThreeContent } from '@/blocks/three-by-three-content/config'
 import { WhyUs } from '@/blocks/why-us/config'
@@ -59,7 +58,6 @@ const Pages: CollectionConfig = {
       type: 'blocks',
       blocks: [
         Hero,
-        TextContent,
         TextAndFourImages,
         ThreeByThreeContent,
         WhyUs,
