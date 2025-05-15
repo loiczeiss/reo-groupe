@@ -484,7 +484,6 @@ export interface Page {
             };
             button?: {
               label?: string | null;
-              url?: string | null;
             };
             requiredIndication?: string | null;
             consentText?: {
@@ -1060,7 +1059,6 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     label?: T;
-                    url?: T;
                   };
               requiredIndication?: T;
               consentText?:

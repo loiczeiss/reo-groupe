@@ -1,4 +1,3 @@
-
 import { Input } from '@/components/ui/input'
 import {
   Select,
@@ -12,6 +11,10 @@ import { Textarea } from '@/components/ui/textarea'
 import { Media } from '@/payload-types'
 import Image from 'next/image'
 import StyledButton from '@/components/Styled-button/Styled-button'
+import { contactFormSchema, defaultValues } from '@/blocks/contact-form/formSchema'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 interface ContactFormBlockProps {
   title?: string
@@ -56,6 +59,7 @@ interface ContactFormBlockProps {
   }
 
   image: Media
+  requiredIndication: string
 }
 
 export function ContactFormBlock(props: ContactFormBlockProps) {
@@ -71,7 +75,18 @@ export function ContactFormBlock(props: ContactFormBlockProps) {
     mail,
     consentText,
     image,
+    requiredIndication,
   } = props
+
+  const form = useForm<z.infer<typeof contactFormSchema>>({
+    mode: 'onChange',
+    resolver: zodResolver(contactFormSchema),
+    defaultValues,
+  })
+
+  const onSubmit: SubmitHandler<z.infer<typeof contactFormSchema>> = (values) => {
+    console.log(values)
+  }
 
   return (
     <div className={'max-sm:px-8 max-sm:py-4 sm:p-8'}>
@@ -83,24 +98,32 @@ export function ContactFormBlock(props: ContactFormBlockProps) {
               {description}
             </p>
 
-            <form className="space-y-4">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label htmlFor="firstname" className="block text-[12px] sm:text-sm max-sm:leading-tight">
+                  <label
+                    htmlFor="firstname"
+                    className="block text-[12px] sm:text-sm max-sm:leading-tight"
+                  >
                     {firstName.label}
                   </label>
                   <Input
                     id="firstname"
                     placeholder={firstName.placeholder}
+                    {...form.register('firstName')}
                     className="bg-[#7dac51] border-none placeholder:text-white/70 text-white h-10 max-sm:text-[12px] max-sm:leading-tight max-sm:h-6"
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label htmlFor="lastname" className="block text-[12px] sm:text-sm max-sm:leading-tight">
+                  <label
+                    htmlFor="lastname"
+                    className="block text-[12px] sm:text-sm max-sm:leading-tight"
+                  >
                     {lastName.label}
                   </label>
                   <Input
                     id="lastname"
+                    {...form.register('lastName')}
                     placeholder={lastName.placeholder}
                     className="bg-[#7dac51] border-none placeholder:text-white/70 text-white h-10 max-sm:text-[12px] max-sm:leading-tight max-sm:h-6"
                   />
@@ -111,46 +134,62 @@ export function ContactFormBlock(props: ContactFormBlockProps) {
                 <label htmlFor="type" className="block text-[12px] sm:text-sm max-sm:leading-tight">
                   {select[0].label}
                 </label>
-                <Select>
-                  <SelectTrigger className="bg-[#7dac51] border-none text-white h-6 sm:h-10 max-sm:text-[12px]">
-                    <SelectValue placeholder={select[0].placeholder} />
-                  </SelectTrigger>
+                <Controller
+                  control={form.control}
+                  name="whoAreYou"
+                  render={({ field }) => (
+                    <Select value={field.value} onValueChange={field.onChange}>
+                      <SelectTrigger className="bg-[#7dac51] border-none text-white h-6 sm:h-10 max-sm:text-[12px]">
+                        <SelectValue placeholder={select[0].placeholder} />
+                      </SelectTrigger>
 
-                  <SelectContent className={'bg-[#6b9a3e] border-[bg-[#7dac51] text-white' }>
-                    {select[0].selections.map((item, i) => (
-                      <SelectItem value={item.selection} key={i} className={'focus:bg-[#7dac51] hover:bg-[#7dac51]'}>
-                        {item.selection}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                      <SelectContent className={'bg-[#6b9a3e] border-[bg-[#7dac51] text-white'}>
+                        {select[0].selections.map((item, i) => (
+                          <SelectItem
+                            value={item.selection}
+                            key={i}
+                            className={'focus:bg-[#7dac51] hover:bg-[#7dac51]'}
+                          >
+                            {item.selection}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="email" className="block text-[12px] sm:text-sm max-sm:leading-tight">
+                <label
+                  htmlFor="email"
+                  className="block text-[12px] sm:text-sm max-sm:leading-tight"
+                >
                   {mail.label}
                 </label>
                 <Input
                   id="email"
+                  {...form.register('mail')}
                   type="email"
                   placeholder={mail.placeholder}
                   className="bg-[#7dac51] border-none placeholder:text-white/70 text-white h-10 max-sm:text-[12px] max-sm:leading-tight max-sm:h-6"
                 />
               </div>
 
-
-
               <div className="space-y-1.5">
-                <label htmlFor="description" className="block text-[12px] sm:text-sm max-sm:leading-tight">
+                <label
+                  htmlFor="description"
+                  className="block text-[12px] sm:text-sm max-sm:leading-tight"
+                >
                   {descriptionInput.label}
                 </label>
                 <Textarea
                   id="description"
+                  {...form.register("question")}
                   placeholder={descriptionInput.placeholder}
                   className="bg-[#7dac51] border-none placeholder:text-white/70 text-white min-h-[120px] resize-none max-sm:text-[12px]"
                 />
               </div>
-
+              <p className={'text-[9px]'}>{requiredIndication}</p>
               <div className="flex justify-center mt-6">
                 <StyledButton
                   className={'text-[12px] sm:text-[12px] p-4 max-sm:h-5  text-[#7dac51]'}

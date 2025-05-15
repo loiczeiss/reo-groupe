@@ -68,10 +68,10 @@ export const contactForm: Block = {
       type: 'group',
       fields: [
         { name: 'label', label: 'Label', type: 'text' },
-        { name: 'url', label: 'URL', type: 'text' },
+
       ],
     },
-    {name:"requiredIndication", label: "texte indication de champs requis", type:"text"},
+    { name: 'requiredIndication', label: 'texte indication de champs requis', type: 'text' },
     {
       name: 'consentText',
       label: 'Texte de consentement',
@@ -112,6 +112,6 @@ export const contactForm: Block = {
       label: 'Avis de copyright',
       type: 'text',
     },
-    { name: 'image', label: 'Image', type: 'upload', relationTo: 'media', required:true},
+    { name: 'image', label: 'Image', type: 'upload', relationTo: 'media', required: true },
   ],
 }
