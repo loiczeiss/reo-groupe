@@ -88,7 +88,7 @@ export function FooterComponent(props: FooterProps) {
                     {button?.[0]?.label && button?.[0]?.url && (
                       <StyledButton
                         button={{ label: button[0].label, url: button[0].url }}
-                        className="max-lg:h-6 md:px-2 max-lg:pl-3 text-[#7ab51d] text-[7px] sm:text-[11px] lg:text-base"
+                        className="max-lg:h-6 md:px-2 max-lg:pl-2 max-sm:h-5 text-[#7ab51d] text-[7px] sm:text-[11px] lg:text-base"
                         iconClassName="h-2 w-2 md:w-3 md:h-3"
                         bgColor="#232548"
                       />
@@ -97,23 +97,23 @@ export function FooterComponent(props: FooterProps) {
                     {button?.[1]?.label && button?.[1]?.url && (
                       <StyledButton
                         button={{ label: button[1].label, url: button[1].url }}
-                        className="max-lg:h-6 md:px-2 max-lg:pl-3 text-[#7ab51d] text-[7px] sm:text-[11px] lg:text-base"
+                        className="max-lg:h-6 md:px-2 max-lg:pl-2 max-sm:h-5 text-[#7ab51d] text-[7px] sm:text-[11px] lg:text-base"
                         iconClassName="h-2 w-2 md:w-3 md:h-3"
                         bgColor="#FFF"
                       />
                     )}
                   </div>
 
-                  <div className="flex gap-6 mt-2 sm:mt-12 mb-2 sm:mb-4">
+                  <div className="flex gap-6 mt-4 sm:mt-12 mb-2 sm:mb-4">
                     {socials?.map((item, i) => (
                       <Link
                         href={item.url || '#'}
                         key={i}
-                        className="text-white hover:text-slate-900 h-2 w-2 sm:h-6 sm:w-6"
+                        className="text-white hover:text-slate-900 h-4 w-4 sm:h-6 sm:w-6"
                       >
                         {typeof item.logo !== 'number' && item.logo?.url ? (
                           item.logo.url.endsWith('.svg') ? (
-                            <SvgFromUrl url={item.logo.url} alt={item.logo.alt} className={"h-2 w-2 sm:h-6 sm:w-6"} />
+                            <SvgFromUrl url={item.logo.url} alt={item.logo.alt} className={"h-4 w-4 sm:h-6 sm:w-6 text-[#232548]"} />
                           ) : (
                             <Image src={item.logo.url} alt={item.logo.alt} fill />
                           )
@@ -130,7 +130,7 @@ export function FooterComponent(props: FooterProps) {
                         <Link
                           key={i}
                           href={item.navUrl as string}
-                          className="block text-white hover:underline text-[10px] lg:text-base max-sm:leading-tight"
+                          className="block text-white hover:underline text-[8px] md:text-base max-sm:leading-tight"
                         >
                           {item.navText}
                         </Link>
@@ -142,7 +142,7 @@ export function FooterComponent(props: FooterProps) {
             </div>
 
 
-              <div className=" flex flex-row justify-between w-full max-sm:leading-tight text-[6px] sm:text-[10px] md:text-sm mt-8 md:mt-0  self-center sm:self-end">
+              <div className=" flex flex-row justify-between w-full max-sm:leading-tight text-[6px] sm:text-[10px] md:text-sm mt-4 md:mt-0  self-center sm:self-end">
                 <p> {copyrightText}</p>
                 <div className="space-x-4 ">
                   <Link
