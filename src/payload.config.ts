@@ -8,18 +8,23 @@ import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 import {Users} from "@/collections/users";
 import {Media} from "@/collections/media";
-
+import { Pages } from '@/collections/pages'
+import { Header } from '@/Header/config'
+import { Footer } from '@/Footer/config'
+import { plugins } from './plugins'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+
   admin: {
     user: Users.slug,
     importMap: {
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, Pages],
+  globals:[Header, Footer],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -32,6 +37,7 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
+    ...plugins,
     payloadCloudPlugin(),
     // storage-adapter-placeholder
   ],

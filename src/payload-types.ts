@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    pages: Page;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -77,6 +78,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -84,8 +86,14 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    header: Header;
+    footer: Footer;
+  };
+  globalsSelect: {
+    header: HeaderSelect<false> | HeaderSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -151,6 +159,384 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: number;
+  name: string;
+  title: string;
+  slug: string;
+  layout?:
+    | (
+        | {
+            title?: string | null;
+            description?: string | null;
+            backgroundImage?: (number | null) | Media;
+            images?: {
+              image1?: (number | null) | Media;
+              image2?: (number | null) | Media;
+              image3?: (number | null) | Media;
+              image4?: (number | null) | Media;
+              image5?: (number | null) | Media;
+              image6?: (number | null) | Media;
+            };
+            buttonGroup?: {
+              aboutButton?: {
+                label?: string | null;
+                url?: string | null;
+              };
+              priceButton?: {
+                label?: string | null;
+                url?: string | null;
+              };
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'hero';
+          }
+        | {
+            heading: string;
+            description: string;
+            subheading1: string;
+            subcontent1: string;
+            subheading2: string;
+            subcontent2: string;
+            images: {
+              image1: number | Media;
+              image2: number | Media;
+              image3: number | Media;
+              image4: number | Media;
+            };
+            bgImage?: (number | null) | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'textAndFourImages';
+          }
+        | {
+            headingGroup: {
+              heading: string;
+              headingSpan: string;
+            };
+            description: string;
+            images?:
+              | {
+                  image: number | Media;
+                  alt?: string | null;
+                  services: string;
+                  servicesDescription: string;
+                  id?: string | null;
+                }[]
+              | null;
+            button: {
+              label: string;
+              url: string;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'threeByThreeContent';
+          }
+        | {
+            headingGroup: {
+              heading: string;
+              headingSpan: string;
+              headingDescription: string;
+            };
+            subheadingGroup1: {
+              subheading: string;
+              subheadingDescription: string;
+              subheadingLogo: number | Media;
+            };
+            subheadingGroup2: {
+              subheading: string;
+              subheadingDescription: string;
+              subheadingLogo: number | Media;
+            };
+            subheadingGroup3: {
+              subheading: string;
+              subheadingDescription: string;
+              subheadingLogo: number | Media;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'whyUs';
+          }
+        | {
+            headingGroup: {
+              heading: {
+                heading0: string;
+                headingSpan1: string;
+                headingSpan2: string;
+                headingSpan3: string;
+              };
+              headingDescription: string;
+            };
+            images?:
+              | {
+                  image: number | Media;
+                  alt?: string | null;
+                  completeExpertName: string;
+                  expertDescription: string;
+                  id?: string | null;
+                }[]
+              | null;
+            CTAButton: {
+              label: string;
+              url: string;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contentCarousel';
+          }
+        | {
+            title: string;
+            bgImage: number | Media;
+            cardGroupArray: {
+              cardGroup: {
+                fullName: string;
+                profession: string;
+                thoughts: string;
+                picture: number | Media;
+              };
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'CardAndImage';
+          }
+        | {
+            title: {
+              titleSpan1: string;
+              titleSpan2: string;
+            };
+            description?: string | null;
+            subDescription: string;
+            images?:
+              | {
+                  image: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'realisationsCarousel';
+          }
+        | {
+            title: string;
+            description: string;
+            questionsArray: {
+              question: string;
+              answer: string;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faqComponent';
+          }
+        | {
+            title: string;
+            logo: number | Media;
+            certificationArray: {
+              textContent: string;
+              textSubContent: string;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'certificationSection';
+          }
+        | {
+            nameInput: {
+              label: string;
+              placeholder: string;
+            };
+            mailInput: {
+              label: string;
+              placeholder: string;
+            };
+            select: {
+              label: string;
+              placeholder: string;
+              selections: {
+                selection: string;
+                id?: string | null;
+              }[];
+              id?: string | null;
+            }[];
+            dateInput: {
+              label: string;
+            };
+            otherInput: {
+              label: string;
+              placeholder: string;
+            };
+            detailsInput: {
+              label: string;
+              placeholder: string;
+            };
+            checkboxGroup: {
+              checkboxText: string;
+              conditions: string;
+              conditionsURL: string;
+            };
+            requiredIndication: string;
+            buttonGroup: {
+              label: string;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'bookingForm';
+          }
+        | {
+            title: string;
+            description: string;
+            firstName: {
+              label: string;
+              placeholder: string;
+            };
+            lastName: {
+              label: string;
+              placeholder: string;
+            };
+            select: {
+              label: string;
+              placeholder: string;
+              selections: {
+                selection: string;
+                id?: string | null;
+              }[];
+              id?: string | null;
+            }[];
+            mail: {
+              label: string;
+              placeholder: string;
+            };
+            descriptionInput: {
+              label: string;
+              placeholder: string;
+            };
+            button: {
+              label: string;
+            };
+            consentText: {
+              prefix: string;
+              termsLabel: {
+                texte: string;
+                url?: string | null;
+              };
+              andSeparator: string;
+              privacyLabel: {
+                texte: string;
+                url?: string | null;
+              };
+            };
+            copyrightNotice: string;
+            requiredIndication: string;
+            image: number | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'quoteForm';
+          }
+        | {
+            title: string;
+            description: string;
+            firstName: {
+              label: string;
+              placeholder: string;
+            };
+            lastName: {
+              label: string;
+              placeholder: string;
+            };
+            select: {
+              label: string;
+              placeholder: string;
+              selections: {
+                selection: string;
+                id?: string | null;
+              }[];
+              id?: string | null;
+            }[];
+            mail: {
+              label: string;
+              placeholder: string;
+            };
+            descriptionInput: {
+              label: string;
+              placeholder: string;
+            };
+            button: {
+              label: string;
+            };
+            requiredIndication: string;
+            consentText: {
+              prefix: string;
+              termsLabel: {
+                texte: string;
+                url?: string | null;
+              };
+              andSeparator: string;
+              privacyLabel: {
+                texte: string;
+                url?: string | null;
+              };
+            };
+            copyrightNotice: string;
+            image: number | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contactForm';
+          }
+        | {
+            title: string;
+            telephone: {
+              number: string;
+              subheading: string;
+            };
+            mail: {
+              email: string;
+              subheading: string;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contactSection';
+          }
+        | {
+            testimonials?:
+              | {
+                  name: string;
+                  rating: number;
+                  review: string;
+                  image: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'testimonialCarousel';
+          }
+        | {
+            bgImage?: (number | null) | Media;
+            heading: string;
+            description: string;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'midHero';
+          }
+      )[]
+    | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -163,6 +549,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: number | Page;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -241,6 +631,497 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  name?: T;
+  title?: T;
+  slug?: T;
+  layout?:
+    | T
+    | {
+        hero?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              backgroundImage?: T;
+              images?:
+                | T
+                | {
+                    image1?: T;
+                    image2?: T;
+                    image3?: T;
+                    image4?: T;
+                    image5?: T;
+                    image6?: T;
+                  };
+              buttonGroup?:
+                | T
+                | {
+                    aboutButton?:
+                      | T
+                      | {
+                          label?: T;
+                          url?: T;
+                        };
+                    priceButton?:
+                      | T
+                      | {
+                          label?: T;
+                          url?: T;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        textAndFourImages?:
+          | T
+          | {
+              heading?: T;
+              description?: T;
+              subheading1?: T;
+              subcontent1?: T;
+              subheading2?: T;
+              subcontent2?: T;
+              images?:
+                | T
+                | {
+                    image1?: T;
+                    image2?: T;
+                    image3?: T;
+                    image4?: T;
+                  };
+              bgImage?: T;
+              id?: T;
+              blockName?: T;
+            };
+        threeByThreeContent?:
+          | T
+          | {
+              headingGroup?:
+                | T
+                | {
+                    heading?: T;
+                    headingSpan?: T;
+                  };
+              description?: T;
+              images?:
+                | T
+                | {
+                    image?: T;
+                    alt?: T;
+                    services?: T;
+                    servicesDescription?: T;
+                    id?: T;
+                  };
+              button?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        whyUs?:
+          | T
+          | {
+              headingGroup?:
+                | T
+                | {
+                    heading?: T;
+                    headingSpan?: T;
+                    headingDescription?: T;
+                  };
+              subheadingGroup1?:
+                | T
+                | {
+                    subheading?: T;
+                    subheadingDescription?: T;
+                    subheadingLogo?: T;
+                  };
+              subheadingGroup2?:
+                | T
+                | {
+                    subheading?: T;
+                    subheadingDescription?: T;
+                    subheadingLogo?: T;
+                  };
+              subheadingGroup3?:
+                | T
+                | {
+                    subheading?: T;
+                    subheadingDescription?: T;
+                    subheadingLogo?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        contentCarousel?:
+          | T
+          | {
+              headingGroup?:
+                | T
+                | {
+                    heading?:
+                      | T
+                      | {
+                          heading0?: T;
+                          headingSpan1?: T;
+                          headingSpan2?: T;
+                          headingSpan3?: T;
+                        };
+                    headingDescription?: T;
+                  };
+              images?:
+                | T
+                | {
+                    image?: T;
+                    alt?: T;
+                    completeExpertName?: T;
+                    expertDescription?: T;
+                    id?: T;
+                  };
+              CTAButton?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        CardAndImage?:
+          | T
+          | {
+              title?: T;
+              bgImage?: T;
+              cardGroupArray?:
+                | T
+                | {
+                    cardGroup?:
+                      | T
+                      | {
+                          fullName?: T;
+                          profession?: T;
+                          thoughts?: T;
+                          picture?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        realisationsCarousel?:
+          | T
+          | {
+              title?:
+                | T
+                | {
+                    titleSpan1?: T;
+                    titleSpan2?: T;
+                  };
+              description?: T;
+              subDescription?: T;
+              images?:
+                | T
+                | {
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        faqComponent?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              questionsArray?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        certificationSection?:
+          | T
+          | {
+              title?: T;
+              logo?: T;
+              certificationArray?:
+                | T
+                | {
+                    textContent?: T;
+                    textSubContent?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        bookingForm?:
+          | T
+          | {
+              nameInput?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              mailInput?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              select?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                    selections?:
+                      | T
+                      | {
+                          selection?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              dateInput?:
+                | T
+                | {
+                    label?: T;
+                  };
+              otherInput?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              detailsInput?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              checkboxGroup?:
+                | T
+                | {
+                    checkboxText?: T;
+                    conditions?: T;
+                    conditionsURL?: T;
+                  };
+              requiredIndication?: T;
+              buttonGroup?:
+                | T
+                | {
+                    label?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        quoteForm?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              firstName?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              lastName?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              select?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                    selections?:
+                      | T
+                      | {
+                          selection?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              mail?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              descriptionInput?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              button?:
+                | T
+                | {
+                    label?: T;
+                  };
+              consentText?:
+                | T
+                | {
+                    prefix?: T;
+                    termsLabel?:
+                      | T
+                      | {
+                          texte?: T;
+                          url?: T;
+                        };
+                    andSeparator?: T;
+                    privacyLabel?:
+                      | T
+                      | {
+                          texte?: T;
+                          url?: T;
+                        };
+                  };
+              copyrightNotice?: T;
+              requiredIndication?: T;
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        contactForm?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              firstName?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              lastName?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              select?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                    selections?:
+                      | T
+                      | {
+                          selection?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              mail?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              descriptionInput?:
+                | T
+                | {
+                    label?: T;
+                    placeholder?: T;
+                  };
+              button?:
+                | T
+                | {
+                    label?: T;
+                  };
+              requiredIndication?: T;
+              consentText?:
+                | T
+                | {
+                    prefix?: T;
+                    termsLabel?:
+                      | T
+                      | {
+                          texte?: T;
+                          url?: T;
+                        };
+                    andSeparator?: T;
+                    privacyLabel?:
+                      | T
+                      | {
+                          texte?: T;
+                          url?: T;
+                        };
+                  };
+              copyrightNotice?: T;
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        contactSection?:
+          | T
+          | {
+              title?: T;
+              telephone?:
+                | T
+                | {
+                    number?: T;
+                    subheading?: T;
+                  };
+              mail?:
+                | T
+                | {
+                    email?: T;
+                    subheading?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        testimonialCarousel?:
+          | T
+          | {
+              testimonials?:
+                | T
+                | {
+                    name?: T;
+                    rating?: T;
+                    review?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        midHero?:
+          | T
+          | {
+              bgImage?: T;
+              heading?: T;
+              description?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
@@ -270,6 +1151,162 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header".
+ */
+export interface Header {
+  id: number;
+  logo?: (number | null) | Media;
+  nav?:
+    | {
+        navItemName?: string | null;
+        navItemUrl?: string | null;
+        navItemLogo?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  button?: {
+    label?: string | null;
+    url?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: number;
+  heading?: string | null;
+  mailInput?: {
+    inputPlaceholder?: string | null;
+    buttonLabel?: string | null;
+  };
+  images?:
+    | {
+        image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  bgImage?: (number | null) | Media;
+  subheading?: string | null;
+  button?:
+    | {
+        label?: string | null;
+        url?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  socials?:
+    | {
+        logo?: (number | null) | Media;
+        url?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  copyrightText?: string | null;
+  confidentiality?: {
+    confidentialityText?: string | null;
+    confidentialityURL?: string | null;
+  };
+  legalNotice?: {
+    legalNoticeText?: string | null;
+    legalNoticeURL?: string | null;
+  };
+  navArray?:
+    | {
+        navText?: string | null;
+        navUrl?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header_select".
+ */
+export interface HeaderSelect<T extends boolean = true> {
+  logo?: T;
+  nav?:
+    | T
+    | {
+        navItemName?: T;
+        navItemUrl?: T;
+        navItemLogo?: T;
+        id?: T;
+      };
+  button?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  heading?: T;
+  mailInput?:
+    | T
+    | {
+        inputPlaceholder?: T;
+        buttonLabel?: T;
+      };
+  images?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  bgImage?: T;
+  subheading?: T;
+  button?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+        id?: T;
+      };
+  socials?:
+    | T
+    | {
+        logo?: T;
+        url?: T;
+        id?: T;
+      };
+  copyrightText?: T;
+  confidentiality?:
+    | T
+    | {
+        confidentialityText?: T;
+        confidentialityURL?: T;
+      };
+  legalNotice?:
+    | T
+    | {
+        legalNoticeText?: T;
+        legalNoticeURL?: T;
+      };
+  navArray?:
+    | T
+    | {
+        navText?: T;
+        navUrl?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
