@@ -10,7 +10,7 @@ interface WhyUsBlockProps {
 export function WhyUsBlock(props: WhyUsBlockProps) {
   const { headingGroup, subheadingGroup1, subheadingGroup2, subheadingGroup3 } = props
   return (
-    <article className={'w-full flex flex-col md:flex-row px-12 py-10 md:px-0 md:py-7 bg-[#F5F3F3]'}>
+    <article className={'w-full flex flex-col md:flex-row px-12 py-10 md:px-0 md:py-7 bg-[#F5F3F3] font-poppins'}>
       <div className={'flex flex-col justify-start md:justify-center md:w-1/2  md:px-8 md:pr-20'}>
         <h1 className={'text-[#232548] text-[24px] md:text-5xl font-semibold leading-tight'}>{headingGroup.heading}</h1>
         <span className={'text-[#668E2E] text-[24px] md:text-5xl font-semibold leading-tight'}>{headingGroup.headingSpan}</span>

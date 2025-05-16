@@ -21,14 +21,14 @@ export function ContactSectionBlock(props: ContactSectionBlockProps) {
           {/* Phone Card */}
           <div className="bg-[#1e2147] rounded-lg p-8 flex flex-col items-center text-white">
             <Phone className="h-4 w-4 sm:w-10  sm:h-10 mb-4" />
-            <p className="max-sm:text-sm md:text-2xl font-medium mb-3">{telephone.number}</p>
+            <a href={`tel:${telephone.number}`} className="max-sm:text-sm md:text-2xl font-medium mb-3 hover:underline">{telephone.number}</a>
             <p className="max-sm:text-sm text-center opacity-90">{telephone.subheading}</p>
           </div>
 
           {/* Email Card */}
           <div className="bg-[#1e2147] rounded-lg p-8 flex flex-col items-center text-white">
             <Mail className="h-4 w-4 sm:w-10  sm:h-10 mb-4" />
-            <p className="max-sm:text-sm md:text-2xl font-medium mb-3">{mail.email}</p>
+            <a href={`mailto:${mail.email}`} className="max-sm:text-sm md:text-2xl font-medium mb-3 hover:underline">{mail.email}</a>
             <p className="max-sm:text-sm text-center opacity-90">{mail.subheading}</p>
           </div>
         </div>

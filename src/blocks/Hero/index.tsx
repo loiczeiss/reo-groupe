@@ -57,14 +57,14 @@ export function Index(props: HeroBlockProps) {
         <div className="flex space-x-2 w-2/3 shrink-0">
           <StyledButton
             button={buttonGroup.aboutButton}
-            className="h-5 md:h-auto text-[8px] text-[#668E2E] md:text-sm px-1"
+            className="h-5 md:h-auto max-sm:pl-2 text-[6px] text-[#668E2E] md:text-sm px-1"
             bgColor="#232548"
             divColor="#668E2E"
             iconClassName="text-[#232548]"
           />
           <StyledButton
             button={buttonGroup.priceButton}
-            className="h-5 md:h-auto text-[8px] md:text-sm text-[#668E2E] px-1"
+            className="h-5 max-sm:pl-2 md:h-auto text-[6px] md:text-sm text-[#668E2E] px-1"
             bgColor="#fff"
             divColor="#fff"
           />

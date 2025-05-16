@@ -23,7 +23,7 @@ export function TextAndFourImagesBlock(props: TextAndFourImagesProps) {
   return (
     <div
       className={
-        "w-full min-h-screen max-h-fit flex max-sm:flex-col px-4 sm:px-12 py-6 md:py-16 bg-[50%_35%] md:bg-[47%_83%]"
+        "w-full max-h-fit flex max-sm:flex-col px-4 sm:px-12 py-6 md:py-16 bg-[50%_35%] md:bg-[47%_83%]  font-poppins"
       }
       style={{
         backgroundImage: `url(${bgImage?.url})`,

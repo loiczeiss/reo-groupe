@@ -33,7 +33,7 @@ export function RealisationsCarouselBlock(props: RealisationsCarouselBlockProps)
   const imageAspectRatio = '1.4' // width/height ratio (280px/200px = 1.4)
 
   return (
-    <div className="bg-[#EDEDED] py-[4%]">
+    <div className="bg-[#EDEDED] py-[4%] font-poppins">
       <div className="max-w-[90%] w-[1100px] mx-auto text-center">
         <div className={'flex flex-col px-12 sm:px-16 space-y-2'}>
           <h2 className="text-xl sm:text-2xl lg:text-5xl font-bold mb-[2%]">

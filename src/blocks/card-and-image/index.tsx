@@ -52,7 +52,7 @@ export function CardAndImageBlock(props: CardAndImageBlockProps) {
 
 
   return (
-    <div className="w-full">
+    <div className="w-full font-poppins">
       {/* Fixed height container to prevent layout shifts */}
       <div className="relative w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[500px]">
         <Carousel opts={{ align: "start", loop: true }} setApi={setApi} className="absolute inset-0">

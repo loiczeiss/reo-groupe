@@ -57,7 +57,7 @@ export function ContentCarouselBlock(props: ContentCarouselBlockProps) {
   }, [api])
 
   return (
-    <div className="w-full  flex flex-col items-center py-8">
+    <div className="w-full  flex flex-col items-center py-8 font-poppins">
       <div
         className="flex flex-col items-center justify-center text-[#668E2E] w-2/3 space-y-1 md:space-y-4 pb-8 px-8 text-center"
       >

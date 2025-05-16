@@ -87,7 +87,7 @@ export function TestimonialCarouselBlock(props: TestimonialCarouselBlockProps) {
   }
 
   return (
-    <div className="w-full py-12 overflow-hidden">
+    <div className="w-full py-12 overflow-hidden font-poppins">
       <div className="max-w-7xl mx-auto px-4">
         <div className="relative">
           <div
