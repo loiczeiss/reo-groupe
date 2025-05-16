@@ -64,7 +64,7 @@ export function FooterComponent(props: FooterProps) {
 
       {/* Content Section - Rounded with green background */}
       <section
-        className="rounded-2xl  text-white mt-4"
+        className="rounded-2xl  text-white mt-4 "
         style={{
           backgroundImage:
             bgImage && typeof bgImage === 'object' && 'url' in bgImage
