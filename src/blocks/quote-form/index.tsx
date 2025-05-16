@@ -17,6 +17,7 @@ import { defaultValues, quoteFormSchema } from '@/blocks/quote-form/formSchema'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { toast } from 'sonner'
 
 interface QuoteFormBlockProps {
   title?: string
@@ -86,8 +87,21 @@ export function QuoteFormBlock(props: QuoteFormBlockProps) {
     defaultValues,
   })
 
-  const onSubmit: SubmitHandler<z.infer<typeof quoteFormSchema>> = (values) => {
+  const onSubmit: SubmitHandler<z.infer<typeof quoteFormSchema>> = async (values) => {
     console.log(values)
+    const res = await fetch('/api/quote-mail', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(values),
+    });
+
+
+
+    if (!res.ok) {
+    toast.error(`Erreur durant l'envoi du mail`);
+    } else {
+   toast.success('Email envoyé');
+    }
   }
 
   return (
@@ -142,7 +156,7 @@ export function QuoteFormBlock(props: QuoteFormBlockProps) {
                   name="whoAreYou"
                   render={({ field }) => (
                     <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger className="bg-[#7dac51] border-none text-white h-10">
+                      <SelectTrigger className="bg-[#7dac51] border-none text-white h-10 data-[placeholder]:opacity-50">
                         <SelectValue placeholder={select[0].placeholder} />
                       </SelectTrigger>
                       <SelectContent className="bg-[#6b9a3e] border-[#7dac51] text-white">
@@ -157,6 +171,7 @@ export function QuoteFormBlock(props: QuoteFormBlockProps) {
                         ))}
                       </SelectContent>
                     </Select>
+
                   )}
                 />
                 {form.formState.errors.whoAreYou && (
@@ -189,7 +204,7 @@ export function QuoteFormBlock(props: QuoteFormBlockProps) {
                   name="workType"
                   render={({ field }) => (
                     <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger className="bg-[#7dac51] border-none text-white h-10">
+                      <SelectTrigger className="bg-[#7dac51] border-none text-white h-10 data-[placeholder]:opacity-50">
                         <SelectValue placeholder={select[1].placeholder} />
                       </SelectTrigger>
                       <SelectContent className="bg-[#6b9a3e] border-[#7dac51] text-white">

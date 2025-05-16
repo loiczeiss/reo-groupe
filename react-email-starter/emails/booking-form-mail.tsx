@@ -13,26 +13,30 @@ import {
   Img,
 } from '@react-email/components'
 
-interface ContactFormEmailProps {
-  name: string
-  email: string
-  propertyType: 'Résidentielle' | 'Commerciale'
-  workType: 'Isolation' | 'Rénovation' | 'Construction' | 'Aménagement'
-  details: string
-  other: string
-  date: Date
+interface BookingFormEmailProps {
+  props: {
+    name: string
+    email: string
+    serviceType: string
+    propertyType: string
+    date: Date
+    otherRequest?: string
+    projectDetails: string
+  }
 }
 
 const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ''
-export const ContactFormEmail = ({
-                                   name = 'Claire Martin',
-                                   email = 'claire.martin@email.com',
-                                   propertyType = 'Résidentielle',
-                                   workType = 'Rénovation',
-                                   details = 'Je souhaite rénover ma salle de bain et améliorer l’isolation de la maison.',
-                                   other = 'Le chantier pourrait commencer en juillet.',
-                                   date = new Date(),
-}: ContactFormEmailProps) => {
+export const BookingFormEmail = ({
+  props: {
+    name ,
+    email ,
+    propertyType ,
+    serviceType ,
+    projectDetails ,
+    otherRequest ,
+    date = new Date(),
+  },
+}: BookingFormEmailProps) => {
   return (
     <Html>
       <Head />
@@ -56,10 +60,8 @@ export const ContactFormEmail = ({
             <Section className="bg-white px-8 py-10 rounded-b-lg shadow-lg">
               {/* Intro */}
               <Text className="text-[#232548] text-base mb-6">
-                <span className="font-bold">
-                  {name}
-                </span>{' '}
-                a soumis un nouveau projet via le formulaire de contact. Voici les détails:
+                <span className="font-bold">{name}</span> a soumis un nouveau projet via le
+                formulaire de contact. Voici les détails:
               </Text>
 
               {/* Client Info Card */}
@@ -73,9 +75,7 @@ export const ContactFormEmail = ({
                     <Text className="text-gray-500 text-sm m-0">Nom complet</Text>
                   </Column>
                   <Column className="w-2/3">
-                    <Text className="text-[#232548] font-medium m-0">
-                      {name}
-                    </Text>
+                    <Text className="text-[#232548] font-medium m-0">{name}</Text>
                   </Column>
                 </Row>
 
@@ -91,8 +91,6 @@ export const ContactFormEmail = ({
                     </Text>
                   </Column>
                 </Row>
-
-
               </Section>
 
               {/* Project Details Card */}
@@ -104,7 +102,7 @@ export const ContactFormEmail = ({
                     <Text className="text-gray-500 text-sm m-0">Type de travaux</Text>
                   </Column>
                   <Column className="w-2/3">
-                    <Text className="text-[#232548] font-medium m-0">{workType}</Text>
+                    <Text className="text-[#232548] font-medium m-0">{serviceType}</Text>
                   </Column>
                 </Row>
                 <Row className="mb-4">
@@ -120,7 +118,9 @@ export const ContactFormEmail = ({
                     <Text className="text-gray-500 text-sm m-0">Date souhaitée</Text>
                   </Column>
                   <Column className="w-2/3">
-                    <Text className="text-[#232548] font-medium m-0">{date.toLocaleDateString("fr-FR")}</Text>
+                    <Text className="text-[#232548] font-medium m-0">
+                      {date && new Date(date).toLocaleDateString('fr-FR')}
+                    </Text>
                   </Column>
                 </Row>
                 <Row className="mb-4">
@@ -128,12 +128,12 @@ export const ContactFormEmail = ({
                     <Text className="text-gray-500 text-sm m-0">Autre</Text>
                   </Column>
                   <Column className="w-2/3">
-                    <Text className="text-[#232548] font-medium m-0">{other}</Text>
+                    <Text className="text-[#232548] font-medium m-0">{otherRequest}</Text>
                   </Column>
                 </Row>
                 <Text className="text-gray-500 text-sm mb-2">Détails du projet</Text>
                 <Section className="bg-white p-4 rounded border border-gray-200">
-                  <Text className="text-[#232548] whitespace-pre-line m-0">{details}</Text>
+                  <Text className="text-[#232548] whitespace-pre-line m-0">{projectDetails}</Text>
                 </Section>
               </Section>
 
@@ -177,4 +177,4 @@ export const ContactFormEmail = ({
   )
 }
 
-export default ContactFormEmail
+export default BookingFormEmail

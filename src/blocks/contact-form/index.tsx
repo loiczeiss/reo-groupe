@@ -17,6 +17,7 @@ import { contactFormSchema, defaultValues } from '@/blocks/contact-form/formSche
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
+import { toast } from 'sonner'
 
 interface ContactFormBlockProps {
   title?: string
@@ -86,8 +87,20 @@ export function ContactFormBlock(props: ContactFormBlockProps) {
     defaultValues,
   })
 
-  const onSubmit: SubmitHandler<z.infer<typeof contactFormSchema>> = (values) => {
-    console.log(values)
+  const onSubmit: SubmitHandler<z.infer<typeof contactFormSchema>> = async (values) => {
+    const res = await fetch('/api/contact-mail', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(values),
+    });
+
+
+
+    if (!res.ok) {
+      toast.error(`Erreur durant l'envoi du mail`)
+    } else {
+      toast.success('Email envoyé');
+    }
   }
 
   return (
@@ -143,7 +156,7 @@ export function ContactFormBlock(props: ContactFormBlockProps) {
                   render={({ field }) => (
                     <>
                       <Select value={field.value} onValueChange={field.onChange}>
-                        <SelectTrigger className="bg-[#7dac51] border-none text-white h-6 sm:h-10 max-sm:text-[12px]">
+                        <SelectTrigger className="bg-[#7dac51] border-none text-white h-6 sm:h-10 max-sm:text-[12px] data-placeholder:opacity-50">
                           <SelectValue placeholder={select[0].placeholder} />
                         </SelectTrigger>
                         <SelectContent className="bg-[#6b9a3e] text-white">

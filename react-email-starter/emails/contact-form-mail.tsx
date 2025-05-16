@@ -9,28 +9,31 @@ import {
   Text,
   Row,
   Column,
-  Link, Img,
+  Link,
+  Img,
 } from '@react-email/components'
 
 interface ContactFormEmailProps {
-  firstName: string
-  lastName: string
-  email: string
-  role: "Particulier" | "Professionnel" | "Entreprise"
+  props: {
+    firstName: string
+    lastName: string
+    email: string
+    whoAreYou: string
 
-  description: string
+    description: string
+  }
 }
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : '';
-export const ContactFormEmail = ({
-                                   firstName,
-                                   lastName,
-                                   email,
-                                   role,
 
-                                   description,
-                                 }: ContactFormEmailProps) => {
+const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ''
+export const ContactFormEmail = ({
+  props: {
+    firstName,
+    lastName,
+    email,
+    whoAreYou,
+    description,
+  },
+}: ContactFormEmailProps) => {
   return (
     <Html>
       <Head />
@@ -46,7 +49,7 @@ export const ContactFormEmail = ({
                 <Column>
                   <Text className="text-white text-2xl font-bold m-0">Nouveau Projet</Text>
                   <Text className="text-white text-sm m-0 opacity-90">
-                    Formulaire de contact soumis le {new Date().toLocaleDateString("fr-FR")}
+                    Formulaire de contact soumis le {new Date().toLocaleDateString('fr-FR')}
                   </Text>
                 </Column>
               </Row>
@@ -58,13 +61,15 @@ export const ContactFormEmail = ({
               <Text className="text-[#232548] text-base mb-6">
                 <span className="font-bold">
                   {firstName} {lastName}
-                </span>{" "}
+                </span>{' '}
                 a soumis un nouveau projet via le formulaire de contact. Voici les détails:
               </Text>
 
               {/* Client Info Card */}
               <Section className="bg-gray-50 rounded-lg p-6 mb-8 border-l-4 border-[#668E2E]">
-                <Text className="text-[#232548] text-lg font-bold mb-4">Informations du client</Text>
+                <Text className="text-[#232548] text-lg font-bold mb-4">
+                  Informations du client
+                </Text>
 
                 <Row className="mb-4">
                   <Column className="w-1/3">
@@ -95,7 +100,7 @@ export const ContactFormEmail = ({
                     <Text className="text-gray-500 text-sm m-0">Profil</Text>
                   </Column>
                   <Column className="w-2/3">
-                    <Text className="text-[#232548] font-medium m-0">{role}</Text>
+                    <Text className="text-[#232548] font-medium m-0">{whoAreYou}</Text>
                   </Column>
                 </Row>
               </Section>
@@ -103,8 +108,6 @@ export const ContactFormEmail = ({
               {/* Project Details Card */}
               <Section className="bg-gray-50 rounded-lg p-6 mb-6 border-l-4 border-[#668E2E]">
                 <Text className="text-[#232548] text-lg font-bold mb-4">Détails du projet</Text>
-
-
 
                 <Text className="text-gray-500 text-sm mb-2">Description</Text>
                 <Section className="bg-white p-4 rounded border border-gray-200">
@@ -125,17 +128,22 @@ export const ContactFormEmail = ({
 
             {/* Footer */}
             <Section className="text-center mt-6">
-              <Img src={`${baseUrl}/static/logo.png`} className={'mx-auto'} alt={'logo'}  height={48}  />
+              <Img
+                src={`${baseUrl}/static/logo.png`}
+                className={'mx-auto'}
+                alt={'logo'}
+                height={48}
+              />
               <Text className="text-gray-500 text-xs">
                 © {new Date().getFullYear()} REO groupe. Tous droits réservés.
               </Text>
               <Text className="text-gray-500 text-xs">
                 <Link href="#" className="text-[#668E2E] underline">
                   Politique de confidentialité
-                </Link>{" "}
+                </Link>{' '}
                 •
                 <Link href="#" className="text-[#668E2E] underline">
-                  {" "}
+                  {' '}
                   Conditions d'utilisation
                 </Link>
               </Text>

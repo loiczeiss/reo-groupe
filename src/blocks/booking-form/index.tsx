@@ -17,6 +17,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { bookingFormSchema } from '@/blocks/booking-form/formSchema'
 import { z } from 'zod'
+import { toast } from 'sonner';
 
 interface BookingFormBlockProps {
   nameInput: {
@@ -85,11 +86,26 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
     },
   })
 
-  const onSubmit: SubmitHandler<z.infer<typeof bookingFormSchema>> = (values) => {
-    console.log(values)
-  }
 
-  console.log(form.watch('date'))
+  const onSubmit: SubmitHandler<z.infer<typeof bookingFormSchema>> = async (values) => {
+    const { termsAccepted, ...valuesMail } = values;
+
+
+    const res = await fetch('/api/booking-mail', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(valuesMail),
+    });
+
+
+
+    if (!res.ok) {
+   toast.error(`Erreur durant l'envoi du mail`)
+    } else {
+    toast.success('Email envoyé');
+    }
+  };
+
   return (
     <form
       onSubmit={form.handleSubmit(onSubmit)}
