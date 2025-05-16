@@ -12,16 +12,18 @@ export const WhyUs: Block = {
       label: 'groupe de titre',
       type: 'group',
       fields: [
-        { name: 'heading', label: 'titre', type: 'text' },
+        { name: 'heading', label: 'titre', type: 'text', required: true },
         {
           name: 'headingSpan',
           label: 'partie en surbrillance du titre',
           type: 'text',
+          required: true,
         },
         {
           name: 'headingDescription',
           label: 'description du titre',
           type: 'textarea',
+          required: true,
         },
       ],
     },
@@ -30,17 +32,19 @@ export const WhyUs: Block = {
       label: 'groupe de sous-titre 1',
       type: 'group',
       fields: [
-        { name: 'subheading', label: 'sous-titre', type: 'text' },
+        { name: 'subheading', label: 'sous-titre', type: 'text', required: true },
         {
           name: 'subheadingDescription',
           label: 'description du sous-titre',
           type: 'textarea',
+          required: true,
         },
         {
           name: 'subheadingLogo',
           label: 'logo du sous-titre',
           type: 'upload',
           relationTo: 'media',
+          required: true,
         },
       ],
     },
@@ -49,17 +53,19 @@ export const WhyUs: Block = {
       label: 'groupe de sous-titre 2',
       type: 'group',
       fields: [
-        { name: 'subheading', label: 'sous-titre', type: 'text' },
+        { name: 'subheading', label: 'sous-titre', type: 'text', required: true },
         {
           name: 'subheadingDescription',
           label: 'description du sous-titre',
           type: 'textarea',
+          required: true,
         },
         {
           name: 'subheadingLogo',
           label: 'logo du sous-titre',
           type: 'upload',
           relationTo: 'media',
+          required: true,
         },
       ],
     },
@@ -68,17 +74,19 @@ export const WhyUs: Block = {
       label: 'groupe de sous-titre 3',
       type: 'group',
       fields: [
-        { name: 'subheading', label: 'sous-titre', type: 'text' },
+        { name: 'subheading', label: 'sous-titre', type: 'text', required: true },
         {
           name: 'subheadingDescription',
           label: 'description du sous-titre',
           type: 'textarea',
+          required: true,
         },
         {
           name: 'subheadingLogo',
           label: 'logo du sous-titre',
           type: 'upload',
           relationTo: 'media',
+          required: true,
         },
       ],
     },

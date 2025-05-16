@@ -110,7 +110,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
             className="w-full px-4 py-3 rounded bg-[#668E2E] bg-opacity-80 text-white placeholder-white/50 focus:outline-none"
           />
           {form.formState.errors.name && (
-            <p className="text-red-500 text-sm">{form.formState.errors.name.message}</p>
+            <p className="text-red-300 text-sm">{form.formState.errors.name.message}</p>
           )}
         </div>
 
@@ -127,7 +127,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
             className="w-full px-4 py-3 rounded bg-[#668E2E] bg-opacity-80 text-white placeholder-white/50 focus:outline-none"
           />
           {form.formState.errors.email && (
-            <p className="text-red-500 text-sm">{form.formState.errors.email.message}</p>
+            <p className="text-red-300 text-sm">{form.formState.errors.email.message}</p>
           )}
         </div>
 
@@ -162,7 +162,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
             )}
           />
           {form.formState.errors.serviceType && (
-            <p className="text-red-500 text-sm">{form.formState.errors.serviceType.message}</p>
+            <p className="text-red-300 text-sm">{form.formState.errors.serviceType.message}</p>
           )}
         </div>
 
@@ -197,7 +197,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
             )}
           />
           {form.formState.errors.propertyType && (
-            <p className="text-red-500 text-sm">{form.formState.errors.propertyType.message}</p>
+            <p className="text-red-300 text-sm">{form.formState.errors.propertyType.message}</p>
           )}
         </div>
 
@@ -215,7 +215,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
             className="w-full px-4 py-3 rounded bg-[#668E2E] bg-opacity-80 text-white/50 focus:outline-none"
           />
           {form.formState.errors.date && (
-            <p className="text-red-500 text-sm">{form.formState.errors.date.message}</p>
+            <p className="text-red-300 text-sm">{form.formState.errors.date.message}</p>
           )}
         </div>
 
@@ -232,7 +232,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
             className="w-full px-4 py-3 rounded bg-[#668E2E] bg-opacity-80 text-white placeholder-white/50 focus:outline-none"
           />
           {form.formState.errors.otherRequest && (
-            <p className="text-red-500 text-sm">{form.formState.errors.otherRequest.message}</p>
+            <p className="text-red-300 text-sm">{form.formState.errors.otherRequest.message}</p>
           )}
         </div>
 
@@ -285,7 +285,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
             className="w-full px-4 py-3 rounded bg-[#668E2E] bg-opacity-80 text-white placeholder-white/50 focus:outline-none resize-none"
           />
           {form.formState.errors.projectDetails && (
-            <p className="text-red-500 text-sm">{form.formState.errors.projectDetails.message}</p>
+            <p className="text-red-300 text-sm">{form.formState.errors.projectDetails.message}</p>
           )}
 
           {/* Checkbox */}
@@ -310,7 +310,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
             </label>
           </div>
           {form.formState.errors.termsAccepted && (
-            <p className="text-red-500 text-sm">{form.formState.errors.termsAccepted.message}</p>
+            <p className="text-red-300 text-sm">{form.formState.errors.termsAccepted.message}</p>
           )}
         </div>
       </div>

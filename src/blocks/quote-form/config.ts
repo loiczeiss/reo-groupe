@@ -7,16 +7,16 @@ export const QuoteForm: Block = {
     plural: 'Formulaires de devis',
   },
   fields: [
-    { name: 'title', label: 'Titre', type: 'text' },
-    { name: 'description', label: 'Description', type: 'textarea' },
+    { name: 'title', label: 'Titre', type: 'text', required: true },
+    { name: 'description', label: 'Description', type: 'textarea', required: true },
 
     {
       name: 'firstName',
       label: 'Champ Prénom',
       type: 'group',
       fields: [
-        { name: 'label', label: 'Label', type: 'text' },
-        { name: 'placeholder', label: 'Placeholder', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text', required: true },
+        { name: 'placeholder', label: 'Placeholder', type: 'text', required: true },
       ],
     },
     {
@@ -24,24 +24,26 @@ export const QuoteForm: Block = {
       label: 'Champ Nom de famille',
       type: 'group',
       fields: [
-        { name: 'label', label: 'Label', type: 'text' },
-        { name: 'placeholder', label: 'Placeholder', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text', required: true },
+        { name: 'placeholder', label: 'Placeholder', type: 'text', required: true },
       ],
     },
     {
       name: 'select',
       label: 'Sélection multiple',
       type: 'array',
+      required: true,
       minRows: 2,
       fields: [
-        { name: 'label', label: 'Label', type: 'text' },
-        { name: 'placeholder', label: 'Placeholder', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text', required: true },
+        { name: 'placeholder', label: 'Placeholder', type: 'text', required: true },
         {
           name: 'selections',
           label: 'Options de sélection',
           type: 'array',
+          required: true,
           minRows: 2,
-          fields: [{ name: 'selection', label: 'Option', type: 'text' }],
+          fields: [{ name: 'selection', label: 'Option', type: 'text', required: true }],
         },
       ],
     },
@@ -50,8 +52,8 @@ export const QuoteForm: Block = {
       label: 'Champ Email',
       type: 'group',
       fields: [
-        { name: 'label', label: 'Label', type: 'text' },
-        { name: 'placeholder', label: 'Placeholder', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text', required: true },
+        { name: 'placeholder', label: 'Placeholder', type: 'text', required: true },
       ],
     },
     {
@@ -59,18 +61,15 @@ export const QuoteForm: Block = {
       label: 'Champ Description',
       type: 'group',
       fields: [
-        { name: 'label', label: 'Label', type: 'text' },
-        { name: 'placeholder', label: 'Placeholder', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text', required: true },
+        { name: 'placeholder', label: 'Placeholder', type: 'text', required: true },
       ],
     },
     {
       name: 'button',
       label: "Bouton d'envoi",
       type: 'group',
-      fields: [
-        { name: 'label', label: 'Label', type: 'text' },
-
-      ],
+      fields: [{ name: 'label', label: 'Label', type: 'text', required: true }],
     },
     {
       name: 'consentText',
@@ -81,13 +80,14 @@ export const QuoteForm: Block = {
           name: 'prefix',
           label: 'Texte d’introduction',
           type: 'text',
+          required: true,
         },
         {
           name: 'termsLabel',
           label: 'Conditions d’utilisation',
           type: 'group',
           fields: [
-            { name: 'texte', label: 'Texte', type: 'text' },
+            { name: 'texte', label: 'Texte', type: 'text', required: true },
             { name: 'url', label: 'URL', type: 'text' },
           ],
         },
@@ -95,13 +95,14 @@ export const QuoteForm: Block = {
           name: 'andSeparator',
           label: "Texte séparateur (ex. : 'et')",
           type: 'text',
+          required: true,
         },
         {
           name: 'privacyLabel',
           label: 'Politique de confidentialité',
           type: 'group',
           fields: [
-            { name: 'texte', label: 'Texte', type: 'text' },
+            { name: 'texte', label: 'Texte', type: 'text', required: true },
             { name: 'url', label: 'URL', type: 'text' },
           ],
         },
@@ -111,13 +112,20 @@ export const QuoteForm: Block = {
       name: 'copyrightNotice',
       label: 'Mention de droit d’auteur',
       type: 'text',
+      required: true,
     },
-    { name: 'requiredIndication', label: 'texte indication de champs requis', type: 'text' },
+    {
+      name: 'requiredIndication',
+      label: 'texte indication de champs requis',
+      type: 'text',
+      required: true,
+    },
     {
       name: 'image',
       label: 'Image décorative',
       type: 'upload',
       relationTo: 'media',
+      required: true,
     },
   ],
 }

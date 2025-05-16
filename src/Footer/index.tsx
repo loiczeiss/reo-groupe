@@ -29,7 +29,7 @@ export function FooterComponent(props: FooterProps) {
 
   return (
     <main className="bg-gray-100 p-4">
-      {/* Hero Section - Rounded with dark blue background */}
+      {/* Config Section - Rounded with dark blue background */}
       <section className="rounded-2xl bg-[#232548] text-white mb-4 overflow-hidden">
         <div className="flex flex-row gap-4">
           <div className="p-4 sm:p-8 md:p-12 lg:p-16 flex flex-col justify-center w-4/6">
@@ -88,7 +88,7 @@ export function FooterComponent(props: FooterProps) {
                     {button?.[0]?.label && button?.[0]?.url && (
                       <StyledButton
                         button={{ label: button[0].label, url: button[0].url }}
-                        className="max-lg:h-6 md:px-2 text-[#7ab51d] text-[7px] sm:text-[11px] lg:text-xl"
+                        className="max-lg:h-6 md:px-2 max-lg:pl-3 text-[#7ab51d] text-[7px] sm:text-[11px] lg:text-base"
                         iconClassName="h-2 w-2 md:w-3 md:h-3"
                         bgColor="#232548"
                       />
@@ -97,7 +97,7 @@ export function FooterComponent(props: FooterProps) {
                     {button?.[1]?.label && button?.[1]?.url && (
                       <StyledButton
                         button={{ label: button[1].label, url: button[1].url }}
-                        className="max-lg:h-6 md:px-2 text-[#7ab51d] text-[7px] sm:text-[11px] lg:text-xl"
+                        className="max-lg:h-6 md:px-2 max-lg:pl-3 text-[#7ab51d] text-[7px] sm:text-[11px] lg:text-base"
                         iconClassName="h-2 w-2 md:w-3 md:h-3"
                         bgColor="#FFF"
                       />
@@ -109,11 +109,11 @@ export function FooterComponent(props: FooterProps) {
                       <Link
                         href={item.url || '#'}
                         key={i}
-                        className="text-white hover:text-slate-900 h-3 w-3 sm:h-6 sm:w-6"
+                        className="text-white hover:text-slate-900 h-2 w-2 sm:h-6 sm:w-6"
                       >
                         {typeof item.logo !== 'number' && item.logo?.url ? (
                           item.logo.url.endsWith('.svg') ? (
-                            <SvgFromUrl url={item.logo.url} alt={item.logo.alt} />
+                            <SvgFromUrl url={item.logo.url} alt={item.logo.alt} className={"h-2 w-2 sm:h-6 sm:w-6"} />
                           ) : (
                             <Image src={item.logo.url} alt={item.logo.alt} fill />
                           )
@@ -130,7 +130,7 @@ export function FooterComponent(props: FooterProps) {
                         <Link
                           key={i}
                           href={item.navUrl as string}
-                          className="block text-white hover:underline text-[11px] lg:text-xl max-sm:leading-tight"
+                          className="block text-white hover:underline text-[10px] lg:text-base max-sm:leading-tight"
                         >
                           {item.navText}
                         </Link>

@@ -195,17 +195,17 @@ export interface Page {
             blockType: 'hero';
           }
         | {
-            heading?: string | null;
-            description?: string | null;
-            subheading1?: string | null;
-            subcontent1?: string | null;
-            subheading2?: string | null;
-            subcontent2?: string | null;
-            images?: {
-              image1?: (number | null) | Media;
-              image2?: (number | null) | Media;
-              image3?: (number | null) | Media;
-              image4?: (number | null) | Media;
+            heading: string;
+            description: string;
+            subheading1: string;
+            subcontent1: string;
+            subheading2: string;
+            subcontent2: string;
+            images: {
+              image1: number | Media;
+              image2: number | Media;
+              image3: number | Media;
+              image4: number | Media;
             };
             bgImage?: (number | null) | Media;
             id?: string | null;
@@ -213,17 +213,17 @@ export interface Page {
             blockType: 'textAndFourImages';
           }
         | {
-            headingGroup?: {
-              heading?: string | null;
-              headingSpan?: string | null;
+            headingGroup: {
+              heading: string;
+              headingSpan: string;
             };
             description: string;
             images?:
               | {
                   image: number | Media;
                   alt?: string | null;
-                  services?: string | null;
-                  servicesDescription?: string | null;
+                  services: string;
+                  servicesDescription: string;
                   id?: string | null;
                 }[]
               | null;
@@ -236,85 +236,83 @@ export interface Page {
             blockType: 'threeByThreeContent';
           }
         | {
-            headingGroup?: {
-              heading?: string | null;
-              headingSpan?: string | null;
-              headingDescription?: string | null;
+            headingGroup: {
+              heading: string;
+              headingSpan: string;
+              headingDescription: string;
             };
-            subheadingGroup1?: {
-              subheading?: string | null;
-              subheadingDescription?: string | null;
-              subheadingLogo?: (number | null) | Media;
+            subheadingGroup1: {
+              subheading: string;
+              subheadingDescription: string;
+              subheadingLogo: number | Media;
             };
-            subheadingGroup2?: {
-              subheading?: string | null;
-              subheadingDescription?: string | null;
-              subheadingLogo?: (number | null) | Media;
+            subheadingGroup2: {
+              subheading: string;
+              subheadingDescription: string;
+              subheadingLogo: number | Media;
             };
-            subheadingGroup3?: {
-              subheading?: string | null;
-              subheadingDescription?: string | null;
-              subheadingLogo?: (number | null) | Media;
+            subheadingGroup3: {
+              subheading: string;
+              subheadingDescription: string;
+              subheadingLogo: number | Media;
             };
             id?: string | null;
             blockName?: string | null;
             blockType: 'whyUs';
           }
         | {
-            headingGroup?: {
-              heading?: {
-                heading0?: string | null;
-                headingSpan1?: string | null;
-                headingSpan2?: string | null;
-                headingSpan3?: string | null;
+            headingGroup: {
+              heading: {
+                heading0: string;
+                headingSpan1: string;
+                headingSpan2: string;
+                headingSpan3: string;
               };
-              headingDescription?: string | null;
+              headingDescription: string;
             };
             images?:
               | {
                   image: number | Media;
                   alt?: string | null;
-                  completeExpertName?: string | null;
-                  expertDescription?: string | null;
+                  completeExpertName: string;
+                  expertDescription: string;
                   id?: string | null;
                 }[]
               | null;
-            CTAButton?: {
-              label?: string | null;
-              url?: string | null;
+            CTAButton: {
+              label: string;
+              url: string;
             };
             id?: string | null;
             blockName?: string | null;
             blockType: 'contentCarousel';
           }
         | {
-            title?: string | null;
-            bgImage?: (number | null) | Media;
-            cardGroupArray?:
-              | {
-                  cardGroup?: {
-                    fullName?: string | null;
-                    profession?: string | null;
-                    thoughts?: string | null;
-                    picture?: (number | null) | Media;
-                  };
-                  id?: string | null;
-                }[]
-              | null;
+            title: string;
+            bgImage: number | Media;
+            cardGroupArray: {
+              cardGroup: {
+                fullName: string;
+                profession: string;
+                thoughts: string;
+                picture: number | Media;
+              };
+              id?: string | null;
+            }[];
             id?: string | null;
             blockName?: string | null;
             blockType: 'CardAndImage';
           }
         | {
-            title?: {
-              titleSpan1?: string | null;
-              titleSpan2?: string | null;
+            title: {
+              titleSpan1: string;
+              titleSpan2: string;
             };
             description?: string | null;
-            subDescription?: string | null;
+            subDescription: string;
             images?:
               | {
-                  image?: (number | null) | Media;
+                  image: number | Media;
                   id?: string | null;
                 }[]
               | null;
@@ -323,196 +321,180 @@ export interface Page {
             blockType: 'realisationsCarousel';
           }
         | {
-            title?: string | null;
-            description?: string | null;
-            questionsArray?:
-              | {
-                  question?: string | null;
-                  answer?: string | null;
-                  id?: string | null;
-                }[]
-              | null;
+            title: string;
+            description: string;
+            questionsArray: {
+              question: string;
+              answer: string;
+              id?: string | null;
+            }[];
             id?: string | null;
             blockName?: string | null;
             blockType: 'faqComponent';
           }
         | {
-            title?: string | null;
-            logo?: (number | null) | Media;
-            certificationArray?:
-              | {
-                  textContent?: string | null;
-                  textSubContent?: string | null;
-                  id?: string | null;
-                }[]
-              | null;
+            title: string;
+            logo: number | Media;
+            certificationArray: {
+              textContent: string;
+              textSubContent: string;
+              id?: string | null;
+            }[];
             id?: string | null;
             blockName?: string | null;
             blockType: 'certificationSection';
           }
         | {
-            nameInput?: {
-              label?: string | null;
-              placeholder?: string | null;
+            nameInput: {
+              label: string;
+              placeholder: string;
             };
-            mailInput?: {
-              label?: string | null;
-              placeholder?: string | null;
+            mailInput: {
+              label: string;
+              placeholder: string;
             };
-            select?:
-              | {
-                  label?: string | null;
-                  placeholder?: string | null;
-                  selections?:
-                    | {
-                        selection?: string | null;
-                        id?: string | null;
-                      }[]
-                    | null;
-                  id?: string | null;
-                }[]
-              | null;
-            dateInput?: {
-              label?: string | null;
+            select: {
+              label: string;
+              placeholder: string;
+              selections: {
+                selection: string;
+                id?: string | null;
+              }[];
+              id?: string | null;
+            }[];
+            dateInput: {
+              label: string;
             };
-            otherInput?: {
-              label?: string | null;
-              placeholder?: string | null;
+            otherInput: {
+              label: string;
+              placeholder: string;
             };
-            detailsInput?: {
-              label?: string | null;
-              placeholder?: string | null;
+            detailsInput: {
+              label: string;
+              placeholder: string;
             };
-            checkboxGroup?: {
-              checkboxText?: string | null;
-              conditions?: string | null;
-              conditionsURL?: string | null;
+            checkboxGroup: {
+              checkboxText: string;
+              conditions: string;
+              conditionsURL: string;
             };
-            requiredIndication?: string | null;
-            buttonGroup?: {
-              label?: string | null;
+            requiredIndication: string;
+            buttonGroup: {
+              label: string;
             };
             id?: string | null;
             blockName?: string | null;
             blockType: 'bookingForm';
           }
         | {
-            title?: string | null;
-            description?: string | null;
-            firstName?: {
-              label?: string | null;
-              placeholder?: string | null;
+            title: string;
+            description: string;
+            firstName: {
+              label: string;
+              placeholder: string;
             };
-            lastName?: {
-              label?: string | null;
-              placeholder?: string | null;
+            lastName: {
+              label: string;
+              placeholder: string;
             };
-            select?:
-              | {
-                  label?: string | null;
-                  placeholder?: string | null;
-                  selections?:
-                    | {
-                        selection?: string | null;
-                        id?: string | null;
-                      }[]
-                    | null;
-                  id?: string | null;
-                }[]
-              | null;
-            mail?: {
-              label?: string | null;
-              placeholder?: string | null;
+            select: {
+              label: string;
+              placeholder: string;
+              selections: {
+                selection: string;
+                id?: string | null;
+              }[];
+              id?: string | null;
+            }[];
+            mail: {
+              label: string;
+              placeholder: string;
             };
-            descriptionInput?: {
-              label?: string | null;
-              placeholder?: string | null;
+            descriptionInput: {
+              label: string;
+              placeholder: string;
             };
-            button?: {
-              label?: string | null;
+            button: {
+              label: string;
             };
-            consentText?: {
-              prefix?: string | null;
-              termsLabel?: {
-                texte?: string | null;
+            consentText: {
+              prefix: string;
+              termsLabel: {
+                texte: string;
                 url?: string | null;
               };
-              andSeparator?: string | null;
-              privacyLabel?: {
-                texte?: string | null;
+              andSeparator: string;
+              privacyLabel: {
+                texte: string;
                 url?: string | null;
               };
             };
-            copyrightNotice?: string | null;
-            requiredIndication?: string | null;
-            image?: (number | null) | Media;
+            copyrightNotice: string;
+            requiredIndication: string;
+            image: number | Media;
             id?: string | null;
             blockName?: string | null;
             blockType: 'quoteForm';
           }
         | {
-            title?: string | null;
-            description?: string | null;
-            firstName?: {
-              label?: string | null;
-              placeholder?: string | null;
+            title: string;
+            description: string;
+            firstName: {
+              label: string;
+              placeholder: string;
             };
-            lastName?: {
-              label?: string | null;
-              placeholder?: string | null;
+            lastName: {
+              label: string;
+              placeholder: string;
             };
-            select?:
-              | {
-                  label?: string | null;
-                  placeholder?: string | null;
-                  selections?:
-                    | {
-                        selection?: string | null;
-                        id?: string | null;
-                      }[]
-                    | null;
-                  id?: string | null;
-                }[]
-              | null;
-            mail?: {
-              label?: string | null;
-              placeholder?: string | null;
+            select: {
+              label: string;
+              placeholder: string;
+              selections: {
+                selection: string;
+                id?: string | null;
+              }[];
+              id?: string | null;
+            }[];
+            mail: {
+              label: string;
+              placeholder: string;
             };
-            descriptionInput?: {
-              label?: string | null;
-              placeholder?: string | null;
+            descriptionInput: {
+              label: string;
+              placeholder: string;
             };
-            button?: {
-              label?: string | null;
+            button: {
+              label: string;
             };
-            requiredIndication?: string | null;
-            consentText?: {
-              prefix?: string | null;
-              termsLabel?: {
-                texte?: string | null;
+            requiredIndication: string;
+            consentText: {
+              prefix: string;
+              termsLabel: {
+                texte: string;
                 url?: string | null;
               };
-              andSeparator?: string | null;
-              privacyLabel?: {
-                texte?: string | null;
+              andSeparator: string;
+              privacyLabel: {
+                texte: string;
                 url?: string | null;
               };
             };
-            copyrightNotice?: string | null;
+            copyrightNotice: string;
             image: number | Media;
             id?: string | null;
             blockName?: string | null;
             blockType: 'contactForm';
           }
         | {
-            title?: string | null;
-            telephone?: {
-              number?: string | null;
-              subheading?: string | null;
+            title: string;
+            telephone: {
+              number: string;
+              subheading: string;
             };
-            mail?: {
-              email?: string | null;
-              subheading?: string | null;
+            mail: {
+              email: string;
+              subheading: string;
             };
             id?: string | null;
             blockName?: string | null;
@@ -521,10 +503,10 @@ export interface Page {
         | {
             testimonials?:
               | {
-                  name?: string | null;
-                  rating?: number | null;
-                  review?: string | null;
-                  image?: (number | null) | Media;
+                  name: string;
+                  rating: number;
+                  review: string;
+                  image: number | Media;
                   id?: string | null;
                 }[]
               | null;
@@ -534,8 +516,8 @@ export interface Page {
           }
         | {
             bgImage?: (number | null) | Media;
-            heading?: string | null;
-            description?: string | null;
+            heading: string;
+            description: string;
             id?: string | null;
             blockName?: string | null;
             blockType: 'midHero';

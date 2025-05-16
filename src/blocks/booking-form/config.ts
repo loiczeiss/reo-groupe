@@ -12,8 +12,8 @@ export const BookingForm: Block = {
       label: 'Champ prénom/nom',
       type: 'group',
       fields: [
-        { name: 'label', label: 'Label', type: 'text' },
-        { name: 'placeholder', label: 'Texte indicatif', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text', required: true },
+        { name: 'placeholder', label: 'Texte indicatif', type: 'text', required: true },
       ],
     },
     {
@@ -21,24 +21,28 @@ export const BookingForm: Block = {
       label: 'Champ e-mail',
       type: 'group',
       fields: [
-        { name: 'label', label: 'Label', type: 'text' },
-        { name: 'placeholder', label: 'Texte indicatif', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text', required: true },
+        { name: 'placeholder', label: 'Texte indicatif', type: 'text', required: true },
       ],
     },
     {
       name: 'select',
       label: 'Sélection multiple',
       type: 'array',
+      required: true,
       minRows: 2,
       fields: [
-        { name: 'label', label: 'Label', type: 'text' },
-        { name: 'placeholder', label: 'Placeholder', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text', required: true },
+        { name: 'placeholder', label: 'Placeholder', type: 'text', required: true },
         {
           name: 'selections',
           label: 'Sélections',
           type: 'array',
           minRows: 2,
-          fields: [{ name: 'selection', label: 'Sélection', type: 'text' }],
+          required: true,
+          fields: [
+            { name: 'selection', label: 'Sélection', type: 'text', required: true }
+          ],
         },
       ],
     },
@@ -46,15 +50,17 @@ export const BookingForm: Block = {
       name: 'dateInput',
       label: 'Date',
       type: 'group',
-      fields: [{ name: 'label', label: 'Label', type: 'text' }],
+      fields: [
+        { name: 'label', label: 'Label', type: 'text', required: true }
+      ],
     },
     {
       name: 'otherInput',
       label: 'Champ autre',
       type: 'group',
       fields: [
-        { name: 'label', label: 'Label', type: 'text' },
-        { name: 'placeholder', label: 'Texte indicatif', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text', required: true },
+        { name: 'placeholder', label: 'Texte indicatif', type: 'text', required: true },
       ],
     },
     {
@@ -62,8 +68,8 @@ export const BookingForm: Block = {
       label: 'Détails',
       type: 'group',
       fields: [
-        { name: 'label', label: 'Label', type: 'text' },
-        { name: 'placeholder', label: 'Texte indicatif', type: 'text' },
+        { name: 'label', label: 'Label', type: 'text', required: true },
+        { name: 'placeholder', label: 'Texte indicatif', type: 'text', required: true },
       ],
     },
     {
@@ -71,22 +77,23 @@ export const BookingForm: Block = {
       label: 'Groupe checkbox',
       type: 'group',
       fields: [
-        { name: 'checkboxText', label: 'texte de la checkbox', type: 'text' },
-        {
-          name: 'conditions',
-          label: 'conditions générales',
-          type: 'text',
-        },{name: "conditionsURL", label: 'conditionsURL', type: 'text' },
+        { name: 'checkboxText', label: 'texte de la checkbox', type: 'text', required: true },
+        { name: 'conditions', label: 'conditions générales', type: 'text', required: true },
+        { name: 'conditionsURL', label: 'conditionsURL', type: 'text', required: true },
       ],
     },
-    {name:"requiredIndication", label: "texte indication de champs requis", type:"text"},
+    {
+      name: "requiredIndication",
+      label: "texte indication de champs requis",
+      type: "text",
+      required: true,
+    },
     {
       name: 'buttonGroup',
       label: 'Bouton de soumission',
       type: 'group',
       fields: [
-        { name: 'label', label: 'Texte du bouton', type: 'text' },
-
+        { name: 'label', label: 'Texte du bouton', type: 'text', required: true },
       ],
     },
   ],

@@ -113,7 +113,7 @@ export function QuoteFormBlock(props: QuoteFormBlockProps) {
                     className="bg-[#7dac51] border-none placeholder:text-white/70 text-white h-10"
                   />
                   {form.formState.errors.firstName && (
-                    <p className="text-xs text-red-400 mt-1">{form.formState.errors.firstName.message}</p>
+                    <p className="text-xs text-red-300 mt-1">{form.formState.errors.firstName.message}</p>
                   )}
                 </div>
 
@@ -128,7 +128,7 @@ export function QuoteFormBlock(props: QuoteFormBlockProps) {
                     className="bg-[#7dac51] border-none placeholder:text-white/70 text-white h-10"
                   />
                   {form.formState.errors.lastName && (
-                    <p className="text-xs text-red-400 mt-1">{form.formState.errors.lastName.message}</p>
+                    <p className="text-xs text-red-300 mt-1">{form.formState.errors.lastName.message}</p>
                   )}
                 </div>
               </div>
@@ -160,7 +160,7 @@ export function QuoteFormBlock(props: QuoteFormBlockProps) {
                   )}
                 />
                 {form.formState.errors.whoAreYou && (
-                  <p className="text-xs text-red-400 mt-1">{form.formState.errors.whoAreYou.message}</p>
+                  <p className="text-xs text-red-300 mt-1">{form.formState.errors.whoAreYou.message}</p>
                 )}
               </div>
 
@@ -176,7 +176,7 @@ export function QuoteFormBlock(props: QuoteFormBlockProps) {
                   className="bg-[#7dac51] border-none placeholder:text-white/70 text-white h-10"
                 />
                 {form.formState.errors.mail && (
-                  <p className="text-xs text-red-400 mt-1">{form.formState.errors.mail.message}</p>
+                  <p className="text-xs text-red-300 mt-1">{form.formState.errors.mail.message}</p>
                 )}
               </div>
 
@@ -207,7 +207,7 @@ export function QuoteFormBlock(props: QuoteFormBlockProps) {
                   )}
                 />
                 {form.formState.errors.workType && (
-                  <p className="text-xs text-red-400 mt-1">{form.formState.errors.workType.message}</p>
+                  <p className="text-xs text-red-300 mt-1">{form.formState.errors.workType.message}</p>
                 )}
               </div>
 
@@ -222,7 +222,7 @@ export function QuoteFormBlock(props: QuoteFormBlockProps) {
                   className="bg-[#7dac51] border-none placeholder:text-white/70 text-white min-h-[120px] resize-none"
                 />
                 {form.formState.errors.description && (
-                  <p className="text-xs text-red-400 mt-1">{form.formState.errors.description.message}</p>
+                  <p className="text-xs text-red-300 mt-1">{form.formState.errors.description.message}</p>
                 )}
               </div>
 

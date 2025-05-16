@@ -7,7 +7,7 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 import { QuoteForm } from '@/blocks/quote-form/config'
 import { contactForm } from '@/blocks/contact-form/config'
-import { Hero } from '@/blocks/Hero/Hero'
+import { Config } from '@/blocks/Hero/config'
 import { TextAndFourImages } from '@/blocks/text-and-four-images/config'
 import { ThreeByThreeContent } from '@/blocks/three-by-three-content/config'
 import { WhyUs } from '@/blocks/why-us/config'
@@ -21,7 +21,7 @@ import { ContactSection } from '@/blocks/contact-section/config'
 import { TestimonialCarousel } from '@/blocks/testimonial-carousel/config'
 import { MidHero } from '@/blocks/mid-hero/config'
 
-// ... (your imports for all blocks like Hero, TextContent, etc.)
+// ... (your imports for all blocks like Config, TextContent, etc.)
 
 const Pages: CollectionConfig = {
   slug: 'pages',
@@ -57,7 +57,7 @@ const Pages: CollectionConfig = {
       label: 'Layout',
       type: 'blocks',
       blocks: [
-        Hero,
+        Config,
         TextAndFourImages,
         ThreeByThreeContent,
         WhyUs,

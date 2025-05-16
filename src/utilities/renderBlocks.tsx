@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 
 import type { Page } from '@/payload-types'
-import { HeroBlock } from '@/blocks/Hero/Hero-block'
+import { Index } from '@/blocks/Hero'
 import { TextAndFourImagesBlock } from '@/blocks/text-and-four-images'
 import { ThreeByThreeContentBlock } from '@/blocks/three-by-three-content'
 import { WhyUsBlock } from '@/blocks/why-us'
@@ -18,7 +18,7 @@ import { TestimonialCarouselBlock } from '@/blocks/testimonial-carousel'
 import { MidHeroBlock } from '@/blocks/mid-hero'
 
 const blockComponents = {
-  hero: HeroBlock,
+  hero: Index,
   textAndFourImages: TextAndFourImagesBlock,
   threeByThreeContent: ThreeByThreeContentBlock,
   whyUs: WhyUsBlock,

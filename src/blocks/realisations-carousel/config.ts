@@ -12,8 +12,8 @@ export const RealisationsCarousel: Block = {
       label: 'Titre',
       type: 'group',
       fields: [
-        { name: 'titleSpan1', label: 'Titre (partie 1)', type: 'text' },
-        { name: 'titleSpan2', label: 'Titre (partie 2 en vert)', type: 'text' },
+        { name: 'titleSpan1', label: 'Titre (partie 1)', type: 'text', required: true },
+        { name: 'titleSpan2', label: 'Titre (partie 2 en vert)', type: 'text', required: true },
       ],
     },
     {
@@ -25,6 +25,7 @@ export const RealisationsCarousel: Block = {
       name: 'subDescription',
       label: 'Sous-description',
       type: 'text',
+      required: true,
     },
     {
       name: 'images',
@@ -38,6 +39,7 @@ export const RealisationsCarousel: Block = {
           label: 'Image',
           type: 'upload',
           relationTo: 'media',
+          required: true,
         },
       ],
     },

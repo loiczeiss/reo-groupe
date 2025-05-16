@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import Image from 'next/image'
 import { Media } from '@/payload-types'
@@ -28,16 +28,19 @@ interface HeroBlockProps {
   }
 }
 
-export function HeroBlock(props: HeroBlockProps) {
+export function Index(props: HeroBlockProps) {
   const { title, description, backgroundImage, images, buttonGroup } = props
 
   return (
     <div
       className="flex m-2 md:m-8 h-[100vw] md:h-[calc(80vw-64px)] lg:h-[calc(100vh-64px)] rounded-lg text-black relative"
       style={{
-        backgroundImage: `url(${backgroundImage?.url})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundColor: '#668E2E',
+        ...(backgroundImage?.url && {
+          backgroundImage: `url(${backgroundImage.url})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }),
       }}
     >
       {/* LEFT SIDE - TEXT */}

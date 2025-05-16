@@ -14,24 +14,17 @@ export const ContentCarousel: Block = {
           label: 'titre',
           type: 'group',
           fields: [
-            { name: 'heading0', label: 'titre 0', type: 'text' },
-            {
-              name: 'headingSpan1',
-              label: 'partie en surbrillance 1',
-              type: 'text',
-            },
-            { name: 'headingSpan2', label: 'partie en surbrillance 2', type: 'text' },
-            {
-              name: 'headingSpan3',
-              label: 'partie en surbrillance 3',
-              type: 'text',
-            },
+            { name: 'heading0', label: 'titre 0', type: 'text', required: true },
+            { name: 'headingSpan1', label: 'partie en surbrillance 1', type: 'text', required: true },
+            { name: 'headingSpan2', label: 'partie en surbrillance 2', type: 'text', required: true },
+            { name: 'headingSpan3', label: 'partie en surbrillance 3', type: 'text', required: true },
           ],
         },
         {
           name: 'headingDescription',
           label: 'description du titre',
           type: 'text',
+          required: true,
         },
       ],
     },
@@ -51,16 +44,19 @@ export const ContentCarousel: Block = {
         {
           name: 'alt',
           type: 'text',
+
         },
         {
           name: 'completeExpertName',
           label: "nom complet de l'expert",
           type: 'text',
+          required: true,
         },
         {
           name: 'expertDescription',
           label: "description de l'expert",
           type: 'text',
+          required: true,
         },
       ],
     },
@@ -69,8 +65,8 @@ export const ContentCarousel: Block = {
       label: 'bouton d’appel à l’action',
       type: 'group',
       fields: [
-        { name: 'label', label: 'label', type: 'text' },
-        { name: 'url', label: 'URL', type: 'text' },
+        { name: 'label', label: 'label', type: 'text', required: true },
+        { name: 'url', label: 'URL', type: 'text', required: true },
       ],
     },
   ],
