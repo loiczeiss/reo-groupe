@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { CircleArrowOutUpRight } from 'lucide-react'
 
 import StyledButton from '@/components/Styled-button/Styled-button'
+import { AnimatePresence, motion } from 'motion/react'
 
 interface Props {
   headingGroup: {
@@ -43,7 +44,12 @@ export function ThreeByThreeContentBlock({ headingGroup, description, images, bu
         {images.map((img, i) => (
           <Dialog key={i}>
             <DialogTrigger asChild>
-              <div
+              <motion.div
+                layoutId={"modal"}
+                initial={{scale: 0 }}
+                whileInView={{scale: 1 }}
+                transition={{ duration: 1 }}
+                // viewport={{ once: true }}
                 onClick={() => setSelectedImage(img)}
                 className="relative w-full h-[30vh] md:h-[300px] overflow-hidden rounded-lg focus:outline-none group hover:cursor-pointer"
               >
@@ -58,29 +64,45 @@ export function ThreeByThreeContentBlock({ headingGroup, description, images, bu
 
                   <CircleArrowOutUpRight />
                 </div>
-              </div>
+              </motion.div>
             </DialogTrigger>
-            <DialogContent className="p-0 bg-white  border-none max-w-[80vw] md:max-w-xl max-h-[90vh]">
+            <AnimatePresence>
               {selectedImage && (
-                <div className={'flex flex-col items-center md:w-full p-8 h-7/8vh space-y-4'}>
-                  <div className={'relative h-[20vh] md:h-[40vh] w-2/3 rounded-lg'}>
-                    <Image
-                      src={selectedImage?.image.url as string}
-                      alt={selectedImage.image.alt || ''}
-                      fill
-                      className="  object-cover rounded-xl"
+                <DialogContent className="p-0 bg-white border-none max-w-[80vw] md:max-w-xl max-h-[90vh]">
+                  <motion.div
+                    layoutId="modal"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{once:true}}
+                    className="flex flex-col items-center md:w-full p-8 space-y-4"
+                  >
+                    <div className="relative h-[20vh] md:h-[40vh] w-2/3 rounded-lg">
+                      <Image
+                        src={selectedImage.image.url as string}
+                        alt={selectedImage.image.alt || ''}
+                        fill
+                        className="object-cover rounded-xl"
+                      />
+                    </div>
+                    <div className="flex flex-col items-center space-y-2">
+                      <h1 className="text-md md:text-xl font-semibold text-[#232548]">
+                        {selectedImage.services}
+                      </h1>
+                      <p className="text-[11px] md:text-xs leading-none">
+                        {selectedImage.servicesDescription}
+                      </p>
+                    </div>
+                    <StyledButton
+                      className="max-sm:h-5 max-sm:text-[11px] max-sm:p-1"
+                      button={button}
                     />
-                  </div>
-                  <div className={'flex flex-col items-center space-y-2'}>
-                    <h1 className={'text-md md:text-xl font-semibold text-[#232548]'}>
-                      {selectedImage.services}
-                    </h1>
-                    <p className={'text-[11px] md:text-xs leading-none'}>{selectedImage.servicesDescription}</p>
-                  </div>
-                  <StyledButton className={'max-sm:h-5 max-sm:text-[11px] max-sm:p-1'}  button={button} />
-                </div>
+                  </motion.div>
+                </DialogContent>
               )}
-            </DialogContent>
+            </AnimatePresence>
+
           </Dialog>
         ))}
       </div>

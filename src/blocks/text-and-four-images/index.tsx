@@ -1,5 +1,8 @@
+'use client'
+
 import Image from 'next/image'
 import type { Media } from '@/payload-types'
+import { motion } from 'motion/react'
 
 interface TextAndFourImagesProps {
   heading: string
@@ -18,15 +21,15 @@ interface TextAndFourImagesProps {
 }
 
 export function TextAndFourImagesBlock({
-                                         heading,
-                                         description,
-                                         subheading1,
-                                         subcontent1,
-                                         subheading2,
-                                         subcontent2,
-                                         images,
-                                         bgImage,
-                                       }: TextAndFourImagesProps) {
+  heading,
+  description,
+  subheading1,
+  subcontent1,
+  subheading2,
+  subcontent2,
+  images,
+  bgImage,
+}: TextAndFourImagesProps) {
   return (
     <div
       className="w-full lg:h-screen flex max-lg:flex-col px-4 sm:px-12 py-6 md:py-16 bg-[50%_35%] md:bg-[47%_83%] max-lg:space-y-4 font-poppins bg-fixed"
@@ -79,17 +82,29 @@ export function TextAndFourImagesBlock({
       {/* Images section */}
       <div className="max-sm:pt-4 flex flex-col lg:w-1/2 space-y-1 md:space-y-4">
         {/* Main image */}
-        <div className="relative w-full aspect-[16/9] lg:h-2/3 lg:aspect-auto mt-2 md:mt-0">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+          viewport={{ once: true }}
+          className="relative w-full aspect-[16/9] lg:h-2/3 lg:aspect-auto mt-2 md:mt-0"
+        >
           <Image
             fill
             src={images?.image3?.url || '/placeholder.svg'}
             alt={images?.image3?.alt || 'Image 3'}
             className="object-cover rounded md:rounded-lg"
           />
-        </div>
+        </motion.div>
 
         {/* Bottom images */}
-        <div className="h-[10vh] lg:h-1/3 flex space-x-1 md:space-x-4">
+        <motion.div
+          initial={{ scale: 0.5 }}
+          whileInView={{ scale: 1 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="h-[10vh] lg:h-1/3 flex space-x-1 md:space-x-4"
+        >
           {[images?.image2, images?.image1, images?.image4].map((img, idx) => (
             <div key={idx} className="relative w-full">
               <Image
@@ -100,7 +115,7 @@ export function TextAndFourImagesBlock({
               />
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   )

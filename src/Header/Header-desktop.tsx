@@ -5,6 +5,7 @@ import { Nav } from '@/Header/Nav'
 import Image from 'next/image'
 import StyledButton from '@/components/Styled-button/Styled-button'
 import { Media } from '@/payload-types'
+import { motion } from 'motion/react'
 
 export function HeaderDesktop(props: HeaderProps) {
   const { nav, logo, button } = props.headerData
@@ -15,7 +16,12 @@ export function HeaderDesktop(props: HeaderProps) {
 
   return (
     <header className="absolute top-0 left-0 right-0 z-50 px-12 lg:px-16">
-      <div className="max-w-[1920px] mx-auto bg-white rounded-3xl shadow-sm my-12 py-1 px-6">
+      <motion.div
+        initial={{ y: -400 }}
+        animate={{ y: 0 }}
+        transition={{ type: 'tween', ease: 'easeOut', duration: 1 }}
+        className="max-w-[1920px] mx-auto bg-white rounded-3xl shadow-sm my-12 py-1 px-6"
+      >
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="relative h-8 w-16 flex-shrink-0">
@@ -44,7 +50,7 @@ export function HeaderDesktop(props: HeaderProps) {
             />
           </div>
         </div>
-      </div>
+      </motion.div>
     </header>
   )
 }

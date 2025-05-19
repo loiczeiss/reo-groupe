@@ -7,6 +7,7 @@ import { Footer } from '@/payload-types'
 import { SvgFromUrl } from '@/Header/SvgFromUrl'
 import Image from 'next/image'
 import StyledButton from '@/components/Styled-button/Styled-button'
+import { motion } from 'motion/react'
 
 interface FooterProps {
  footerData: Footer
@@ -28,9 +29,11 @@ export function FooterComponent(props: FooterProps) {
   } = props.footerData
 
   return (
-    <main className="bg-gray-100 p-4">
+    <main className="bg-gray-100 p-4 overflow-x-hidden">
       {/* Config Section - Rounded with dark blue background */}
-      <section className="rounded-2xl bg-[#232548] text-white mb-4 overflow-hidden">
+      <motion.section  initial={{x:800}}
+                       whileInView={{x:0}}
+                       transition={{ duration: 1.5 }} className="rounded-2xl bg-[#232548] text-white mb-4 overflow-hidden">
         <div className="flex flex-row gap-4">
           <div className="p-4 sm:p-8 md:p-12 lg:p-16 flex flex-col justify-center w-4/6">
             <h1 className="text-[13px] sm:text-3xl md:text-4xl  font-bold leading-tight mb-2 sm:mb-8">{heading}</h1>
@@ -60,10 +63,13 @@ export function FooterComponent(props: FooterProps) {
 
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Content Section - Rounded with green background */}
-      <section
+      <motion.section
+        initial={{x:-800}}
+        whileInView={{x:0}}
+        transition={{ duration: 1 }}
         className="rounded-2xl  text-white mt-4 "
         style={{
           backgroundImage:
@@ -162,7 +168,7 @@ export function FooterComponent(props: FooterProps) {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
     </main>
   )
 }
