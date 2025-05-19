@@ -17,6 +17,7 @@
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
     "@payloadcms/db-postgres": "3.33.0",
+    "@payloadcms/email-resend": "3.33.0",
     "@payloadcms/next": "3.33.0",
     "@payloadcms/payload-cloud": "3.33.0",
     "@payloadcms/plugin-seo": "3.33.0",
@@ -32,6 +33,7 @@
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
     "date-fns": "^4.1.0",
+    "dotenv": "^16.5.0",
     "embla-carousel-react": "^8.6.0",
     "graphql": "^16.8.1",
     "lucide-react": "^0.507.0",
