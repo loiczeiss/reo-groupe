@@ -17,7 +17,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { bookingFormSchema } from '@/blocks/booking-form/formSchema'
 import { z } from 'zod'
-import { toast } from 'sonner';
+import { toast } from 'sonner'
 
 interface BookingFormBlockProps {
   nameInput: {
@@ -72,6 +72,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
     requiredIndication,
   } = props
   const [date, setDate] = useState<Date | undefined>(new Date())
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const form = useForm<z.infer<typeof bookingFormSchema>>({
     mode: 'onChange',
     resolver: zodResolver(bookingFormSchema),
@@ -86,25 +87,23 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
     },
   })
 
-
   const onSubmit: SubmitHandler<z.infer<typeof bookingFormSchema>> = async (values) => {
-    const { termsAccepted, ...valuesMail } = values;
-
-
+    const { termsAccepted, ...valuesMail } = values
+setIsLoading(true)
     const res = await fetch('/api/booking-mail', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(valuesMail),
-    });
-
-
+    })
 
     if (!res.ok) {
-   toast.error(`Erreur durant l'envoi du mail`)
+      toast.error(`Erreur durant l'envoi du mail`)
+      setIsLoading(false)
     } else {
-    toast.success('Email envoyé');
+      toast.success('Email envoyé')
+      setIsLoading(false)
     }
-  };
+  }
 
   return (
     <form
@@ -335,6 +334,7 @@ export function BookingFormBlock(props: BookingFormBlockProps) {
       <div className="mt-6 flex justify-center">
         <StyledButton
           iconClassName={'max-sm:w-4 max-sm:h-4 md:h-5 md:w-5'}
+          loading={isLoading}
           className={'px-2'}
           redirectBool={false}
           type="submit"

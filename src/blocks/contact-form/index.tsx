@@ -18,6 +18,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { toast } from 'sonner'
+import { useState } from 'react'
 
 interface ContactFormBlockProps {
   title?: string
@@ -62,7 +63,6 @@ interface ContactFormBlockProps {
   }
 
   image: Media
-  requiredIndication: string
 }
 
 export function ContactFormBlock(props: ContactFormBlockProps) {
@@ -78,9 +78,8 @@ export function ContactFormBlock(props: ContactFormBlockProps) {
     mail,
     consentText,
     image,
-    requiredIndication,
   } = props
-
+  const [isLoading, setIsLoading] = useState(false)
   const form = useForm<z.infer<typeof contactFormSchema>>({
     mode: 'onChange',
     resolver: zodResolver(contactFormSchema),
@@ -88,18 +87,19 @@ export function ContactFormBlock(props: ContactFormBlockProps) {
   })
 
   const onSubmit: SubmitHandler<z.infer<typeof contactFormSchema>> = async (values) => {
+    setIsLoading(true)
     const res = await fetch('/api/contact-mail', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(values),
-    });
-
-
+    })
 
     if (!res.ok) {
       toast.error(`Erreur durant l'envoi du mail`)
+      setIsLoading(false)
     } else {
-      toast.success('Email envoyé');
+      toast.success('Email envoyé')
+      setIsLoading(false)
     }
   }
 
@@ -116,7 +116,10 @@ export function ContactFormBlock(props: ContactFormBlockProps) {
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label htmlFor="firstname" className="block text-[12px] sm:text-sm max-sm:leading-tight">
+                  <label
+                    htmlFor="firstname"
+                    className="block text-[12px] sm:text-sm max-sm:leading-tight"
+                  >
                     {firstName.label}
                   </label>
                   <Input
@@ -126,12 +129,17 @@ export function ContactFormBlock(props: ContactFormBlockProps) {
                     className="bg-[#7dac51] border-none placeholder:text-white/70 text-white h-10 max-sm:text-[12px] max-sm:leading-tight max-sm:h-6"
                   />
                   {form.formState.errors.firstName && (
-                    <p className="text-xs text-red-300">{form.formState.errors.firstName.message}</p>
+                    <p className="text-xs text-red-300">
+                      {form.formState.errors.firstName.message}
+                    </p>
                   )}
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="lastname" className="block text-[12px] sm:text-sm max-sm:leading-tight">
+                  <label
+                    htmlFor="lastname"
+                    className="block text-[12px] sm:text-sm max-sm:leading-tight"
+                  >
                     {lastName.label}
                   </label>
                   <Input
@@ -172,7 +180,9 @@ export function ContactFormBlock(props: ContactFormBlockProps) {
                         </SelectContent>
                       </Select>
                       {form.formState.errors.whoAreYou && (
-                        <p className="text-xs text-red-300">{form.formState.errors.whoAreYou.message}</p>
+                        <p className="text-xs text-red-300">
+                          {form.formState.errors.whoAreYou.message}
+                        </p>
                       )}
                     </>
                   )}
@@ -180,7 +190,10 @@ export function ContactFormBlock(props: ContactFormBlockProps) {
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="email" className="block text-[12px] sm:text-sm max-sm:leading-tight">
+                <label
+                  htmlFor="email"
+                  className="block text-[12px] sm:text-sm max-sm:leading-tight"
+                >
                   {mail.label}
                 </label>
                 <Input
@@ -196,12 +209,15 @@ export function ContactFormBlock(props: ContactFormBlockProps) {
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="description" className="block text-[12px] sm:text-sm max-sm:leading-tight">
+                <label
+                  htmlFor="description"
+                  className="block text-[12px] sm:text-sm max-sm:leading-tight"
+                >
                   {descriptionInput.label}
                 </label>
                 <Textarea
                   id="description"
-                  {...form.register("question")}
+                  {...form.register('question')}
                   placeholder={descriptionInput.placeholder}
                   className="bg-[#7dac51] border-none placeholder:text-white/70 text-white min-h-[120px] resize-none max-sm:text-[12px]"
                 />
@@ -210,16 +226,16 @@ export function ContactFormBlock(props: ContactFormBlockProps) {
                 )}
               </div>
 
-              <p className="text-[9px]">{requiredIndication}</p>
-
               <div className="flex justify-center mt-6">
                 <StyledButton
                   type={'submit'}
                   redirectBool={false}
-                  className="text-[12px] sm:text-[12px] p-4 max-sm:h-5 text-[#7dac51]"
+                  className="text-[12px] sm:text-[12px] p-4 pr-1 max-sm:h-5 text-[#7dac51]"
                   button={button}
-                  divIconClassName="hidden"
+                  divColor={'#7dac51'}
                   bgColor="#232548"
+                  loading={isLoading}
+                  iconClassName={`text-[#232548] `}
                 />
               </div>
             </form>

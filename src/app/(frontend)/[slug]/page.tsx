@@ -8,7 +8,6 @@ import { RenderBlocks } from '@/utilities/renderBlocks'
 import { generateMeta } from '@/utilities/generateMeta'
 import { notFound, redirect } from 'next/navigation'
 
-
 export async function generateStaticParams() {
   const payload = await getPayload({ config })
 
@@ -39,7 +38,7 @@ export default async function HomePage({ params }: Props) {
   const page = await queryPageBySlug(slug)
 
   if (process.env.IN_CONSTRUCTION_BOOLEAN === 'true') {
-   redirect('/construction')
+    redirect('/construction')
   }
   if (!page) return notFound()
 

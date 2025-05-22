@@ -1,6 +1,6 @@
 'use client'
 
-import { MoveUpRight } from 'lucide-react'
+import { LoaderCircle, MoveUpRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/utilities/ui'
 import { redirect } from 'next/navigation' // make sure this utility exists
@@ -19,6 +19,7 @@ interface StyledButtonProps {
   divIconClassName?: string
   type?: 'button' | 'submit'
   redirectBool?: boolean
+  loading?: boolean
 }
 
 export default function StyledButton(props: StyledButtonProps) {
@@ -30,9 +31,10 @@ export default function StyledButton(props: StyledButtonProps) {
     className, // ✅ destructure
     iconClassName,
     type = 'button',
+    loading = false,
     redirectBool = true,
   } = props
-
+  console.log(loading)
   return (
     <Button
       type={type}
@@ -41,14 +43,14 @@ export default function StyledButton(props: StyledButtonProps) {
         className, // ✅ merge external className
       )}
       style={{ backgroundColor: bgColor }}
-      onClick={() => redirectBool  && redirect(button?.url as string)}
+      onClick={() => redirectBool && redirect(button?.url as string)}
     >
       <p className={'m-0 md:mx-2 max-sm:leading-tight'}>{button?.label}</p>
       <div
         className={cn('rounded-4xl ml-2 p-1', divIconClassName)}
         style={{ backgroundColor: divColor }}
       >
-        <MoveUpRight className={cn('w-2 h-2 md:w-6 md:h-6 ', iconClassName)} />
+        {!loading? <MoveUpRight className={cn('w-2 h-2 md:w-6 md:h-6 ', iconClassName)} /> : <LoaderCircle  className={cn('w-2 h-2 md:w-6 md:h-6 animate-spin', iconClassName)}  /> }
       </div>
     </Button>
   )
