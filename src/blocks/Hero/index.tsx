@@ -36,11 +36,12 @@ export function Index(props: HeroBlockProps) {
     <div
       className="flex m-2 md:m-8 h-[100vw] md:h-[calc(80vw-64px)] lg:h-[calc(100vh-64px)] rounded-lg text-black relative bg-fixed"
       style={{
-        backgroundColor: '#668E2E',
+        backgroundColor: "#668E2E",
         ...(backgroundImage?.url && {
           backgroundImage: `url(${backgroundImage.url})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
         }),
       }}
     >

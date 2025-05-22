@@ -35,13 +35,13 @@ slug: 'textAndFourImages',
       name: 'subheading2',
       label: 'Subheading 2',
       type: 'text',
-      required: true,
+
     },
     {
       name: 'subcontent2',
       label: 'Subcontent 2',
       type: 'textarea',
-      required: true,
+
     },
     {
       name: 'images',

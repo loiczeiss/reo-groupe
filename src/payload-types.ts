@@ -199,8 +199,8 @@ export interface Page {
             description: string;
             subheading1: string;
             subcontent1: string;
-            subheading2: string;
-            subcontent2: string;
+            subheading2?: string | null;
+            subcontent2?: string | null;
             images: {
               image1: number | Media;
               image2: number | Media;

@@ -58,7 +58,7 @@ export function TextAndFourImagesBlock({
         {/* Subheadings section */}
         <div className="flex w-full max-w-full overflow-hidden space-x-2">
           {/* Subheading 1 */}
-          <div className="flex flex-col max-sm:text-center flex-1 min-w-0 pr-2">
+          <div className="flex flex-col max-sm:text-center flex-1 min-w-0 pr-2 w-1/2">
             <h2 className="text-md md:text-6xl pl-2 truncate">{subheading1}</h2>
             <div className="max-h-[25vh]">
               <p className="max-sm:px-4 text-[10px] md:text-sm leading-none md:leading-tight pr-4 text-pretty">
@@ -67,14 +67,20 @@ export function TextAndFourImagesBlock({
             </div>
           </div>
 
-          {/* Subheading 2 */}
-          <div className="flex flex-col max-sm:text-center flex-1 min-w-0">
-            <h2 className="text-md md:text-6xl pl-2 truncate">{subheading2}</h2>
-            <div className="max-h-[20vh]">
-              <p className="max-sm:px-4 text-[10px] md:text-sm leading-none md:leading-tight pr-4">
-                {subcontent2}
-              </p>
-            </div>
+          {/* Subheading 2 (always rendered, content conditional) */}
+          <div className="flex flex-col max-sm:text-center flex-1 min-w-0 w-1/2">
+            {subheading2 && (
+              <>
+                <h2 className="text-md md:text-6xl pl-2 truncate">{subheading2}</h2>
+                <div className="max-h-[20vh]">
+                  {subcontent2 && (
+                    <p className="max-sm:px-4 text-[10px] md:text-sm leading-none md:leading-tight pr-4">
+                      {subcontent2}
+                    </p>
+                  )}
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
