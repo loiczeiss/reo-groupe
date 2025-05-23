@@ -8,6 +8,7 @@ import {motion} from 'motion/react'
 interface HeroBlockProps {
   title?: string
   description?: string
+  introductionText?: string
   backgroundImage?: Media
   images: {
     image1?: Media
@@ -29,8 +30,8 @@ interface HeroBlockProps {
   }
 }
 
-export function Index(props: HeroBlockProps) {
-  const { title, description, backgroundImage, images, buttonGroup } = props
+export function Hero(props: HeroBlockProps) {
+  const { title, description,backgroundImage, images, buttonGroup } = props
 
   return (
     <div
@@ -71,6 +72,7 @@ export function Index(props: HeroBlockProps) {
             divColor="#fff"
           />
         </div>
+
       </div>
 
       {/* RIGHT SIDE - IMAGES */}
