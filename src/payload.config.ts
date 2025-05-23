@@ -12,6 +12,7 @@ import { Pages } from '@/collections/pages'
 import { Header } from '@/Header/config'
 import { Footer } from '@/Footer/config'
 import { plugins } from './plugins'
+import { GoogleReviews } from '@/collections/google-reviews'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -23,7 +24,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Pages],
+  collections: [Users, Media, Pages, GoogleReviews],
   globals:[Header, Footer],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

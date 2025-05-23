@@ -8,6 +8,7 @@ export const TestimonialCarousel: Block = {
       name: 'testimonials',
       label: 'Témoignages',
       type: 'array',
+      required:false,
       minRows: 2,
       fields: [
         { name: 'name', label: 'Nom', type: 'text', required: true },
