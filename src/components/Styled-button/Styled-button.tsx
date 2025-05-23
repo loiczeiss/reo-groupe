@@ -3,7 +3,7 @@
 import { MoveUpRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/utilities/ui'
-import { redirect } from 'next/navigation' // make sure this utility exists
+import { redirect } from 'next/navigation'
 
 interface StyledButtonProps {
   button:
@@ -21,7 +21,7 @@ interface StyledButtonProps {
   redirectBool?: boolean
 }
 
-export default function StyledButton(props: StyledButtonProps) {
+export default function  StyledButton(props: StyledButtonProps) {
   const {
     button,
     bgColor = '#668E2E',
