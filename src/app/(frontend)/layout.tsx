@@ -7,6 +7,7 @@ import { getCachedGlobal } from '@/utilities/getGlobals'
 import { FooterComponent } from '@/Footer'
 import { Footer, Header } from '@/payload-types'
 import { Toaster } from 'sonner'
+export const revalidate = 60
 
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
