@@ -33,7 +33,7 @@ export const ThreeByThreeContent: Block = {
       name: 'images',
       label: 'Images (3x3)',
       type: 'array',
-      minRows: 9,
+      minRows: 3,
       maxRows: 9,
       fields: [
         {

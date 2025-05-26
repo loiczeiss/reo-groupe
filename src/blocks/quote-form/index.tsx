@@ -17,6 +17,8 @@ import { defaultValues, quoteFormSchema } from '@/blocks/quote-form/formSchema'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { toast } from 'sonner'
+import { useState } from 'react'
 
 interface QuoteFormBlockProps {
   title?: string
@@ -79,15 +81,28 @@ export function QuoteFormBlock(props: QuoteFormBlockProps) {
     image,
     requiredIndication,
   } = props
-
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const form = useForm<z.infer<typeof quoteFormSchema>>({
     mode: 'onChange',
     resolver: zodResolver(quoteFormSchema),
     defaultValues,
   })
 
-  const onSubmit: SubmitHandler<z.infer<typeof quoteFormSchema>> = (values) => {
-    console.log(values)
+  const onSubmit: SubmitHandler<z.infer<typeof quoteFormSchema>> = async (values) => {
+    setIsLoading(true)
+    const res = await fetch('/api/quote-mail', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(values),
+    })
+
+    if (!res.ok) {
+      toast.error(`Erreur durant l'envoi du mail`)
+      setIsLoading(false)
+    } else {
+      toast.success('Email envoyé')
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -113,7 +128,9 @@ export function QuoteFormBlock(props: QuoteFormBlockProps) {
                     className="bg-[#7dac51] border-none placeholder:text-white/70 text-white h-10"
                   />
                   {form.formState.errors.firstName && (
-                    <p className="text-xs text-red-300 mt-1">{form.formState.errors.firstName.message}</p>
+                    <p className="text-xs text-red-300 mt-1">
+                      {form.formState.errors.firstName.message}
+                    </p>
                   )}
                 </div>
 
@@ -128,7 +145,9 @@ export function QuoteFormBlock(props: QuoteFormBlockProps) {
                     className="bg-[#7dac51] border-none placeholder:text-white/70 text-white h-10"
                   />
                   {form.formState.errors.lastName && (
-                    <p className="text-xs text-red-300 mt-1">{form.formState.errors.lastName.message}</p>
+                    <p className="text-xs text-red-300 mt-1">
+                      {form.formState.errors.lastName.message}
+                    </p>
                   )}
                 </div>
               </div>
@@ -142,7 +161,7 @@ export function QuoteFormBlock(props: QuoteFormBlockProps) {
                   name="whoAreYou"
                   render={({ field }) => (
                     <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger className="bg-[#7dac51] border-none text-white h-10">
+                      <SelectTrigger className="bg-[#7dac51] border-none text-white h-10 data-[placeholder]:opacity-50">
                         <SelectValue placeholder={select[0].placeholder} />
                       </SelectTrigger>
                       <SelectContent className="bg-[#6b9a3e] border-[#7dac51] text-white">
@@ -160,7 +179,9 @@ export function QuoteFormBlock(props: QuoteFormBlockProps) {
                   )}
                 />
                 {form.formState.errors.whoAreYou && (
-                  <p className="text-xs text-red-300 mt-1">{form.formState.errors.whoAreYou.message}</p>
+                  <p className="text-xs text-red-300 mt-1">
+                    {form.formState.errors.whoAreYou.message}
+                  </p>
                 )}
               </div>
 
@@ -189,7 +210,7 @@ export function QuoteFormBlock(props: QuoteFormBlockProps) {
                   name="workType"
                   render={({ field }) => (
                     <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger className="bg-[#7dac51] border-none text-white h-10">
+                      <SelectTrigger className="bg-[#7dac51] border-none text-white h-10 data-[placeholder]:opacity-50">
                         <SelectValue placeholder={select[1].placeholder} />
                       </SelectTrigger>
                       <SelectContent className="bg-[#6b9a3e] border-[#7dac51] text-white">
@@ -207,7 +228,9 @@ export function QuoteFormBlock(props: QuoteFormBlockProps) {
                   )}
                 />
                 {form.formState.errors.workType && (
-                  <p className="text-xs text-red-300 mt-1">{form.formState.errors.workType.message}</p>
+                  <p className="text-xs text-red-300 mt-1">
+                    {form.formState.errors.workType.message}
+                  </p>
                 )}
               </div>
 
@@ -222,7 +245,9 @@ export function QuoteFormBlock(props: QuoteFormBlockProps) {
                   className="bg-[#7dac51] border-none placeholder:text-white/70 text-white min-h-[120px] resize-none"
                 />
                 {form.formState.errors.description && (
-                  <p className="text-xs text-red-300 mt-1">{form.formState.errors.description.message}</p>
+                  <p className="text-xs text-red-300 mt-1">
+                    {form.formState.errors.description.message}
+                  </p>
                 )}
               </div>
 
@@ -232,6 +257,7 @@ export function QuoteFormBlock(props: QuoteFormBlockProps) {
                 <StyledButton
                   redirectBool={false}
                   type="submit"
+                  loading={isLoading}
                   className="text-[12px] p-4 max-sm:h-5 text-[#7dac51]"
                   button={button}
                   divIconClassName="hidden"
