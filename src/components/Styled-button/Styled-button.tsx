@@ -34,7 +34,7 @@ export default function  StyledButton(props: StyledButtonProps) {
     loading = false,
     redirectBool = true,
   } = props
-  console.log(loading)
+
   return (
     <Button
       type={type}
