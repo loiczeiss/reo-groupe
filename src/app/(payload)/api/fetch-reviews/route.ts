@@ -25,7 +25,7 @@ export async function GET() {
       hl: "fr",
       api_key: process.env.SERP_API_KEY,
     })
-    console.log(reviews[0])
+
 
     await payload.delete({ collection: "googleReviews", where: {} })
 
