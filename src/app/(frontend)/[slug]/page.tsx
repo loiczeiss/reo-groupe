@@ -9,18 +9,7 @@ import { generateMeta } from '@/utilities/generateMeta'
 import { notFound, redirect } from 'next/navigation'
 export const revalidate = 60 // revalidate page every 60 seconds
 
-export async function generateStaticParams() {
-  const payload = await getPayload({ config })
 
-  const pages = await payload.find({
-    collection: 'pages',
-    draft: false,
-    limit: 1000,
-    overrideAccess: false,
-  })
-
-  return pages.docs.filter((doc) => doc.slug !== 'home').map(({ slug }) => ({ slug }))
-}
 
 // Updated Props type to reflect that params is now a Promise
 type Props = {
