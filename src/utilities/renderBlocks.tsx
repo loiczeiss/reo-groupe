@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 
 import type { Page } from '@/payload-types'
-import { Index } from '@/blocks/Hero'
+import { Hero } from '@/blocks/Hero/hero'
 import { TextAndFourImagesBlock } from '@/blocks/text-and-four-images'
 import { ThreeByThreeContentBlock } from '@/blocks/three-by-three-content'
 import { WhyUsBlock } from '@/blocks/why-us'
@@ -16,9 +16,10 @@ import { ContactFormBlock } from '@/blocks/contact-form'
 import { ContactSectionBlock } from '@/blocks/contact-section'
 import { TestimonialCarouselBlock } from '@/blocks/testimonial-carousel'
 import { MidHeroBlock } from '@/blocks/mid-hero'
+import IntroComponent from '@/blocks/introduction'
 
 const blockComponents = {
-  hero: Index,
+  hero: Hero,
   textAndFourImages: TextAndFourImagesBlock,
   threeByThreeContent: ThreeByThreeContentBlock,
   whyUs: WhyUsBlock,
@@ -33,6 +34,7 @@ const blockComponents = {
   contactSection: ContactSectionBlock,
   testimonialCarousel: TestimonialCarouselBlock,
   midHero: MidHeroBlock,
+  introduction: IntroComponent
 }
 
 export const RenderBlocks: React.FC<{

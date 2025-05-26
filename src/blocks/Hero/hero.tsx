@@ -3,10 +3,12 @@
 import Image from 'next/image'
 import { Media } from '@/payload-types'
 import StyledButton from '@/components/Styled-button/Styled-button'
+import {motion} from 'motion/react'
 
 interface HeroBlockProps {
   title?: string
   description?: string
+  introductionText?: string
   backgroundImage?: Media
   images: {
     image1?: Media
@@ -28,18 +30,19 @@ interface HeroBlockProps {
   }
 }
 
-export function Index(props: HeroBlockProps) {
-  const { title, description, backgroundImage, images, buttonGroup } = props
+export function Hero(props: HeroBlockProps) {
+  const { title, description,backgroundImage, images, buttonGroup } = props
 
   return (
     <div
-      className="flex m-2 md:m-8 h-[100vw] md:h-[calc(80vw-64px)] lg:h-[calc(100vh-64px)] rounded-lg text-black relative"
+      className="flex m-2 md:m-8 h-[100vw] md:h-[calc(80vw-64px)] lg:h-[calc(100vh-64px)] rounded-lg text-black relative bg-fixed"
       style={{
-        backgroundColor: '#668E2E',
+        backgroundColor: "#668E2E",
         ...(backgroundImage?.url && {
           backgroundImage: `url(${backgroundImage.url})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
         }),
       }}
     >
@@ -69,11 +72,17 @@ export function Index(props: HeroBlockProps) {
             divColor="#fff"
           />
         </div>
+
       </div>
 
       {/* RIGHT SIDE - IMAGES */}
       <div className="w-1/2 flex overflow-hidden">
-        <div className="h-full w-2/3 flex flex-col space-y-2 md:space-y-4 overflow-hidden">
+        <motion.div
+          initial={{ y: -800, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: "tween", ease: "easeOut", duration: 0.8 }}
+          className="h-full w-2/3 flex flex-col space-y-2 md:space-y-4 overflow-hidden"
+        >
           <div className="w-full h-[424px] rounded-[12px] overflow-hidden -mt-20 relative">
             {images?.image6?.url && (
               <Image
@@ -104,9 +113,11 @@ export function Index(props: HeroBlockProps) {
               />
             )}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="h-full w-1/3 flex flex-col space-y-2 md:space-y-4 ml-4 md:ml-8 overflow-hidden rounded-r-lg">
+        <motion.div  initial={{ y: 800, opacity:0 }}
+                     animate={{ y: 0, opacity: 1 }}
+                     transition={{ type: "tween", ease: "easeOut", duration: 1 }} className="h-full w-1/3 flex flex-col space-y-2 md:space-y-4 ml-4 md:ml-8 overflow-hidden rounded-r-lg">
           <div className="h-[424px] rounded-l-[12px] rounded-t-lg overflow-hidden -mt-20 w-full relative">
             {images?.image3?.url && (
               <Image
@@ -137,7 +148,7 @@ export function Index(props: HeroBlockProps) {
               />
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   )

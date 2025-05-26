@@ -1,38 +1,86 @@
-"use client"
+'use client'
 
-import { useEffect, useState } from "react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Card, CardContent } from "@/components/ui/card"
-import { Skeleton } from "@/components/ui/skeleton"
-import { Star } from "lucide-react"
-import { cn } from "@/utilities/ui"
-import type { Media } from "@/payload-types"
+import { useEffect, useState } from 'react'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Card, CardContent } from '@/components/ui/card'
+import { Skeleton } from '@/components/ui/skeleton'
+import { Star } from 'lucide-react'
+import { cn } from '@/utilities/ui'
+import type { Media } from '@/payload-types'
+
+interface Testimonial {
+  id: number
+  name: string
+  image: Media
+  rating: number
+  review: string
+}
+type Review = {
+  id: number;
+  author: string;
+  rating: number;
+  review: string;
+  authorImage: string;
+  // You can add more fields here if needed (e.g., date, likes, etc.)
+};
 
 interface TestimonialCarouselBlockProps {
-  testimonials: {
-    id: number
-    name: string
-    image: Media
-    rating: number
-    review: string
-  }[]
+  testimonials?: Testimonial[]
 }
 
 export function TestimonialCarouselBlock(props: TestimonialCarouselBlockProps) {
   const { testimonials } = props
   const [activeIndex, setActiveIndex] = useState(0)
   const [width, setWidth] = useState<number | null>(null)
+  const [fetchedTestimonials, setFetchedTestimonials] = useState<Testimonial[]>([])
 
   useEffect(() => {
-    // This ensures code runs only on client
-    const updateWidth = () => setWidth(window.innerWidth)
-    updateWidth()
-    window.addEventListener("resize", updateWidth)
-    return () => window.removeEventListener("resize", updateWidth)
+    const fetchTestimonials = async () => {
+      try {
+        const res = await fetch('/api/get-reviews')
+        if (!res.ok) {
+          console.error('Failed to fetch', res.status)
+          return
+        }
+        const data: Review[] = await res.json()
+
+        const formatted: Testimonial[] = data.map(
+          (review: Review) => ({
+            id: review.id,
+            name: review.author,
+            image: {
+              url: review.authorImage,
+              alt: review.author,
+            } as Media,
+            rating: review.rating,
+            review: review.review,
+          }),
+        )
+
+        setFetchedTestimonials(formatted)
+      } catch (err) {
+        console.error('Error fetching testimonials:', err)
+      }
+    }
+
+    fetchTestimonials()
   }, [])
 
-  // Render skeleton loader while width is being determined
-  if (width === null) {
+  useEffect(() => {
+    const updateWidth = () => setWidth(window.innerWidth)
+    updateWidth()
+    window.addEventListener('resize', updateWidth)
+    return () => window.removeEventListener('resize', updateWidth)
+  }, [])
+
+  // Use props.testimonials if passed, otherwise use fetched testimonials
+  const displayTestimonials =
+    fetchedTestimonials.length > 0 ? fetchedTestimonials : (testimonials ?? [])
+
+  // Show skeleton loading UI if either:
+  // 1) width is not initialized (like before)
+  // 2) testimonials are loading (no props AND fetchedTestimonials is empty)
+  if (width === null || (!testimonials && fetchedTestimonials.length === 0)) {
     return (
       <div className="w-full py-12 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
@@ -78,9 +126,13 @@ export function TestimonialCarouselBlock(props: TestimonialCarouselBlockProps) {
 
   const isDesktop = width >= 1024
   const isTablet = width >= 768
-  const itemsPerPageCount = isDesktop ? itemsPerPage.desktop : isTablet ? itemsPerPage.tablet : itemsPerPage.mobile
+  const itemsPerPageCount = isDesktop
+    ? itemsPerPage.desktop
+    : isTablet
+      ? itemsPerPage.tablet
+      : itemsPerPage.mobile
 
-  const totalPages = Math.ceil(testimonials.length / itemsPerPageCount)
+  const totalPages = Math.ceil(displayTestimonials.length / itemsPerPageCount)
 
   const handleDotClick = (index: number) => {
     setActiveIndex(index)
@@ -94,7 +146,7 @@ export function TestimonialCarouselBlock(props: TestimonialCarouselBlockProps) {
             className="flex transition-transform duration-300 ease-in-out"
             style={{ transform: `translateX(-${activeIndex * 100}%)` }}
           >
-            {testimonials.map((testimonial) => (
+            {displayTestimonials.map((testimonial) => (
               <div key={testimonial.id} className="w-full md:w-1/2 lg:w-1/4 flex-shrink-0 px-3">
                 <TestimonialCard testimonial={testimonial} />
               </div>
@@ -108,8 +160,8 @@ export function TestimonialCarouselBlock(props: TestimonialCarouselBlockProps) {
               key={index}
               onClick={() => handleDotClick(index)}
               className={cn(
-                "w-2 h-2 rounded-full transition-colors",
-                activeIndex === index ? "bg-green-600" : "bg-gray-300",
+                'w-2 h-2 rounded-full transition-colors',
+                activeIndex === index ? 'bg-green-600' : 'bg-gray-300',
               )}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -120,24 +172,14 @@ export function TestimonialCarouselBlock(props: TestimonialCarouselBlockProps) {
   )
 }
 
-function TestimonialCard({
-                           testimonial,
-                         }: {
-  testimonial: {
-    id: number
-    name: string
-    image: Media
-    rating: number
-    review: string
-  }
-}) {
+function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
     <Card className="border-0 h-full shadow-md">
       <CardContent className="p-6">
         <div className="flex items-center mb-6">
           <Avatar className="h-14 w-14">
             <AvatarImage
-              src={(testimonial.image.url as string) || "/placeholder.svg"}
+              src={(testimonial.image.url as string) || '/placeholder.svg'}
               alt={testimonial.image.alt}
               className="object-cover"
             />
