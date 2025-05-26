@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     pages: Page;
+    googleReviews: GoogleReview;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -79,6 +80,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
+    googleReviews: GoogleReviewsSelect<false> | GoogleReviewsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -171,6 +173,7 @@ export interface Page {
         | {
             title?: string | null;
             description?: string | null;
+            introductionText?: string | null;
             backgroundImage?: (number | null) | Media;
             images?: {
               image1?: (number | null) | Media;
@@ -199,8 +202,8 @@ export interface Page {
             description: string;
             subheading1: string;
             subcontent1: string;
-            subheading2: string;
-            subcontent2: string;
+            subheading2?: string | null;
+            subcontent2?: string | null;
             images: {
               image1: number | Media;
               image2: number | Media;
@@ -522,6 +525,23 @@ export interface Page {
             blockName?: string | null;
             blockType: 'midHero';
           }
+        | {
+            title?: string | null;
+            bgImage?: (number | null) | Media;
+            introArray?:
+              | {
+                  introText?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            buttonGroup?: {
+              label?: string | null;
+              url?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'introduction';
+          }
       )[]
     | null;
   meta?: {
@@ -532,6 +552,20 @@ export interface Page {
     image?: (number | null) | Media;
     description?: string | null;
   };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "googleReviews".
+ */
+export interface GoogleReview {
+  id: number;
+  author: string;
+  rating: number;
+  review?: string | null;
+  authorImage?: string | null;
+  date?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -553,6 +587,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'pages';
         value: number | Page;
+      } | null)
+    | ({
+        relationTo: 'googleReviews';
+        value: number | GoogleReview;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -645,6 +683,7 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               title?: T;
               description?: T;
+              introductionText?: T;
               backgroundImage?: T;
               images?:
                 | T
@@ -1109,6 +1148,26 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        introduction?:
+          | T
+          | {
+              title?: T;
+              bgImage?: T;
+              introArray?:
+                | T
+                | {
+                    introText?: T;
+                    id?: T;
+                  };
+              buttonGroup?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -1117,6 +1176,19 @@ export interface PagesSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "googleReviews_select".
+ */
+export interface GoogleReviewsSelect<T extends boolean = true> {
+  author?: T;
+  rating?: T;
+  review?: T;
+  authorImage?: T;
+  date?: T;
   updatedAt?: T;
   createdAt?: T;
 }

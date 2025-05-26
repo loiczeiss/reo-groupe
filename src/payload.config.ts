@@ -4,22 +4,22 @@ import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
+import { fileURLToPath } from 'url'
 import { resendAdapter } from '@payloadcms/email-resend'
 
-import { fileURLToPath } from 'url'
-import dotenv from 'dotenv'
-
 import sharp from 'sharp'
+import dotenv from 'dotenv'
 import { Users } from '@/collections/users'
 import { Media } from '@/collections/media'
 import { Pages } from '@/collections/pages'
 import { Header } from '@/Header/config'
 import { Footer } from '@/Footer/config'
 import { plugins } from './plugins'
-dotenv.config()
+import { GoogleReviews } from '@/collections/google-reviews'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
-
+dotenv.config()
 export default buildConfig({
   email: resendAdapter({
     defaultFromAddress: 'onboarding@resend.dev',
@@ -33,8 +33,8 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Pages],
-  globals: [Header, Footer],
+  collections: [Users, Media, Pages, GoogleReviews],
+  globals:[Header, Footer],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
