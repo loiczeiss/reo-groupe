@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { LockKeyhole, CheckCircle, AlertCircle, Eye, EyeOff } from "lucide-react"
+import Link from 'next/link'
 
 export default function ResetPassword() {
   const searchParams = useSearchParams()
@@ -51,7 +52,7 @@ export default function ResetPassword() {
       } else {
         setError(data.message || "Something went wrong.")
       }
-    } catch (err) {
+    } catch {
       setError("An error occurred. Please try again.")
     } finally {
       setIsLoading(false)
@@ -163,9 +164,9 @@ export default function ResetPassword() {
         <div className="p-4 bg-[#232548]/5 rounded-b-lg">
           <p className="text-center text-sm text-[#232548]">
             Remember your password?{" "}
-            <a href="/admin/login" className="font-medium text-[#668E2E] hover:underline">
+            <Link href="/admin/login" className="font-medium text-[#668E2E] hover:underline">
               Back to login
-            </a>
+            </Link>
           </p>
         </div>
       </Card>

@@ -15,6 +15,14 @@ interface Testimonial {
   rating: number
   review: string
 }
+type Review = {
+  id: number;
+  author: string;
+  rating: number;
+  review: string;
+  authorImage: string;
+  // You can add more fields here if needed (e.g., date, likes, etc.)
+};
 
 interface TestimonialCarouselBlockProps {
   testimonials?: Testimonial[]
@@ -29,22 +37,25 @@ export function TestimonialCarouselBlock(props: TestimonialCarouselBlockProps) {
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        const res = await fetch('/api/get-review')
+        const res = await fetch('/api/get-reviews')
         if (!res.ok) {
           console.error('Failed to fetch', res.status)
           return
         }
-        const data = await res.json()
-        const formatted = data.map((review: any) => ({
-          id: review.id,
-          name: review.author,
-          image: {
-            url: review.authorImage,
-            alt: review.author,
-          },
-          rating: review.rating,
-          review: review.review,
-        }))
+        const data: Review[] = await res.json()
+
+        const formatted: Testimonial[] = data.map(
+          (review: Review) => ({
+            id: review.id,
+            name: review.author,
+            image: {
+              url: review.authorImage,
+              alt: review.author,
+            } as Media,
+            rating: review.rating,
+            review: review.review,
+          }),
+        )
 
         setFetchedTestimonials(formatted)
       } catch (err) {
