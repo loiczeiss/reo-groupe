@@ -15,6 +15,11 @@ export const Config: Block = {
       type: 'text',
     },
     {
+      name: 'introductionText',
+      label: 'texte introductif',
+      type: 'textarea',
+    },
+    {
       name: 'backgroundImage',
       label: 'Image de fond',
       type: 'upload',

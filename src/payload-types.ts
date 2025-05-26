@@ -171,6 +171,7 @@ export interface Page {
         | {
             title?: string | null;
             description?: string | null;
+            introductionText?: string | null;
             backgroundImage?: (number | null) | Media;
             images?: {
               image1?: (number | null) | Media;
@@ -199,8 +200,8 @@ export interface Page {
             description: string;
             subheading1: string;
             subcontent1: string;
-            subheading2: string;
-            subcontent2: string;
+            subheading2?: string | null;
+            subcontent2?: string | null;
             images: {
               image1: number | Media;
               image2: number | Media;
@@ -522,6 +523,23 @@ export interface Page {
             blockName?: string | null;
             blockType: 'midHero';
           }
+        | {
+            title?: string | null;
+            bgImage?: (number | null) | Media;
+            introArray?:
+              | {
+                  introText?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            buttonGroup?: {
+              label?: string | null;
+              url?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'introduction';
+          }
       )[]
     | null;
   meta?: {
@@ -645,6 +663,7 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               title?: T;
               description?: T;
+              introductionText?: T;
               backgroundImage?: T;
               images?:
                 | T
@@ -1106,6 +1125,26 @@ export interface PagesSelect<T extends boolean = true> {
               bgImage?: T;
               heading?: T;
               description?: T;
+              id?: T;
+              blockName?: T;
+            };
+        introduction?:
+          | T
+          | {
+              title?: T;
+              bgImage?: T;
+              introArray?:
+                | T
+                | {
+                    introText?: T;
+                    id?: T;
+                  };
+              buttonGroup?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
               id?: T;
               blockName?: T;
             };
