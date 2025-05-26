@@ -4,6 +4,7 @@ import config from '@payload-config'
 import { RenderBlocks } from '@/utilities/renderBlocks'
 import { generateMeta } from '@/utilities/generateMeta'
 import { notFound, redirect } from 'next/navigation'
+export const revalidate = 60 // revalidate page every 60 seconds
 
 export default async function RootHomePage() {
   const page = await queryPageBySlug('home')
