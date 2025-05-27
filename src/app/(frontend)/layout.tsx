@@ -7,6 +7,7 @@ import { getCachedGlobal } from '@/utilities/getGlobals'
 import { FooterComponent } from '@/Footer'
 import { Footer, Header } from '@/payload-types'
 import { Toaster } from 'sonner'
+import { RevalidateTest } from '@/components/test/textRevalidation'
 export const revalidate = 60
 
 export const metadata = {
@@ -32,6 +33,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     <body className={`${inter.className}`}>
     <HeaderComponent headerData={headerData} />
     <main>{children}</main>
+    <RevalidateTest/>
     <Toaster richColors position="top-right"/>
     <FooterComponent footerData={footerData} />
     </body>
