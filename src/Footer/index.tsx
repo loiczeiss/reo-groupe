@@ -128,7 +128,9 @@ export function FooterComponent(props: FooterProps) {
                               className={"h-4 w-4 sm:h-6 sm:w-6 text-[#232548]"}
                             />
                           ) : (
-                            <Image src={item.logo.url || "/placeholder.svg"} alt={item.logo.alt} fill />
+                            <div className="relative h-4 w-4 sm:h-6 sm:w-6">
+                              <Image src={item.logo.url || "/placeholder.svg"} alt={item.logo.alt} fill />
+                            </div>
                           )
                         ) : null}
                       </Link>

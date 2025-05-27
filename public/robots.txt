@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /api/
+Allow: /
+
+# Sitemap
+# Note: Update this URL with your actual production domain before deployment
+Sitemap: https://reo-groupe.com/pages-sitemap.xml

@@ -30,7 +30,7 @@ export function HeaderComponent(props: HeaderProps){
 
   const width = useWindowWidth()
   if (width === null) return null
-  return(<div className={'w-screen'}>{ width > 620 ?
+  return(<div className={'w-full'}>{ width > 620 ?
     <HeaderDesktop {...props} /> :
     <HeaderMobile {...props} />
   }</div>)
