@@ -16,6 +16,7 @@ export const revalidateGlobalHook = async (args: GlobalAfterChangeArgs): Promise
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.REVALIDATE_SECRET}`,
       },
       body: JSON.stringify({ slug: global.slug }),
     })
