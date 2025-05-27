@@ -1,8 +1,8 @@
-import type { AfterChangeHook } from 'payload/dist/collections/config'
+import type { CollectionAfterChangeHook } from 'payload'
 
-export const revalidatePageHook: AfterChangeHook = async ({ doc }) => {
+export const revalidatePageHook: CollectionAfterChangeHook = async ({ doc }) => {
   try {
-    await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/revalidate-page`, {
+    await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/revalidate-page-globals`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
