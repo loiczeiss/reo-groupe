@@ -1,7 +1,19 @@
 import { GlobalConfig } from 'payload'
+import { revalidateGlobalHook } from '@/hooks/RevalidateGlobalHook'
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
+  hooks: {
+    afterChange: [
+      (args) => {
+        console.log('[Global.afterChange] Hook fired with args:', {
+         args
+        })
+
+        return revalidateGlobalHook({...args})
+      },
+    ],
+  },
   fields: [
     { name: 'heading', label: 'Heading', type: 'text' },
     {
