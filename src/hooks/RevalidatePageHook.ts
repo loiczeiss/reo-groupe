@@ -15,6 +15,7 @@ export const revalidatePageHook = async (args: CollectionAfterChangeArgs) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.REVALIDATE_SECRET}`, // Added secret
       },
       body: JSON.stringify({ slug: doc.slug }),
     })
