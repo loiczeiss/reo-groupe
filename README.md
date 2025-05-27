@@ -42,9 +42,9 @@ The Payload config is tailored specifically to the needs of most websites. It is
 
 See the [Collections](https://payloadcms.com/docs/configuration/collections) docs for details on how to extend this functionality.
 
-- #### Users (Authentication)
+- #### Index (Authentication)
 
-  Users are auth-enabled collections that have access to the admin panel.
+  Index are auth-enabled collections that have access to the admin panel.
 
   For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/main/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
 
