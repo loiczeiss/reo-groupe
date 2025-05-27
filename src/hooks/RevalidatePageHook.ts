@@ -7,7 +7,7 @@ export const revalidatePageHook = async (args: AfterChangeHookArgs) => {
   const { doc } = args
 
   try {
-    await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/revalidate-page-globals`, {
+    await fetch(`/api/revalidate-page-globals`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
