@@ -13,10 +13,13 @@ interface FooterProps {
   footerData: Footer
 }
 
+
 function useResponsiveXOffset(desktop: number, tablet: number, mobile: number) {
-  const [offset, setOffset] = useState(desktop)
+  const [offset, setOffset] = useState<number | null>(null)
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
     function updateOffset() {
       const width = window.innerWidth
       if (width < 640) {
@@ -29,12 +32,16 @@ function useResponsiveXOffset(desktop: number, tablet: number, mobile: number) {
     }
 
     updateOffset()
+
     window.addEventListener('resize', updateOffset)
     return () => window.removeEventListener('resize', updateOffset)
   }, [desktop, tablet, mobile])
 
-  return offset
+  // If offset is null (initially before mount), fallback to desktop
+  return offset === null ? desktop : offset
 }
+
+
 
 export function FooterComponent(props: FooterProps) {
   const {
