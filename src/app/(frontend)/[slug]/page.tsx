@@ -7,7 +7,6 @@ import '../styles.css'
 import { RenderBlocks } from '@/utilities/renderBlocks'
 import { generateMeta } from '@/utilities/generateMeta'
 import { notFound, redirect } from 'next/navigation'
-export const revalidate = 60 // revalidate page every 60 seconds
 
 
 
