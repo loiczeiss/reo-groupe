@@ -10,8 +10,8 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Missing slug' }, { status: 400 })
     }
 
-    revalidateTag(`page_${slug}`)
 
+    revalidateTag(`global_${slug}`)
 
     return NextResponse.json({ revalidated: true, slug })
   } catch (error) {

@@ -7,9 +7,9 @@ import { getCachedGlobal } from '@/utilities/getGlobals'
 import { FooterComponent } from '@/Footer'
 import { Footer, Header } from '@/payload-types'
 import { Toaster } from 'sonner'
-import { RevalidateTest } from '@/components/test/textRevalidation'
 
-//
+
+
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
   title: 'Payload Blank Template',
@@ -33,7 +33,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     <body className={`${inter.className}`}>
     <HeaderComponent headerData={headerData} />
     <main>{children}</main>
-    <RevalidateTest/>
+
     <Toaster richColors position="top-right"/>
     <FooterComponent footerData={footerData} />
     </body>

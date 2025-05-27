@@ -28,7 +28,16 @@ import { revalidatePageHook } from '@/hooks/RevalidatePageHook'
 const Pages: CollectionConfig = {
   slug: 'pages',
   hooks: {
-    afterChange: [(args) => revalidatePageHook({ ...args, type: 'collection' })],
+    afterChange: [
+      (args) => {
+        console.log('[Pages.afterChange] Hook fired with args:', {
+          operation: args.operation,
+          slug: args.doc?.slug,
+        })
+
+        return revalidatePageHook(args )
+      },
+    ],
   },
   labels: {
     singular: 'Page',

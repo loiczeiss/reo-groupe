@@ -1,13 +1,11 @@
-import { CollectionAfterChangeHook, GlobalAfterChangeHook } from 'payload'
+import { CollectionAfterChangeHook } from 'payload'
 
-type AfterChangeHookArgs =
-  | ({ type: 'collection' } & Parameters<CollectionAfterChangeHook>[0])
-  | ({ type: 'global' } & Parameters<GlobalAfterChangeHook>[0])
+type CollectionAfterChangeArgs = Parameters<CollectionAfterChangeHook>[0]
 
-export const revalidatePageHook = async (args: AfterChangeHookArgs) => {
+export const revalidatePageHook = async (args: CollectionAfterChangeArgs) => {
   const { doc } = args
 
-  if (!doc.slug) {
+  if (!doc?.slug) {
     console.warn('[revalidatePageHook] No slug found, skipping revalidation')
     return
   }
