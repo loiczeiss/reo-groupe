@@ -38,28 +38,14 @@ export function Hero(props: HeroBlockProps) {
       className="flex m-2 md:m-8 h-[100vw] md:h-[calc(80vw-64px)] lg:h-[calc(100vh-64px)] rounded-lg text-black relative bg-fixed"
       style={{
         backgroundColor: "#668E2E",
+        ...(backgroundImage?.url && {
+          backgroundImage: `url(${backgroundImage.url})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }),
       }}
     >
-      {backgroundImage?.url && (
-        <Image
-          src={backgroundImage.url}
-          alt={backgroundImage.alt || "Background"}
-          fill
-          priority
-          quality={75}
-          sizes="100vw"
-          placeholder="blur"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkmGngAwAA7gCNOUu6MAAAAABJRU5ErkJggg=="
-          className="object-cover z-0 fixed rounded-lg"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-          }}
-        />
-      )}
       {/* LEFT SIDE - TEXT */}
       <div className="flex flex-col justify-center w-1/2 pl-2 md:pl-8 z-10 text-white space-y-1 md:space-y-4 overflow-hidden">
         <h1
