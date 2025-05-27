@@ -49,8 +49,8 @@ export function Hero(props: HeroBlockProps) {
           quality={75}
           sizes="100vw"
           placeholder="blur"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
-          className="object-cover z-0 fixed"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkmGngAwAA7gCNOUu6MAAAAABJRU5ErkJggg=="
+          className="object-cover z-0 fixed rounded-lg"
           style={{
             position: 'absolute',
             top: 0,
