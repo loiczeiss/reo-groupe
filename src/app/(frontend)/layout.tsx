@@ -9,7 +9,7 @@ import { Footer, Header } from '@/payload-types'
 import { Toaster } from 'sonner'
 import { RevalidateTest } from '@/components/test/textRevalidation'
 export const revalidate = 60
-
+//
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
   title: 'Payload Blank Template',
