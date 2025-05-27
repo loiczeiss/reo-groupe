@@ -1,6 +1,11 @@
-import type { CollectionAfterChangeHook } from 'payload'
+import { CollectionAfterChangeHook, GlobalAfterChangeHook } from 'payload'
 
-export const revalidatePageHook: CollectionAfterChangeHook = async ({ doc }) => {
+type AfterChangeHookArgs =
+  | ({ type: 'collection' } & Parameters<CollectionAfterChangeHook>[0])
+  | ({ type: 'global' } & Parameters<GlobalAfterChangeHook>[0])
+export const revalidatePageHook = async (args: AfterChangeHookArgs) => {
+  const { doc } = args
+
   try {
     await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/revalidate-page-globals`, {
       method: 'POST',

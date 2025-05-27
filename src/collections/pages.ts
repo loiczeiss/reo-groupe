@@ -21,11 +21,15 @@ import { ContactSection } from '@/blocks/contact-section/config'
 import { TestimonialCarousel } from '@/blocks/testimonial-carousel/config'
 import { MidHero } from '@/blocks/mid-hero/config'
 import { IntroductionComponent } from '@/blocks/introduction/config'
+import { revalidatePageHook } from '@/hooks/RevalidatePageHook'
 
 // ... (your imports for all blocks like Config, TextContent, etc.)
 
 const Pages: CollectionConfig = {
   slug: 'pages',
+  hooks: {
+    afterChange: [(args) => revalidatePageHook({ ...args, type: 'collection' })],
+  },
   labels: {
     singular: 'Page',
     plural: 'Pages',
@@ -73,7 +77,7 @@ const Pages: CollectionConfig = {
         ContactSection,
         TestimonialCarousel,
         MidHero,
-        IntroductionComponent
+        IntroductionComponent,
       ],
     },
     {

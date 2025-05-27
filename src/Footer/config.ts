@@ -1,7 +1,13 @@
 import { GlobalConfig } from 'payload'
+import { revalidatePageHook } from '@/hooks/RevalidatePageHook'
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
+  hooks: {
+    afterChange: [
+      (args) => revalidatePageHook({ ...args, type: 'global' }),
+    ],
+  },
   fields: [
     { name: 'heading', label: 'Heading', type: 'text' },
     {

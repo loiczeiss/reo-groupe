@@ -1,4 +1,4 @@
-import { getPayload, RequiredDataFromCollectionSlug } from 'payload'
+import { getPayload } from 'payload'
 import { Metadata } from 'next'
 import config from '@payload-config'
 import { RenderBlocks } from '@/utilities/renderBlocks'
