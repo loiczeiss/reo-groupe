@@ -124,7 +124,7 @@ export default function TermsAndConditions() {
               <li><strong>Forme juridique :</strong> SAS</li>
               <li><strong>Capital social :</strong> 1.000 euros</li>
               <li><strong>Adresse du siège :</strong> 3 rue des Païens, 67720 Hoerdt</li>
-              <li><strong>Numéro d&apos;entreprise / TVA :</strong> En cours d'immatriculation</li>
+              <li><strong>Numéro d&apos;entreprise / TVA :</strong> En cours d&apos;immatriculation</li>
               <li><strong>Responsable de publication :</strong> NOUMBA YAMANGAM Michael</li>
               <li>
                 <strong>Email / Téléphone :</strong>{' '}
