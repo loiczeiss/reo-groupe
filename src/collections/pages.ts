@@ -22,6 +22,7 @@ import { TestimonialCarousel } from '@/blocks/testimonial-carousel/config'
 import { MidHero } from '@/blocks/mid-hero/config'
 import { IntroductionComponent } from '@/blocks/introduction/config'
 import { revalidatePageHook } from '@/hooks/RevalidatePageHook'
+import { TermsBlock } from '@/blocks/terms-and-condition/config'
 
 // ... (your imports for all blocks like Config, TextContent, etc.)
 
@@ -87,6 +88,7 @@ const Pages: CollectionConfig = {
         TestimonialCarousel,
         MidHero,
         IntroductionComponent,
+        TermsBlock
       ],
     },
     {
