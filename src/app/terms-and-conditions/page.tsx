@@ -1,7 +1,7 @@
 export default function TermsAndConditions() {
   return (
     <section className="max-w-4xl mx-auto p-6 text-gray-800">
-      <h1 className="text-3xl font-bold mb-8">Conditions Générales d'Utilisation et de Vente</h1>
+      <h1 className="text-3xl font-bold mb-8">Conditions Générales d&apos;Utilisation et de Vente</h1>
 
       <div className="space-y-8">
         {/* CGU / CGV */}
@@ -14,7 +14,7 @@ export default function TermsAndConditions() {
             <br />
             Siège social : 3 rue des Païens, 67720 Hoerdt
             <br />
-            N° SIRET / TVA : En cours d'immatriculation
+            N° SIRET / TVA : En cours d&apos;immatriculation
             <br />
             Contact :{' '}
             <a href="mailto:contact@reo-groupe.fr" className="text-blue-600 underline">
@@ -124,7 +124,7 @@ export default function TermsAndConditions() {
               <li><strong>Forme juridique :</strong> SAS</li>
               <li><strong>Capital social :</strong> 1.000 euros</li>
               <li><strong>Adresse du siège :</strong> 3 rue des Païens, 67720 Hoerdt</li>
-              <li><strong>Numéro d’entreprise / TVA :</strong> En cours d'immatriculation</li>
+              <li><strong>Numéro d&apos;entreprise / TVA :</strong> En cours d'immatriculation</li>
               <li><strong>Responsable de publication :</strong> NOUMBA YAMANGAM Michael</li>
               <li>
                 <strong>Email / Téléphone :</strong>{' '}
@@ -171,7 +171,7 @@ export default function TermsAndConditions() {
           <section className="mb-8">
             <h2 className="text-xl font-semibold mb-2">🧰 5. Propriété intellectuelle</h2>
             <ul className="list-disc ml-6 space-y-1">
-              <li><strong>Création des contenus par vous-même ou tiers ?</strong> Contenus créés par l'entreprise</li>
+              <li><strong>Création des contenus par vous-même ou tiers ?</strong> Contenus créés par l&apos;entreprise</li>
               <li><strong>Réutilisation interdite sans autorisation ?</strong> Toute réutilisation interdite sans autorisation écrite</li>
             </ul>
           </section>
