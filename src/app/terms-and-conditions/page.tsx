@@ -177,11 +177,11 @@ export default function TermsAndConditions() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-2">⚠️ 6. Conditions d’utilisation</h2>
+            <h2 className="text-xl font-semibold mb-2">⚠️ 6. Conditions d&apos;utilisation</h2>
             <ul className="list-disc ml-6 space-y-1">
               <li><strong>Site informatif ou permettant des démarches ?</strong> Site à usage informatif et commercial (devis, contact)</li>
               <li>
-                <strong>Limitation de responsabilité en cas d’erreur ou mauvaise utilisation ?</strong>{' '}
+                <strong>Limitation de responsabilité en cas d&apos;erreur ou mauvaise utilisation ?</strong>{' '}
                 Limitation de responsabilité en cas de mauvaise interprétation, liens externes hors contrôle, erreurs techniques (serveur, formulaire)
               </li>
             </ul>
