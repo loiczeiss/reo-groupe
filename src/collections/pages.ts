@@ -88,7 +88,7 @@ const Pages: CollectionConfig = {
         TestimonialCarousel,
         MidHero,
         IntroductionComponent,
-        TermsBlock
+
       ],
     },
     {

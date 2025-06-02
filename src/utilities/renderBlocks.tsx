@@ -17,7 +17,7 @@ import { ContactSectionBlock } from '@/blocks/contact-section'
 import { TestimonialCarouselBlock } from '@/blocks/testimonial-carousel'
 import { MidHeroBlock } from '@/blocks/mid-hero'
 import IntroComponent from '@/blocks/introduction'
-import { TermsAndConditionBlock } from '@/blocks/terms-and-condition'
+
 
 const blockComponents = {
   hero: Hero,
@@ -35,8 +35,7 @@ const blockComponents = {
   contactSection: ContactSectionBlock,
   testimonialCarousel: TestimonialCarouselBlock,
   midHero: MidHeroBlock,
-  introduction: IntroComponent,
-  terms: TermsAndConditionBlock
+  introduction: IntroComponent
 }
 
 export const RenderBlocks: React.FC<{
